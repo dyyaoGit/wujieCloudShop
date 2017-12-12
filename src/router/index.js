@@ -27,7 +27,7 @@ export const constantRouterMap = [
         path: '/',
         component: Layout,
         redirect: '/dashboard',
-        name: 'Dashboard',
+        name: '首页',
         hidden: true,
         children: [{
             path: 'dashboard',
@@ -55,11 +55,12 @@ export const constantRouterMap = [
     {
         path: '/commoditiesManage',
         component: Layout,
+        name: '商品管理',
         redirect: '/commoditiesManage/upload',
         meta: {title: '商品管理'},
         children: [{
             path: 'upload',
-            component: _import('commoditiesManage/upload'),
+            component: _import('commoditiesManage/uploadGoods/upload'),
             meta: {title: '上传商品'}
         },
         {
@@ -68,6 +69,18 @@ export const constantRouterMap = [
             meta: {title: '商品上下架'}
         }
         ]
+    },
+
+    {
+        path: '/test',
+        component: Layout,
+        redirect: '/test/index',
+        name: '测试页',
+        children: [{
+            path: 'index',
+            component: _import('test/test'),
+            meta: {title: '功能测试页'}
+        }]
     },
 
     {path: '*', redirect: '/404', hidden: true}
