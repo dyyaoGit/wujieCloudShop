@@ -1,0 +1,282 @@
+<template>
+    <div class="wrap" :key="$route.name === 'edit' ? 'edit' : 'upload'">
+        <el-form :model="formData" size="small" style="width: 830px;" label-position="left" label-width="85px"
+                 ref="form" :rules="rules">
+            <el-form-item label="商品类型" class="item-wid" prop="type">
+
+                <el-cascader
+                    :options="selectionData"
+                    v-model="formData.type"
+                    :props="{value: 'id',label: 'name'}"
+                    @change="handleChange">
+                </el-cascader>
+
+            </el-form-item>
+            <el-form-item label="商品名称" class="item-wid" prop="name">
+                <el-input v-model="formData.name"></el-input>
+            </el-form-item>
+        </el-form>
+
+        <div>
+            <el-form  size="small" :inline="true">
+                <el-form-item label="规格名称" label-width="85px">
+                    <el-input v-model="addData.name"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-button @click="add" type="primary" >添加规格</el-button>
+                </el-form-item>
+            </el-form>
+
+            <el-table :data="formData.spec" border size="small" v-if="formData.spec.length>0">
+                <el-table-column
+                    prop="name"
+                    label="规格名称"
+                    width="150">
+                    <template slot-scope="scope">
+                        <h2 style="color: #000;">{{scope.row.name}}</h2>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                    prop="name"
+                    label="规格标签"
+                    width="300">
+                    <template slot-scope="scope">
+                        <el-tag v-for="(val,idx) in scope.row.tag" :key="val" closable type="danger"
+                                @close="removeTag(scope.$index, idx)" style="margin-right: 5px;margin-bottom: 5px;">
+                            {{val}}
+                        </el-tag>
+                    </template>
+                </el-table-column>
+                <el-table-column label="标签名">
+                    <template slot-scope="scope">
+                        <el-row :gutter="20">
+                            <el-col :span="16">
+                                <el-input v-model="scope.row.empty" size="small"></el-input>
+                            </el-col>
+                            <el-col :span="8">
+                                <el-button @click="addTag(scope.$index)" type="danger" size="small">添加标签</el-button>
+                            </el-col>
+                        </el-row>
+
+                    </template>
+                </el-table-column>
+                <el-table-column label="操作">
+                    <template slot-scope="scope">
+                        <el-button @click="remove(scope.$index)" size="small" type="warning">移除该规格</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </div>
+
+        <el-form :model="formData.price" size="small" style="width: 830px;" :rules="rules">
+            <h3>价格 <span style="font-size: 14px;">(元)</span></h3>
+            <el-row>
+                <el-col :span="12">
+                    <el-form-item label="会员等级1" label-width="90px" prop="level1">
+                        <el-input v-model="formData.price.level1"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="12">
+                    <el-form-item label="会员等级2" label-width="90px" prop="level2">
+                        <el-input v-model="formData.price.level2"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="12">
+                    <el-form-item label="会员等级3" label-width="90px" prop="level3">
+                        <el-input v-model="formData.price.level3"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="12">
+                    <el-form-item label="会员等级4" label-width="90px" prop="level4">
+                        <el-input v-model="formData.price.level4"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+        </el-form>
+
+
+
+
+        <span>商品详情</span>
+        <Tinymce v-model="content" :height="200"></Tinymce>
+
+        <el-button @click="submitForm" type="danger" style="margin-top: 20px;">提交</el-button>
+    </div>
+</template>
+
+<script>
+    import Tinymce from '@/components/Tinymce'
+
+    export default {
+        components: {Tinymce},
+        name: 'goodsManage',
+        data() {
+            let msg = '该信息为必填信息'
+            return {
+                addData: {
+                    name: '',
+                    tag: ''
+                },
+                selectionData: [],
+                formData: {
+                    type: [],   //商品分类
+                    name: '',  //商品名称
+                    spec: [     //商品规格
+                        {
+                            name: '颜色',    //规格名称
+                            tag: ['黄色'],   //规格对应标签
+                            empty: ''               //临时存放
+                        }
+                    ],
+                    price: {   //各级会员价格
+                        level1: '',
+                        level2: '',
+                        level3: '',
+                        level4: ''
+                    }
+                },
+                initData: {
+                    type: [
+                        {
+                            name: '数码',
+                            id: 1
+                        },
+                        {
+                            name: '互联网',
+                            id: 2
+                        },
+                        {
+                            name: '金融',
+                            id: 3
+                        }
+                    ],
+                    tag: [{label: '商用', id: 111}, {label: '民用', id: 222}]
+                }, //初始化数据
+                editor: null,
+                config: {   //富文本设置
+                    toolbar: [
+                        ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
+                    ],
+                    height: 300
+                },
+                content: '',
+                rules: {
+                    name: [{required: true, message: msg, trigger: 'blur'}],
+                    level1: [{required: true, message: msg, trigger: 'blur'}],
+                    level2: [{required: true, message: msg, trigger: 'blur'}],
+                    level3: [{required: true, message: msg, trigger: 'blur'}],
+                    level4: [{required: true, message: msg, trigger: 'blur'}],
+                }
+            }
+        },
+        mounted() {
+            console.log(this.$route.name)
+            this.$axios.get('getCategory',{},res => {
+                console.log(res)
+
+
+
+                this.selectionData = res.data;
+            })
+        },
+        methods: {
+            //添加规格
+            add() {
+                if (!this.addData.name.trim()) { //判断是否为空
+                    this.$message({
+                        message: '添加的规格名称不能为空',
+                        type: 'warning'
+                    });
+                }
+                else {
+                    let canAdd = this.formData.spec.some(val => val.name === this.addData.name.trim())
+                    if(canAdd){ //判断是否和现有规格重名
+                        this.$message({
+                            message: '添加失败，不能添加相同的规格',
+                            type: 'warning'
+                        });
+                    }
+                    else{
+                        let obj = {
+                            name: this.addData.name,
+                            tag: [],
+                            empty: ''
+                        }
+                        this.formData.spec.push(obj);
+                        this.addData.name = '';
+                    }
+                }
+            },
+            //添加标签
+            addTag(index) {
+                if (!this.formData.spec[index].empty.trim()) {   //判断是否为空
+                    this.$message({
+                        message: '添加的规格标签不能为空',
+                        type: 'warning'
+                    });
+                }
+                else {
+                    let canAddTag = this.formData.spec[index].tag.some(val => val.label === this.formData.spec[index].empty)
+                    if(canAddTag){ //判断是否重复
+                        this.$message({
+                            message: '添加的规格标签不能重复',
+                            type: 'warning'
+                        });
+                    }
+                    else{
+                        this.formData.spec[index].tag.push(this.formData.spec[index].empty)
+                        this.formData.spec[index].empty = '';
+                    }
+                }
+            },
+            //移除规格
+            remove(index) {
+                this.formData.spec.splice(index, 1);
+            },
+            //移除标签
+            removeTag(index, idx) {
+                this.formData.spec[index].tag.splice(idx, 1)
+            },
+            submitForm() {
+                let notEmptyTag = this.formData.spec.some(val => val.tag.length === 0)  //判断是否有规格的标签未填写
+                if(notEmptyTag){
+                    this.$message({
+                        message: '存在未添加标签的规格，请检查规格列表是否为填写完整',
+                        type: 'warning'
+                    });
+                }
+                else{
+                    let canSubmit = !this.formData.type || !this.formData.name || !this.formData.price.level1 || !this.formData.price.level2 || !this.formData.price.level3 || !this.formData.price.level4;
+                    if(canSubmit){
+                        this.$message({
+                            message: '请检查是否填写完整必填信息',
+                            type: 'warning'
+                        })
+                    }
+                    else{ //提交操作
+                       this.formData.spec = this.formData.spec.map(val => {return {"name": val.name, "tag": val.tag}})  //去除所有empty变量提交
+                    }
+                }
+
+
+            },
+            handleChange(val){
+                console.log(val)
+            }
+        }
+    }
+</script>
+
+
+<style>
+    .content {
+        border: 1px solid #5a5e66;
+        min-height: 200px;
+    }
+
+    .item-wid .el-select {
+        width: 750px;
+    }
+</style>

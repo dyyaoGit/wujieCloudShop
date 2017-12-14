@@ -1,6 +1,6 @@
 <template>
     <div>
-        上下架商品
+        平台活动申请
     </div>
 </template>
 

@@ -29,14 +29,15 @@ var ajax = {
         Vue.prototype.Loading = true;
         axios.get(service.url(url), { params: data}).then((res) => {
             Vue.prototype.Loading = false;
-            if (res.data.ret == true) {
-                cb && cb(res.data);
-            }else if(res.data.code == 501){
-                Vue.prototype.$message.error('登录状态失效, 正在跳转...');
-                setTimeout(function(){ location.href = "/" }, 2000);
-            }else{
-                Vue.prototype.$message.error(res.data.msg);
-            }
+            // if (res.data.ret == true) {
+            //     cb && cb(res.data);
+            // }else if(res.data.code == 501){
+            //     Vue.prototype.$message.error('登录状态失效, 正在跳转...');
+            //     setTimeout(function(){ location.href = "/" }, 2000);
+            // }else{
+            //     Vue.prototype.$message.error(res.data.msg);
+            // }
+            cb && cb(res.data);
         }).catch((error) => {
             console.log(error);
         });

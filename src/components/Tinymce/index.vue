@@ -169,7 +169,6 @@
                 const _this = this
                 console.log(arr)
                 arr.forEach(v => {
-
                     window.tinymce.get(_this.tinymceId).insertContent(`<img class="wscnph" src="${v.url}" >`)
                 })
             }
@@ -189,6 +188,11 @@
         visibility: hidden;
         z-index: -1;
     }
+    .tinymce-textarea img {
+        max-width: 100%;
+        width: 100%;
+        display: block;
+    }
 
     .editor-custom-btn-container {
         position: absolute;
@@ -200,4 +204,6 @@
     .editor-upload-btn {
         display: inline-block;
     }
+
+
 </style>

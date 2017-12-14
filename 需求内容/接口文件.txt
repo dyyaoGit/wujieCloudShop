@@ -1,0 +1,63 @@
+baseUrl = http://yly3.ylyedu.com/admin/tag/index
+
+地址规范：admin/数据表名/操作
+    例：商品表
+    获取商品所有信息：admin/goods/index
+    添加商品：        admin/goods/add
+    更新商品：        admin/goods/update
+    删除商品：        admin/goods/delete
+
+
+######                     商品模块儿
+
+1.商品表   goods
+商品id                       id
+一级分类id    分类表的id     f_cid
+二级分类id                   s_cid
+标签id        标签表的id     tag_id          ['12','123','']
+商品名称         ->          name
+商品简介         ->          titile
+商品详情         ->          content:
+商品规格         ->          products        ['name':'yanse','value':['hoing','hahung']],['name':'chicun','value':['chaung','hahung']]]
+商品库存         ->          stock
+商品图           ->          img             ['img_src:[],thumb_img:[]']
+商品价格         ->          price           ['一级'：1，'二级':'2','三级':'3']
+快递价格         ->          ems_price
+上下架状态       ->          state           [0:下架，1：上架]
+浏览量           ->          browse_num
+分享量           ->          share_num
+商品代理数       ->          agent_num
+创建时间         ->          create_time      时间戳
+修改时间         ->          update_time
+--------------------------------
+2.品牌表  brand
+品牌id                       id
+品牌名称                     name
+品牌标题                     titile
+品牌商品                     100
+--------------------------------
+3.分类表  category
+分类id                       id
+父级id                       parent_id  默认0
+分类名称                     name
+分类等级                     rank    1:一级 2：二级
+###     所需数据
+#index  查询所有
+#add    添加分类 如果有父级需要传递父级id   parent_id
+#delete 删除分类 需要传递id值
+#update 更新分类 需要传递id值
+--------------------------------
+4.标签表  tag
+标签id                       id
+标签名称                     name
+###     所需数据
+#index  查询所有标签
+#add    添加标签  传递标签名称即可
+#delete 删除标签  需要传递标签id
+#update 更新标签  需要传递标签id以及标签新名称
+--------------------------------
+5.素材表  material
+素材id                         id
+商品id                         goods_id
+素材地址                       img
+素材分属                       0     官方默认为0/用户id

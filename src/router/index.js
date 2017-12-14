@@ -29,45 +29,87 @@ export const constantRouterMap = [
         redirect: '/dashboard',
         name: '首页',
         hidden: true,
-        children: [{
-            path: 'dashboard',
-            component: _import('dashboard/index'),
-            meta: {title: '首页'}
-        }]
-    },
-
-    {
-        path: '/example',
-        component: Layout,
-        redirect: '/example/table',
-        name: 'Example',
-        meta: {title: 'Example', icon: 'example'},
         children: [
             {
-                path: 'table',
-                name: 'Table',
-                component: _import('table/index'),
-                meta: {title: 'Table', icon: 'table'}
+                path: 'dashboard',
+                component: _import('dashboard/index'),
+                meta: {title: '首页'}
             }
         ]
     },
 
     {
-        path: '/commoditiesManage',
+        path: '/goodsManage',
         component: Layout,
         name: '商品管理',
-        redirect: '/commoditiesManage/upload',
+        redirect: '/goodsManage/upload',
         meta: {title: '商品管理'},
-        children: [{
-            path: 'upload',
-            component: _import('commoditiesManage/uploadGoods/upload'),
-            meta: {title: '上传商品'}
-        },
-        {
-            path: 'update',
-            component: _import('commoditiesManage/update'),
-            meta: {title: '商品上下架'}
-        }
+        children: [
+            {
+                path: 'upload',
+                component: _import('goodsManage/uploadGoods/upload'),
+                meta: {title: '上传商品'}
+            },
+            {
+                path: 'edit',
+                name: 'edit',
+                component: _import('goodsManage/uploadGoods/upload'),
+                meta: {title: '商品编辑'},
+                // hidden: true
+            },
+            {
+                path: 'update',
+                component: _import('goodsManage/update'),
+                meta: {title: '商品上下架'}
+            }
+        ]
+    },
+    {
+        path: '/orderManage',
+        component: Layout,
+        redirect: '/orderManage/index',
+        meta: {title: '订单管理'},
+        name: '订单管理',
+        children: [
+            {
+                path: 'index',
+                component: _import('orderManage/index'),
+                meta: {title: '所有订单'}
+            },
+            {
+                path: 'send',
+                component: _import('orderManage/index'),
+                meta: {title: '已发货订单'}
+            },
+            {
+                path: 'success',
+                component: _import('orderManage/index'),
+                meta: {title: '已完成订单'}
+            }
+
+
+        ]
+    },
+
+    {
+        path: '/storeManage',
+        component: Layout,
+        redirect: '/storeManage/index',
+        meta: {title: '店铺管理'},
+        name: '店铺管理',
+        children: [
+            {
+                path: 'index',
+                component: _import('storeManage/index'),
+                meta: {title: '轮播图管理'}
+            },
+            {
+                path: 'success',
+                component: _import('storeManage/applyForActive'),
+                meta: {title: '平台活动申请'}
+            }
+
+
         ]
     },
 
@@ -82,6 +124,7 @@ export const constantRouterMap = [
             meta: {title: '功能测试页'}
         }]
     },
+
 
     {path: '*', redirect: '/404', hidden: true}
 ]
