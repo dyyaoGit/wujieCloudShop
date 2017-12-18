@@ -2,110 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="355bfc31-9614-4cf2-a397-3bc623a20fb5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/Moxie.swf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/Moxie.xap" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/img/backgrounds.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/img/buttons-disabled.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/img/buttons.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/img/delete.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/img/done.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/img/error.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/img/throbber.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/img/transp50.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.ui.plupload/img/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.ui.plupload/img/plupload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/api/qiniu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Tinymce/components/myUpload.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/styles/iconfont.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/couponManage/couponManage.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/couponManage/editCoupon.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/couponManage/test.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/examples/custom.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/examples/dump.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/examples/events.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/examples/jquery/all_runtimes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/examples/jquery/jquery_ui_widget.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/examples/jquery/queue_widget.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/examples/jquery/s3.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/examples/upload.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/ar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/az.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/bg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/bs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/ca.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/cs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/cy.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/da.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/el.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/en.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/et.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/fa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/fi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/he.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/hr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/hy.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/id.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/ja.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/ka.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/kk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/km.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/ko.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/ku_IQ.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/lt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/lv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/ms.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/nl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/pt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/pt_BR.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/ro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/sk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/sl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/sq.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/sr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/sv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/th_TH.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/uk_UA.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/vi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/zh_CN.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/i18n/zh_TW.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/css/jquery.plupload.queue.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/jquery.plupload.queue.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.plupload.queue/jquery.plupload.queue.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.ui.plupload/css/jquery.ui.plupload.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.ui.plupload/jquery.ui.plupload.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/jquery.ui.plupload/jquery.ui.plupload.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/moxie.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/moxie.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/plupload.dev.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/plupload.full.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/js/plupload.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/license.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload-2.3.6/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload/moxie.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload/plupload.dev.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/plupload/plupload.full.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/qiniuSDK/qiniu.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/api/table.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/views/goodsManage/update.vue" afterPath="$PROJECT_DIR$/src/views/goodsManage/GoodsList.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/goodsManage/fodderManage.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/webpack.base.conf.js" afterPath="$PROJECT_DIR$/build/webpack.base.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.vue" afterPath="$PROJECT_DIR$/src/App.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/service.js" afterPath="$PROJECT_DIR$/src/api/service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Tinymce/index.vue" afterPath="$PROJECT_DIR$/src/components/Tinymce/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/index.js" afterPath="$PROJECT_DIR$/src/router/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/goodsManage/uploadGoods/upload.vue" afterPath="$PROJECT_DIR$/src/views/goodsManage/uploadGoods/upload.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/couponManage/editCoupon.vue" afterPath="$PROJECT_DIR$/src/views/couponManage/editCoupon.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/storeManage/applyForActive.vue" afterPath="$PROJECT_DIR$/src/views/storeManage/applyForActive.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -132,18 +33,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/router/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="132" column="42" lean-forward="false" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editCoupon.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/couponManage/editCoupon.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="844">
+              <caret line="66" column="60" lean-forward="false" selection-start-line="66" selection-start-column="60" selection-end-line="66" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -153,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/src/views/couponManage/couponManage.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+              <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#el-button#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -166,6 +57,42 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="48">
               <caret line="8" column="41" lean-forward="false" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/storeManage/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-button#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fodderManage.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/goodsManage/fodderManage.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#el-button#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applyForActive.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/storeManage/applyForActive.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -209,8 +136,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Vue File" />
         <option value="JavaScript File" />
+        <option value="Vue File" />
       </list>
     </option>
   </component>
@@ -252,7 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/permission.js" />
         <option value="$PROJECT_DIR$/src/views/layout/components/Navbar.vue" />
         <option value="$PROJECT_DIR$/src/views/login/index.vue" />
         <option value="$PROJECT_DIR$/.editorconfig" />
@@ -280,10 +206,8 @@
         <option value="$PROJECT_DIR$/src/views/commoditiesManage/uploadGoods/upload.vue" />
         <option value="$PROJECT_DIR$/src/styles/index.scss" />
         <option value="$PROJECT_DIR$/需求内容/无界云店产品需求.txt" />
-        <option value="$PROJECT_DIR$/src/views/storeManage/applyForActive.vue" />
         <option value="$PROJECT_DIR$/src/views/orderManage/index.vue" />
         <option value="$PROJECT_DIR$/src/views/dashboard/index.vue" />
-        <option value="$PROJECT_DIR$/src/views/storeManage/index.vue" />
         <option value="$PROJECT_DIR$/src/beforeRouter.js" />
         <option value="$PROJECT_DIR$/src/views/layout/components/AppMain.vue" />
         <option value="$PROJECT_DIR$/src/components/Tinymce/components/editorImage.vue" />
@@ -299,10 +223,13 @@
         <option value="$PROJECT_DIR$/src/api/service.js" />
         <option value="$PROJECT_DIR$/src/components/Tinymce/components/myUpload.vue" />
         <option value="$PROJECT_DIR$/src/views/goodsManage/GoodsList.vue" />
-        <option value="$PROJECT_DIR$/src/router/index.js" />
         <option value="$PROJECT_DIR$/src/views/couponManage/couponManage.vue" />
         <option value="$PROJECT_DIR$/src/views/couponManage/test.js" />
         <option value="$PROJECT_DIR$/src/views/couponManage/editCoupon.vue" />
+        <option value="$PROJECT_DIR$/src/views/storeManage/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/storeManage/applyForActive.vue" />
+        <option value="$PROJECT_DIR$/src/router/index.js" />
+        <option value="$PROJECT_DIR$/src/views/goodsManage/fodderManage.vue" />
       </list>
     </option>
   </component>
@@ -355,6 +282,11 @@
             <path>
               <item name="cloudShop" type="b2602c69:ProjectViewProjectNode" />
               <item name="cloudShop" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloudShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloudShop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -368,7 +300,7 @@
               <item name="cloudShop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="couponManage" type="462c0819:PsiDirectoryNode" />
+              <item name="goodsManage" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -431,7 +363,7 @@
       <workItem from="1513189482059" duration="7102000" />
       <workItem from="1513245866043" duration="6991000" />
       <workItem from="1513303586345" duration="23799000" />
-      <workItem from="1513335807164" duration="3331000" />
+      <workItem from="1513335807164" duration="7391000" />
     </task>
     <task id="LOCAL-00001" summary="chajian">
       <created>1512999491088</created>
@@ -454,11 +386,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513256098417</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="111">
+      <created>1513562510900</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1513562510900</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124425000" />
+    <option name="totallyTimeSpent" value="128485000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="2578" height="1420" extended-state="6" />
@@ -471,7 +410,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294412" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969746" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48244148" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35785952" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -514,7 +453,8 @@
     <MESSAGE value="chajian" />
     <MESSAGE value="上传商品的标签组件完成，支持标签重复验证" />
     <MESSAGE value="完成上传商品的接口对接" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成上传商品的接口对接" />
+    <MESSAGE value="111" />
+    <option name="LAST_COMMIT_MESSAGE" value="111" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -523,14 +463,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/layout/components/Sidebar/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/goodsManage/uploadGoods/addTag.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -569,6 +501,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#21#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -576,6 +511,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -591,13 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1006">
           <caret line="78" column="5" lean-forward="true" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/storeManage/applyForActive.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -623,17 +552,6 @@
         <state relative-caret-position="624">
           <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/storeManage/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#el-button#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -749,6 +667,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -756,6 +675,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="63" column="36" lean-forward="true" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -763,6 +683,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -770,6 +691,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
           <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -805,6 +727,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -828,6 +751,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="67" column="20" lean-forward="false" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -858,7 +782,7 @@
     <entry file="file://$PROJECT_DIR$/src/views/couponManage/couponManage.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+          <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#el-button#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
@@ -873,19 +797,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/index.js">
+    <entry file="file://$PROJECT_DIR$/src/views/couponManage/editCoupon.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="132" column="42" lean-forward="false" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="42" />
+        <state relative-caret-position="984">
+          <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#el-form-item#3;n#el-form#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-form-item#4;n#el-form#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-form-item#5;n#el-form#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-form-item#6;n#el-form#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/storeManage/applyForActive.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/couponManage/editCoupon.vue">
+    <entry file="file://$PROJECT_DIR$/src/views/storeManage/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state relative-caret-position="600">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-button#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="844">
+          <caret line="66" column="60" lean-forward="false" selection-start-line="66" selection-start-column="60" selection-end-line="66" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/goodsManage/fodderManage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#el-button#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,6 +1,11 @@
 <template>
     <div>
-        平台活动申请
+        <h2>秒杀申请</h2>
+
+
+
+
+
     </div>
 </template>
 

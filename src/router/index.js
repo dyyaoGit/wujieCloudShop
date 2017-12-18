@@ -62,6 +62,11 @@ export const constantRouterMap = [
                 meta: {title: '商品编辑'},
                 // hidden: true
             },
+            {
+                path: 'fodderManage',
+                component: _import('goodsManage/fodderManage'),
+                meta: {title: '素材管理'}
+            }
 
         ]
     },
