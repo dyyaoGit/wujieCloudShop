@@ -22,8 +22,8 @@
                 <el-form-item label="规格名称" label-width="85px">
                     <el-input v-model="addData.name"></el-input>
                 </el-form-item>
-                <el-form-item>
-                    <el-button @click="add" type="primary" >添加规格</el-button>
+                <el-form-item required>
+                    <el-button @click="add" type="primary" required>添加规格</el-button>
                 </el-form-item>
             </el-form>
 

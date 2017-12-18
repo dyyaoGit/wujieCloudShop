@@ -42,9 +42,14 @@ export const constantRouterMap = [
         path: '/goodsManage',
         component: Layout,
         name: '商品管理',
-        redirect: '/goodsManage/upload',
+        redirect: '/goodsManage/GoodsList',
         meta: {title: '商品管理'},
         children: [
+            {
+                path: 'GoodsList',
+                component: _import('goodsManage/GoodsList'),
+                meta: {title: '商品列表'}
+            },
             {
                 path: 'upload',
                 component: _import('goodsManage/uploadGoods/upload'),
@@ -57,11 +62,7 @@ export const constantRouterMap = [
                 meta: {title: '商品编辑'},
                 // hidden: true
             },
-            {
-                path: 'update',
-                component: _import('goodsManage/update'),
-                meta: {title: '商品上下架'}
-            }
+
         ]
     },
     {
@@ -108,11 +109,32 @@ export const constantRouterMap = [
                 component: _import('storeManage/applyForActive'),
                 meta: {title: '平台活动申请'}
             }
-
-
         ]
     },
-
+    {
+        path: '/couponManage',
+        component: Layout,
+        redirect: '/couponManage/index',
+        meta: {title: '商家优惠券'},
+        name: '商家优惠券',
+        children: [
+            {
+                path: 'index',
+                component: _import('couponManage/couponManage'),
+                meta: {title: '优惠券管理'}
+            },
+            {
+                path: 'new',
+                component: _import('couponManage/editCoupon'),
+                meta: {title: '新建优惠券'}
+            },
+            {
+                path: 'edit',
+                component: _import('couponManage/editCoupon'),
+                meta: {title: '优惠券编辑'}
+            }
+        ]
+    },
     {
         path: '/test',
         component: Layout,

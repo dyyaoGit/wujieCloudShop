@@ -1,3 +1,4 @@
+import "babel-polyfill";   //兼容IE系列
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -7,6 +8,7 @@ import store from './store'
 import '@/icons' // icon
 import beforeRouter from './beforeRouter'
 import globalApi from './api/axios'
+
 
 
 // console.log(ElementUI)

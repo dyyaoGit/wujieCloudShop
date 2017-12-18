@@ -9,9 +9,6 @@ function resolve(dir) {
 
 module.exports = {
     devtool: 'source-map',
-    externals: {
-        "CKEDITOR": "window.CKEDITOR"
-    },
     entry: {
         app: './src/main.js'
     },

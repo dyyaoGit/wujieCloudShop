@@ -19,7 +19,6 @@
             </el-table-column>
             <el-table-column
                 prop="name"
-                width="100"
                 label="商品名称"
             >
             </el-table-column>
@@ -53,11 +52,12 @@
                 label="四级会员价格"
             >
             </el-table-column>
-            <el-table-column  label="操作">
+            <el-table-column  label="操作" width="300" fixed="right">
                 <template slot-scope="scope">
-                    <el-button size="small" type="danger">下架</el-button>
-                    <el-button size="small" type="primary">编辑</el-button>
-                    <el-button size="small" type="default">删除</el-button>
+                    <el-button size="mini" type="danger" v-if="scope.row.isUp">上架</el-button>
+                    <el-button size="mini" type="danger" v-else>下架</el-button>
+                    <el-button size="mini" type="primary">编辑</el-button>
+                    <el-button size="mini" type="default">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -75,12 +75,14 @@
                         name: '小米笔记本',
                         type: '电脑',
                         price: {level1: '100', level2: '80', level3: '60', level4: '40'},
+                        isUp: false
                     },
                     {
                         img: 'https://i8.mifile.cn/a1/pms_1502098360.63228592!560x560.jpg',
                         name: '小米笔记本',
                         type: '电脑',
                         price: {level1: '100', level2: '80', level3: '60', level4: '40'},
+                        isUp: true
                     }
                 ],
                 selection: []  //选中的部分

@@ -2,17 +2,18 @@
     <div class='tinymce-container editor-container'>
         <textarea class='tinymce-textarea' :id="tinymceId"></textarea>
         <div class="editor-custom-btn-container">
-            <editorImage color="#20a0ff" class="editor-upload-btn" @successCBK="imageSuccessCBK"></editorImage>
+            <myUpload  class="editor-upload-btn" @successCBK="imageSuccessCBK"></myUpload>
         </div>
     </div>
 </template>
 
 <script>
-    import editorImage from './components/editorImage'
+//    import editorImage from './components/editorImage'
+    import myUpload from './components/myUpload.vue'
 
     export default {
         name: 'tinymce',
-        components: {editorImage},
+        components: {myUpload},
         props: {
             id: {
                 type: String
@@ -169,7 +170,7 @@
                 const _this = this
                 console.log(arr)
                 arr.forEach(v => {
-                    window.tinymce.get(_this.tinymceId).insertContent(`<img class="wscnph" src="${v.url}" >`)
+                    window.tinymce.get(_this.tinymceId).insertContent(`<img class="wscnph" style="width:100%;" src="${v}" >`)
                 })
             }
         },
