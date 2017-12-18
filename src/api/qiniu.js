@@ -4,7 +4,6 @@ import service from './service.js'
 // var Qiniu = new Qn();
 
 export default function(option, cb, progress){
-    console.log('执行')
     // debugger;
     var uploader = Qiniu.uploader({
         runtimes: 'html5,flash,html4',      // 上传模式，依次退化

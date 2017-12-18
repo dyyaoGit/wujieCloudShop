@@ -12,7 +12,9 @@ export default{
 
 
 // 商品相关
-    getCategory: '/admin/category/index'      //获取商品分类表
+    getCategory: '/admin/category/index' ,     //获取商品分类表
+    addGood: '/admin/goods/add',      //获取商品分类表
+    getGoodList: '/admin/goods/index', //获取商品列表
 
 
 }
