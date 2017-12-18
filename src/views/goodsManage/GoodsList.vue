@@ -85,8 +85,8 @@
                     <el-button size="mini" type="danger" v-if="scope.row.isUp">上架</el-button>
                     <el-button size="mini" type="danger" v-else>下架</el-button>
                     <el-button size="mini" type="primary" @click="edit(scope.row.id)">编辑</el-button>
-                    <el-button size="mini" type="warning">素材编辑</el-button>
-                    <el-button size="mini" type="default">删除</el-button>
+                    <el-button size="mini" type="warning" @click="editPhotos(scope.row.id)">素材编辑</el-button>
+                    <el-button size="mini" type="default" @click="delGood(scope.row.id)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -150,6 +150,13 @@
             edit(id) {
                 console.log(id)
                 this.$router.push({path:'edit', query: {id}})
+            },
+            editPhotos(id) {
+                console.log(id)
+                this.$router.push({path: 'fodderManage', query: {id}})
+            },
+            delGood(id) { //删除商品
+                
             }
         },
         mounted() {
