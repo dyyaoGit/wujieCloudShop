@@ -220,13 +220,15 @@
         },
         mounted() {
             console.log(this.$route.name)
-            this.$axios.get('getCategory',{},res => {
+            this.$axios.get('getCategory',{},res => { //获取分类列表
                 console.log(res)
-
-
-
                 this.selectionData = res.data;
             })
+            if(this.$route.name === 'edit' && this.$route.query.id){
+                this.$axios.get('admin/goods/index', {id: this.$route.query.id}, res => {
+                    console.log(res);
+                })
+            }
         },
         methods: {
             //添加规格

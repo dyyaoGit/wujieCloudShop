@@ -84,7 +84,7 @@
                 <template slot-scope="scope">
                     <el-button size="mini" type="danger" v-if="scope.row.isUp">上架</el-button>
                     <el-button size="mini" type="danger" v-else>下架</el-button>
-                    <el-button size="mini" type="primary" @click="edit">编辑</el-button>
+                    <el-button size="mini" type="primary" @click="edit(scope.row.id)">编辑</el-button>
                     <el-button size="mini" type="warning">素材编辑</el-button>
                     <el-button size="mini" type="default">删除</el-button>
                 </template>
@@ -142,13 +142,14 @@
                 console.log(val)
                 this.selection = val;
             },
-            getList() {
+            getList() { //获取商品列表
                 this.$axios.get('getGoodList', {}, res => {
                     this.tableData = res.data;
                 })
             },
             edit(id) {
-                this.$router.push({})
+                console.log(id)
+                this.$router.push({path:'edit', query: {id}})
             }
         },
         mounted() {
