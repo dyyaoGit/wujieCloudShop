@@ -5,7 +5,7 @@
             <h3 class="title">注册无界云店</h3>
             <el-form-item prop="username">
                 <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="手机号码" >
-                    <el-button slot="append">{{time}}</el-button>
+                    <el-button slot="append" @click="getCode">{{time}}</el-button>
                 </el-input>
             </el-form-item>
 
@@ -57,7 +57,8 @@
                 },
                 loading: false,
                 pwdType: 'password',
-                time: '获取验证码'
+                time: '获取验证码',
+                isSend: false
             }
         },
         methods: {
@@ -91,14 +92,21 @@
             getCode() {
                 let reg = /0?(13|14|15|17|18|19)[0-9]{9}/
                 if(reg.test(this.loginForm.username.trim())){
-                    this.$axios.post('getMsg',{phone: this.loginForm.username}, res => {
-                        this.time = 60;
-                        let time = 60;
-                        let timer = setInterval(() => {
-                            this.time = --time;
-                            if(time == 1){clearInterval(timer)}
-                        }, 1000)
-                    })
+                    if(!this.isSend){
+                        this.isSend = true;
+                        this.$axios.post('getMsg',{phone: this.loginForm.username}, res => {
+                            this.time = 60;
+                            let time = 60;
+                            let timer = setInterval(() => {
+                                this.time = --time;
+                                if(time == 0){
+                                    clearInterval(timer)
+                                    this.time = '获取验证码'
+                                    this.isSend = false;
+                                }
+                            }, 1000)
+                        })
+                    }
                 }
 
             }
