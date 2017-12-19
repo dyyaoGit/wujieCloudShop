@@ -24,6 +24,10 @@
             iconClass: {
                 type: String,
                 default: ''
+            },
+            max: {
+                type: Number,
+                default: 5
             }
         },
         data() {
@@ -63,6 +67,13 @@
         },
         mounted() {
 
+        },
+        watch: {
+            imgList(val) {  //限制图片存放
+                if(val.length>this.max){
+                    val.pop();
+                }
+            }
         }
     }
 </script>
@@ -107,19 +118,19 @@
         display: none;
     }
     .img-item {
-        position: relative;
-        display: block;
-        float: left;
-        width: 100px;
-        height: 100px;
-        border-radius: 8px;
-        border: 1px dashed #999;
-        margin: 0 10px 10px 0;
-        -webkit-background-size: 100% 100%;
-        background-size: 100% 100%;
-        overflow: hidden;
-        box-sizing: border-box;
-    }
+             position: relative;
+             display: block;
+             float: left;
+             width: 100px;
+             height: 100px;
+             border-radius: 8px;
+             border: 1px dashed #999;
+             margin: 0 10px 10px 0;
+             -webkit-background-size: 100% 100%;
+             background-size: 100% 100%;
+             overflow: hidden;
+             box-sizing: border-box;
+         }
     .img-item:hover::after{
         font-family:"iconfont" !important;
         font-size:16px;font-style:normal;

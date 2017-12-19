@@ -208,7 +208,6 @@
                     ],
                     height: 300
                 },
-                content: '',
                 rules: {
                     name: [{required: true, message: msg, trigger: 'blur'}],
                     common: [{required: true, message: msg, trigger: 'blur'}],
@@ -225,8 +224,8 @@
                 this.selectionData = res.data;
             })
             if(this.$route.name === 'edit' && this.$route.query.id){
-                this.$axios.get('admin/goods/index', {id: this.$route.query.id}, res => {
-                    console.log(res);
+                this.$axios.get('getGoodList', {id: this.$route.query.id}, res => {
+
                 })
             }
         },
@@ -319,7 +318,6 @@
                             console.log(res)
                             alert('发送成功')
                         })
-
 
                     }
                 }

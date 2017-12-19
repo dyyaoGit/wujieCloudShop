@@ -15,6 +15,11 @@ export default{
     getCategory: '/admin/category/index' ,     //获取商品分类表
     addGood: '/admin/goods/add',      //获取商品分类表
     getGoodList: '/admin/goods/index', //获取商品列表
+    getTypeList: '/admin/category/tree', //获取所有的类型
+    addType: '/admin/category/add', //增加类型
+    deleteType: '/admin/category/delete', //删除类型
+    updateType: '/admin/category/update', //更新类型
+
 
 
 }

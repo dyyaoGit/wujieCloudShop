@@ -21,6 +21,7 @@ import Layout from '../views/layout/Layout'
  **/
 export const constantRouterMap = [
     {path: '/login', component: _import('login/index'), hidden: true},
+    {path: '/signUp', component: _import('login/signUp'), hidden: true},
     {path: '/404', component: _import('404'), hidden: true},
 
     {
@@ -144,12 +145,20 @@ export const constantRouterMap = [
         path: '/test',
         component: Layout,
         redirect: '/test/index',
+        meta: {title: '功能测试页'},
         name: '测试页',
-        children: [{
-            path: 'index',
-            component: _import('test/test'),
-            meta: {title: '功能测试页'}
-        }]
+        children: [
+            {
+                path: 'index',
+                component: _import('test/test'),
+                meta: {title: '功能测试页'}
+            },
+            {
+                path: 'addType',
+                component: _import('test/addType'),
+                meta: {title: '添加分类测试页'}
+            }
+        ]
     },
 
 
