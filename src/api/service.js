@@ -22,5 +22,6 @@ export default{
 
 //用户注册
     getMsg: '/admin/admin/message', //获取短信验证码
+    register: '/admin/admin/register' // 通过短信验证码注册
 
 }

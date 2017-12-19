@@ -13,11 +13,11 @@
                 <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on"
                           placeholder="请输入短信验证码">
                 </el-input>
-                <span class="show-pwd" @click="showPwd"><svg-icon icon-class="eye" /></span>
+                <!-- <span class="show-pwd" @click="showPwd"><svg-icon icon-class="eye" /></span> -->
             </el-form-item>
 
             <el-form-item>
-                <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
+                <el-button type="primary" style="width:100%;"  @click.native.prevent="handleLogin">
                     注册
                 </el-button>
             </el-form-item>
@@ -40,7 +40,8 @@
                 }
             }
             const validatePass = (rule, value, callback) => { //密码验证
-                if (value.length < 7) {
+            console.log(value.length)
+                if (!(value.length < 5)) {
                     callback(new Error('请输入验证码'))
                 } else {
                     callback()
@@ -56,26 +57,20 @@
                     password: [{ required: true, trigger: 'blur', validator: validatePass }]
                 },
                 loading: false,
-                pwdType: 'password',
+                pwdType: '',
                 time: '获取验证码',
                 isSend: false
             }
         },
         methods: {
-            showPwd() {
-                if (this.pwdType === 'password') {
-                    this.pwdType = ''
-                } else {
-                    this.pwdType = 'password'
-                }
-            },
             handleLogin() {
                 this.$refs.loginForm.validate(valid => {
                     if (valid) {
                         this.loading = true //如果验证信息通过 ，此处开始发送ajax登录
-                        this.$axios.post('getMsg',{phone: this.loginForm.username}, res => {
+                        this.$axios.post('register',{phone: this.loginForm.username, code: this.loginForm.password}, res => {
                             console.log(res)
-//                            this.$router.push('/')
+                            this.$message.success('恭喜您注册成功！正在为您进行跳转......')
+                            // setTimeout(() => {this.$router.push({name: 'upDetails'})}, 1500)
                             this.loading = false;
                         })
 
