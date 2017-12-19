@@ -5,7 +5,7 @@
             <h3 class="title">注册无界云店</h3>
             <el-form-item prop="username">
                 <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="手机号码" >
-                    <el-button slot="append">获取短信验证码</el-button>
+                    <el-button slot="append">{{time}}</el-button>
                 </el-input>
             </el-form-item>
 
@@ -56,7 +56,8 @@
                     password: [{ required: true, trigger: 'blur', validator: validatePass }]
                 },
                 loading: false,
-                pwdType: 'password'
+                pwdType: 'password',
+                time: '获取验证码'
             }
         },
         methods: {
@@ -71,8 +72,14 @@
                 this.$refs.loginForm.validate(valid => {
                     if (valid) {
                         this.loading = true //如果验证信息通过 ，此处开始发送ajax登录
-                        this.$router.push('/')
-                        this.loading = false;
+                        this.$axios.post('getMsg',{phone: this.loginForm.username}, res => {
+                            console.log(res)
+//                            this.$router.push('/')
+                            this.loading = false;
+                        })
+
+
+
 
                     } else {
                         console.log('error submit!!') //此处登录验证不通过，提示用户输入正确的信息
@@ -80,6 +87,20 @@
                         return false
                     }
                 })
+            },
+            getCode() {
+                let reg = /0?(13|14|15|17|18|19)[0-9]{9}/
+                if(reg.test(this.loginForm.username.trim())){
+                    this.$axios.post('getMsg',{phone: this.loginForm.username}, res => {
+                        this.time = 60;
+                        let time = 60;
+                        let timer = setInterval(() => {
+                            this.time = --time;
+                            if(time == 1){clearInterval(timer)}
+                        }, 1000)
+                    })
+                }
+
             }
         }
     }

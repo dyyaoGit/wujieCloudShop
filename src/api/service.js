@@ -20,6 +20,7 @@ export default{
     deleteType: '/admin/category/delete', //删除类型
     updateType: '/admin/category/update', //更新类型
 
-
+//用户注册
+    getMsg: '/admin/admin/message', //获取短信验证码
 
 }
