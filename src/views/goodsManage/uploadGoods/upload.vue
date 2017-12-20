@@ -163,11 +163,11 @@
                     name: '',  //商品名称
                     title: '',  //商品简介
                     products: [     //商品规格
-                        {
-                            name: '颜色',    //规格名称
-                            tag: ['黄色'],   //规格对应标签
-                            empty: ''               //临时存放
-                        }
+//                        {
+//                            name: '颜色',    //规格名称
+//                            tag: ['黄色'],   //规格对应标签
+//                            empty: ''               //临时存放
+//                        }
                     ],
                     content: '',
                     price: {   //各级会员价格
@@ -180,8 +180,8 @@
                     img: [],    //商品轮播图
                     stock: '',   //商品库存
                     state: 0,     //上下架状态
-                    browse_num: 0, //浏览量
-                    share_num: 0, //分享量
+                    browse_num: "5", //浏览量
+                    share_num: 2, //分享量
                     agent_num: 0, //商品代理数
                 },
                 initData: {
@@ -218,15 +218,11 @@
             }
         },
         mounted() {
-            console.log(this.$route.name)
             this.$axios.get('getCategory',{},res => { //获取分类列表
-                console.log(res)
                 this.selectionData = res.data;
             })
             if(this.$route.name === 'edit' && this.$route.query.id){
-                this.$axios.get('getGoodList', {id: this.$route.query.id}, res => {
-
-                })
+                this.getEditData()
             }
         },
         methods: {
@@ -290,7 +286,7 @@
             submitForm() {
                 console.log(this.formData)
                 let notEmptyTag = this.formData.products.some(val => val.tag.length === 0)  //判断是否有规格的标签未填写
-                if(false){
+                if(notEmptyTag){
                     this.$message({
                         message: '存在未添加标签的规格，请检查规格列表是否为填写完整',
                         type: 'warning'
@@ -298,7 +294,7 @@
                 }
                 else{
                     let canSubmit = !this.formData.type || !this.formData.name || !this.formData.price.common || !this.formData.price.first || !this.formData.price.second || !this.formData.price.third;
-                    if(false){
+                    if(canSubmit){
                         this.$message({
                             message: '请检查是否填写完整必填信息',
                             type: 'warning'
@@ -315,14 +311,11 @@
 
                        this.formData.products = this.formData.products.map(val => {return {"name": val.name, "tag": val.tag}})  //去除所有empty变量提交
                         this.$axios.post('addGood', this.formData, res => {
-                            console.log(res)
-                            alert('发送成功')
+                            this.$message.success('添加商品成功，正在跳转商品列表...')
+                            setTimeout(() => {this.$router.push('GoodsList')}, 1500)
                         })
-
                     }
                 }
-
-
             },
             handleChange(val){
                 console.log(val)
@@ -336,6 +329,13 @@
             },
             removeImg(index) {
                 this.formData.img.splice(index, 1)
+            },
+            getEditData() {
+                this.$axios.get('getGoodList', {id: this.$route.query.id}, res => {
+                    console.log(res)
+                    this.formData = {...this.formData, ...res.data[0]}
+                    this.formData.type = [res.data[0].f_category.id, res.data[0].s_category.id]
+                })
             }
         }
     }

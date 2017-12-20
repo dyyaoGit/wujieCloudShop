@@ -67,8 +67,24 @@ export const constantRouterMap = [
                 path: 'fodderManage',
                 component: _import('goodsManage/fodderManage'),
                 meta: {title: '素材管理'}
+            },
+            {
+                path: 'typeManage',
+                component: _import('goodsManage/typeManage'),
+                meta: {title: '分类管理'}
+            },
+            {
+                path: 'addType',
+                component: _import('goodsManage/addType'),
+                meta: {title: '增加分类'},
+                hidden: true
+            },
+            {
+                path: 'editType',
+                component: _import('goodsManage/editType'),
+                meta: {title: '分类编辑'},
+                hidden: true
             }
-
         ]
     },
     {
@@ -95,6 +111,32 @@ export const constantRouterMap = [
             }
 
 
+        ]
+    },
+    {
+        path: '/enterManage',
+        component: Layout,
+        redirect: '/enterManage/index',
+        meta: {title: '入驻管理'},
+        name: '入驻管理',
+        children: [
+            {
+                path: 'index',
+                component: _import('enterManage/index'),
+                meta: {title: '审核入驻'}
+            },
+            {
+                path: 'explore',
+                component: _import('enterManage/enterMsg'),
+                meta: {title: '详细信息'},
+                name: 'merchantDetails',
+                hidden: true
+            },
+            {
+                path: 'GoodsListManage',
+                component: _import('enterManage/GoodsListManage'),
+                meta: {title: '审核上架'}
+            }
         ]
     },
 
@@ -160,8 +202,6 @@ export const constantRouterMap = [
             }
         ]
     },
-
-
     {path: '*', redirect: '/404', hidden: true}
 ]
 

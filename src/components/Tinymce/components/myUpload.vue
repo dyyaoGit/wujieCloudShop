@@ -23,7 +23,8 @@
         data() {
             return {
                 dialogVisible: false,
-                imgList: []   //存放图片的数组
+                imgList: [],   //存放图片的数组
+                qiniuInit: false
             }
         },
         methods: {
@@ -35,17 +36,20 @@
             getToken(){
                 this.dialogVisible = true;
                 this.$nextTick(() => {
-                    this.$axios.post('qiniu', {}, (res) => {
-                        if (res.ret) {
-                            qiniu({
-                                button: 'btnupload1',
-                                container: 'container1',
-                                token: res.data.uptoken,
-                            }, (info, file) => {
-                                this.imgList.push(info.data.url);
-                            })
-                        }
-                    })
+                    if(!this.qiniuInit){
+                        this.$axios.post('qiniu', {}, (res) => {
+                            if (res.ret) {
+                                qiniu({
+                                    button: 'btnupload1',
+                                    container: 'container1',
+                                    token: res.data.uptoken,
+                                }, (info, file) => {
+                                    this.imgList.push(info.data.url);
+                                })
+                            }
+                        })
+                        this.qiniuInit = true;
+                    }
                 })
             },
             removeImg(index) {

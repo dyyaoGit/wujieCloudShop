@@ -99,40 +99,33 @@
         data() {
             return {
                 tableData: [
-                    {
-                        img: 'https://i8.mifile.cn/a1/pms_1502098360.63228592!560x560.jpg',
-                        name: '小米笔记本',
-                        type: '电脑',
-                        price: {level1: '100', level2: '80', level3: '60', level4: '40'},
-                        isUp: false
-                    },
-                    {
-                        type: [],   //商品分类
-                        name: '',  //商品名称
-                        title: '',  //商品简介
-                        products: [     //商品规格
-                            {
-                                name: '颜色',    //规格名称
-                                tag: ['黄色'],   //规格对应标签
-                                empty: ''               //临时存放
-                            }
-                        ],
-                        content: '',
-                        price: {   //各级会员价格
-                            common: '',
-                            first: '',
-                            second: '',
-                            third: ''
-                        },
-                        ems_price: '',     //邮费
-                        img: [],    //商品轮播图
-                        stock: '',   //商品库存
-                        state: 0,     //上下架状态
-                        browse_num: 0, //浏览量
-                        share_num: 0, //分享量
-                        agent_num: 0, //商品代理数
-                        f_category: {name: ''}
-                    }
+//                    {
+//                        type: [],   //商品分类
+//                        name: '',  //商品名称
+//                        title: '',  //商品简介
+//                        products: [     //商品规格
+//                            {
+//                                name: '颜色',    //规格名称
+//                                tag: ['黄色'],   //规格对应标签
+//                                empty: ''               //临时存放
+//                            }
+//                        ],
+//                        content: '',
+//                        price: {   //各级会员价格
+//                            common: '',
+//                            first: '',
+//                            second: '',
+//                            third: ''
+//                        },
+//                        ems_price: '',     //邮费
+//                        img: [],    //商品轮播图
+//                        stock: '',   //商品库存
+//                        state: 0,     //上下架状态
+//                        browse_num: 0, //浏览量
+//                        share_num: 0, //分享量
+//                        agent_num: 0, //商品代理数
+//                        f_category: {name: ''}
+//                    }
                 ],
                 selection: []  //选中的部分
             }
@@ -156,7 +149,23 @@
                 this.$router.push({path: 'fodderManage', query: {id}})
             },
             delGood(id) { //删除商品
-                
+                this.$confirm('此操作将永久删除该商品, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$axios.post('delGood', {id}, res => {
+                        if(res.ret == true){
+                            this.$message.success('删除成功')
+                            this.getList();
+                        }
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
             }
         },
         mounted() {

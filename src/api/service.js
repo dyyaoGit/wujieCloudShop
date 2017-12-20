@@ -15,6 +15,10 @@ export default{
     getCategory: '/admin/category/index' ,     //获取商品分类表
     addGood: '/admin/goods/add',      //获取商品分类表
     getGoodList: '/admin/goods/index', //获取商品列表
+    delGood: '/admin/goods/delete', //获取商品列表
+
+
+    updateGoodList: '/admin/goods/update', //更新商品状态  {state: 2, id: ''}
     getTypeList: '/admin/category/tree', //获取所有的类型
     addType: '/admin/category/add', //增加类型
     deleteType: '/admin/category/delete', //删除类型
@@ -22,6 +26,14 @@ export default{
 
 //用户注册
     getMsg: '/admin/admin/message', //获取短信验证码
-    register: '/admin/admin/register' // 通过短信验证码注册
+    register: '/admin/admin/register', // 通过短信验证码注册
+
+//用户登录
+    login: '/admin/admin/login', //用户登录
+
+    //审核入驻
+
+    enterManageList: '/admin/admin/index/', //审核入驻商家查询    0.未审核，1，审核完成，2已入住
+    enterJudge: '/admin/admin/state',   //审核入驻操作   1同意 2.拒绝
 
 }

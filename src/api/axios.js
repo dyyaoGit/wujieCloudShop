@@ -17,9 +17,15 @@ var ajax = {
                 cb && cb(res.data);
             }else if(res.data.code == 501){
                 Vue.prototype.$message.error('登录状态失效, 正在跳转...');
-                setTimeout(function(){ location.href = "/" }, 2000);
+                setTimeout(function(){ location.href = "/login" }, 2000);
             }else{
-                Vue.prototype.$message.error(res.data.msg);
+                if(typeof res.data.msg == 'object'){
+                    let errorMsg = Object.keys(res.data.msg)[0]
+                    Vue.prototype.$message.error(res.data.msg[errorMsg])
+                }
+                else{
+                    Vue.prototype.$message.error(res.data.msg);
+                }
             }
         }).catch((error) => {
             console.log(error);

@@ -31,3 +31,8 @@ export function validatAlphabets(str) {
   return reg.test(str)
 }
 
+export function isvalidphone(str) {
+    const reg = /0?(13|14|15|16|17|18|19)[0-9]{9}/
+    return reg.test(str)
+}
+
