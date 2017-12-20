@@ -82,8 +82,8 @@
             </el-table-column>
             <el-table-column label="操作" width="310" fixed="right">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="danger" v-if="scope.row.isUp">上架</el-button>
-                    <el-button size="mini" type="danger" v-else>下架</el-button>
+                    <el-button size="mini" type="danger" v-if="scope.row.state == 0" @click="putAway(scope.row)">上架</el-button>
+                    <el-button size="mini" type="danger" v-if="scope.row.state == 2">下架</el-button>
                     <el-button size="mini" type="primary" @click="edit(scope.row.id)">编辑</el-button>
                     <el-button size="mini" type="warning" @click="editPhotos(scope.row.id)">素材编辑</el-button>
                     <el-button size="mini" type="default" @click="delGood(scope.row.id)">删除</el-button>
@@ -164,6 +164,26 @@
                     this.$message({
                         type: 'info',
                         message: '已取消删除'
+                    });
+                });
+            },
+            putAway(allMsg) {  //发送上架申请
+                this.$confirm('此操作将向平台发送上架审核申请,平台同意后方可上架， 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    let newMsg = {...allMsg,state: 2}
+                    this.$axios.post('updateGoodList', newMsg, res => {
+                        if(res.ret == true){
+                            this.$message.success('申请成功，请耐心等待平台审核')
+                            this.getList();
+                        }
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消操作'
                     });
                 });
             }
