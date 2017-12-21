@@ -20,19 +20,18 @@ import Layout from '../views/layout/Layout'
   }
  **/
 export const constantRouterMap = [
+    {path: '/', redirect: '/login', hidden: true},
     {path: '/login', component: _import('login/index'), hidden: true},
     {path: '/signUp', component: _import('login/signUp'), hidden: true},
     {path: '/404', component: _import('404'), hidden: true},
 
     {
-        path: '/',
+        path: '/index',
         component: Layout,
-        redirect: '/dashboard',
-        name: '首页',
         hidden: true,
         children: [
             {
-                path: 'dashboard',
+                path: '',
                 component: _import('dashboard/index'),
                 meta: {title: '首页'}
             }
@@ -164,6 +163,19 @@ export const constantRouterMap = [
                 component: _import('enterManage/details'),
                 meta: {title: '商户商品详情'},
                 hidden: true
+            }
+        ]
+    },
+    {
+        path: '/brandManage',
+        component: Layout,
+        redirect: '/brandManage/brandList',
+        meta: {title: '品牌管理'},
+        children: [
+            {
+                path: 'brandList',
+                component: _import('brandManage/brandList'),
+                meta: {title: '品牌列表'}
             }
         ]
     },

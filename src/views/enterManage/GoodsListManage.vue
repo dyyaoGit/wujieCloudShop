@@ -155,6 +155,7 @@
         },
         watch: {
             state(val) {
+                this.currentPage = 1;
                 this.getData();
             }
         }

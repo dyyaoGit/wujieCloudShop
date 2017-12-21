@@ -8,6 +8,7 @@
         <el-table :data="tableData" border size="small"
                   @selection-change="selectionChange"
                   tooltip-effect="dark"
+                  v-loading="loading"
         >
             <el-table-column
                 type="selection"
@@ -98,6 +99,15 @@
                 </template>
             </el-table-column>
         </el-table>
+        <div style="text-align: right; margin-top: 20px;">
+            <el-pagination
+                @current-change="pageChange"
+                :current-page.sync="currentPage"
+                :page-size="1"
+                layout="prev, pager, next, jumper"
+                :total="total">
+            </el-pagination>
+        </div>
     </div>
 </template>
 
@@ -135,7 +145,10 @@
 //                        f_category: {name: ''}
 //                    }
                 ],
-                selection: []  //选中的部分
+                selection: [],  //选中的部分
+                currentPage: 1,
+                total: 1,
+                loading: false  
             }
         },
         methods: {
@@ -144,8 +157,13 @@
                 this.selection = val;
             },
             getList() { //获取商品列表
-                this.$axios.get('getGoodList', {}, res => {
+                this.loading = true;
+                this.$axios.get('getGoodList', {page: this.currentPage}, res => {
+                    if(this.currentPage == 1 && typeof res.msg == 'number'){
+                        this.total = res.msg;
+                    }
                     this.tableData = res.data;
+                    this.loading = false;
                 })
             },
             edit(id) {
@@ -198,6 +216,9 @@
                         message: '已取消操作'
                     });
                 });
+            },
+            pageChange(val) {
+               this.getList() 
             }
         },
         mounted() {
