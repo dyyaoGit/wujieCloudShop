@@ -90,7 +90,7 @@
                 :current-page.sync="currentPage"
                 :page-size="1"
                 layout="prev, pager, next, jumper"
-                :total="2">
+                :total="total">
             </el-pagination>
         </div>
     </div>
@@ -104,15 +104,22 @@
                 tableData: [],
                 state: 2,
                 loading: false,
-                currentPage: 1
+                currentPage: 1,
+                total: 0
             }
         },
         methods: {
             getData() {
                 this.loading = true;
-                let params = this.state == 1 ? {} : {state: this.state}
+                let params = this.state == 1 ? {page: this.currentPage} : {state: this.state, page: this.currentPage}
                 this.$axios.get('getGoodList', params, res => {
                     this.tableData = res.data;
+                    console.log(res)
+
+                    if(this.currentPage == 1 && res.msg){
+                        this.total = res.msg
+                        console.log(this.total)
+                    }
                     this.loading = false;
                 })
             },
@@ -140,7 +147,7 @@
                 this.$router.push({path: 'details', query: {id}})
             },
             pageChange(val) {
-
+                this.getData()
             }
         },
         mounted() {
