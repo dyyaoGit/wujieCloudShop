@@ -54,19 +54,41 @@ export const constantRouterMap = [
             {
                 path: 'upload',
                 component: _import('goodsManage/uploadGoods/upload'),
-                meta: {title: '上传商品'}
+                meta: {title: '上传商品'},
+                hidden: true
             },
             {
                 path: 'edit',
                 name: 'edit',
                 component: _import('goodsManage/uploadGoods/upload'),
                 meta: {title: '商品编辑'},
-                // hidden: true
+                hidden: true
             },
             {
                 path: 'fodderManage',
-                component: _import('goodsManage/fodderManage'),
-                meta: {title: '素材管理'}
+                component: _import('goodsManage/fodderList'),
+                meta: {title: '素材管理'},
+                hidden: true
+            },
+            {
+                path: 'addFodder',
+                component: _import('goodsManage/addFodder'),
+                meta: {title: '素材添加'},
+                hidden: true
+            },
+            {
+                path: 'editFodder',
+                component: _import('goodsManage/addFodder'),
+                meta: {title: '素材编辑'},
+                hidden: true,
+                name: 'editFodder'
+            },
+            {
+                path: 'fodderDetails',
+                component: _import('goodsManage/fodderDetails'),
+                meta: {title: '素材详情'},
+                hidden: true,
+                name: 'fodderDetails'
             },
             {
                 path: 'typeManage',
@@ -135,7 +157,13 @@ export const constantRouterMap = [
             {
                 path: 'GoodsListManage',
                 component: _import('enterManage/GoodsListManage'),
-                meta: {title: '审核上架'}
+                meta: {title: '商品列表'}
+            },
+            {
+                path: 'details',
+                component: _import('enterManage/details'),
+                meta: {title: '商户商品详情'},
+                hidden: true
             }
         ]
     },

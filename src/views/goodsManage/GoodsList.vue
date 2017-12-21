@@ -1,5 +1,10 @@
 <template>
     <div>
+        <div class="clearfix">
+            <el-button type="danger" style="float: right;margin-bottom: 20px;" @click="$router.push({path: 'upload'})">
+                添加商品
+            </el-button>
+        </div>
         <el-table :data="tableData" border size="small"
                   @selection-change="selectionChange"
                   tooltip-effect="dark"
@@ -25,9 +30,12 @@
             <el-table-column
                 prop="state"
                 label="商品状态"
+                width="100"
             >
                 <template slot-scope="scope">
                     <strong v-if="scope.row.state == 1">上架状态</strong>
+                    <strong v-if="scope.row.state == 2">上架审核中</strong>
+                    <strong v-if="scope.row.state == 3">审核不通过</strong>
                     <strong v-if="scope.row.state == 0">下架状态</strong>
                 </template>
             </el-table-column>
@@ -45,7 +53,7 @@
             <el-table-column label="商品简介" width="100">
                 <template slot-scope="scope">
                     <el-tooltip class="item" effect="dark" :content="scope.row.title" placement="bottom">
-                        <span   style="overflow: hidden;text-overflow-ellipsis: ellipsis;text-wrap: avoid;">{{scope.row.title}}</span>
+                        <div   style="overflow: hidden;text-overflow: ellipsis;text-wrap: avoid;white-space: nowrap">{{scope.row.title}}</div>
                     </el-tooltip>
                 </template>
             </el-table-column>
@@ -83,7 +91,7 @@
             <el-table-column label="操作" width="310" fixed="right">
                 <template slot-scope="scope">
                     <el-button size="mini" type="danger" v-if="scope.row.state == 0" @click="putAway(scope.row)">上架</el-button>
-                    <el-button size="mini" type="danger" v-if="scope.row.state == 2">下架</el-button>
+                    <el-button size="mini" type="danger" v-if="scope.row.state == 1" @click="putAway(scope.row, 0)">下架</el-button>
                     <el-button size="mini" type="primary" @click="edit(scope.row.id)">编辑</el-button>
                     <el-button size="mini" type="warning" @click="editPhotos(scope.row.id)">素材编辑</el-button>
                     <el-button size="mini" type="default" @click="delGood(scope.row.id)">删除</el-button>
@@ -167,13 +175,17 @@
                     });
                 });
             },
-            putAway(allMsg) {  //发送上架申请
-                this.$confirm('此操作将向平台发送上架审核申请,平台同意后方可上架， 是否继续?', '提示', {
+            putAway(allMsg, state=2) {  //发送上架申请
+                let msg = state == 2 ? '上架' : '下架'
+                this.$confirm(`此操作将向平台发送${msg}审核申请,平台同意后方可${msg}， 是否继续?`, '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    let newMsg = {...allMsg,state: 2}
+//                    delete allMsg['f_category']
+//                    delete allMsg['s_category']
+                    let newMsg = {...allMsg,state}
+                    console.log(newMsg)
                     this.$axios.post('updateGoodList', newMsg, res => {
                         if(res.ret == true){
                             this.$message.success('申请成功，请耐心等待平台审核')

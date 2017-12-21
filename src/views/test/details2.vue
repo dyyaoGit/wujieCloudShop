@@ -1,38 +1,29 @@
 <template>
     <div class="wrap" :key="$route.name === 'edit' ? 'edit' : 'upload'">
         <el-form :model="formData" size="small" style="width: 830px;" label-position="right" label-width="85px"
-                 ref="form" :rules="rules">
+                 ref="form" >
             <el-form-item label="商品类型" class="item-wid" prop="type">
-
                 <el-cascader
                     :options="selectionData"
                     v-model="formData.type"
                     :props="{value: 'id',label: 'name'}"
+                    :disabled="true"
+                    style="width: 747px"
                     @change="handleChange">
                 </el-cascader>
-
             </el-form-item>
             <el-form-item label="商品名称" class="item-wid" prop="name">
-                <el-input v-model="formData.name"></el-input>
+                <el-input v-model="formData.name" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="商品简介">
-                <el-input v-model="formData.title"></el-input>
+                <el-input v-model="formData.title" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="商品库存">
-                <el-input v-model="formData.stock"></el-input>
+                <el-input v-model="formData.stock" :disabled="true"></el-input>
             </el-form-item>
         </el-form>
 
         <div>
-            <el-form  size="small" :inline="true">
-                <el-form-item label="规格名称" label-width="85px" label-position="left">
-                    <el-input v-model="addData.name" @keyup.enter.prevent="add"></el-input>
-                </el-form-item>
-                <el-form-item required>
-                    <el-button @click="add" type="primary" required>添加规格</el-button>
-                </el-form-item>
-            </el-form>
-
             <el-table :data="formData.products" border size="small" v-if="formData.products.length>0">
                 <el-table-column
                     prop="name"
@@ -42,33 +33,10 @@
                         <h2 style="color: #000;">{{scope.row.name}}</h2>
                     </template>
                 </el-table-column>
-                <!--<el-table-column-->
-                    <!--prop="name"-->
-                    <!--label="规格标签"-->
-                    <!--width="300">-->
-                    <!--<template slot-scope="scope">-->
-                        <!--<el-tag v-for="(val,idx) in scope.row.tag" :key="val" closable type="danger"-->
-                                <!--@close="removeTag(scope.$index, idx)" style="margin-right: 5px;margin-bottom: 5px;">-->
-                            <!--{{val}}-->
-                        <!--</el-tag>-->
-                    <!--</template>-->
-                <!--</el-table-column>-->
-                <!--<el-table-column label="标签名">-->
-                    <!--<template slot-scope="scope">-->
-                        <!--<el-row :gutter="20">-->
-                            <!--<el-col :span="16">-->
-                                <!--<el-input v-model="scope.row.empty" size="small"></el-input>-->
-                            <!--</el-col>-->
-                            <!--<el-col :span="8">-->
-                                <!--<el-button @click="addTag(scope.$index)" type="danger" size="small">添加标签</el-button>-->
-                            <!--</el-col>-->
-                        <!--</el-row>-->
-
-                    <!--</template>-->
-                <!--</el-table-column>-->
                 <el-table-column label="添加标签">
                     <template slot-scope="scope">
                         <el-select
+                            :disabled="true"
                             style="width: 300px"
                             size="middle"
                             v-model="formData.products[scope.$index].tag"
@@ -88,63 +56,64 @@
                         </el-select>
                     </template>
                 </el-table-column>
-                <el-table-column label="操作">
-                    <template slot-scope="scope">
-                        <el-button @click="remove(scope.$index)" size="small" type="warning">移除该规格</el-button>
-                    </template>
-                </el-table-column>
+                <!--<el-table-column label="操作">-->
+                    <!--<template slot-scope="scope">-->
+                        <!--<el-button @click="remove(scope.$index)" size="small" type="warning">移除该规格</el-button>-->
+                    <!--</template>-->
+                <!--</el-table-column>-->
             </el-table>
         </div>
 
-        <el-form :model="formData.price" size="small" style="width: 830px;" :rules="rules">
+        <el-form :model="formData.price" size="small" style="width: 830px;">
             <h3>价格 <span style="font-size: 14px;">(元)</span></h3>
             <el-row>
                 <el-col :span="12">
                     <el-form-item label="会员等级1" label-width="90px" prop="common">
-                        <el-input v-model="formData.price.common"></el-input>
+                        <el-input v-model="formData.price.common" :disabled="true"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="12">
                     <el-form-item label="会员等级2" label-width="90px" prop="first">
-                        <el-input v-model="formData.price.first"></el-input>
+                        <el-input v-model="formData.price.first" :disabled="true"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
             <el-row>
                 <el-col :span="12">
                     <el-form-item label="会员等级3" label-width="90px" prop="second">
-                        <el-input v-model="formData.price.second"></el-input>
+                        <el-input v-model="formData.price.second" :disabled="true"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="12">
                     <el-form-item label="会员等级4" label-width="90px" prop="third">
-                        <el-input v-model="formData.price.third"></el-input>
+                        <el-input v-model="formData.price.third" :disabled="true"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
             <el-form-item label="邮费(元)">
-                <el-input v-model="formData.ems_price"></el-input>
+                <el-input v-model="formData.ems_price" :disabled="true"></el-input>
             </el-form-item>
         </el-form>
         <h4>商品轮播图</h4>
-        <div class="img-list">
-            <div  :style="'backgroundImage: url(' + item + ')'" v-for="(item, index) in formData.img" class="div-img-item" @click="removeImg(index)"></div>
-            <imgUpload class="clearfix" @uploadSuccess="upImgList"></imgUpload>
+        <div class="img-list clearfix" >
+            <div  :style="'backgroundImage: url(' + item + ')'" v-for="(item, index) in formData.img" class="div-img-item"></div>
         </div>
 
-        <span>商品详情</span>
-        <Tinymce v-model="formData.content" :height="200"></Tinymce>
-        <el-button @click="submitEdit" type="danger" style="margin-top: 20px;" v-if="$route.name=='edit'">提交更改</el-button>
-        <el-button @click="submitForm" type="danger" style="margin-top: 20px;" v-else>提交</el-button>
+        <h4>商品详情</h4>
+        <!--<Tinymce v-model="formData.content" :height="200"></Tinymce>-->
+        <div v-html="formData.content" style="border: 1px solid #999;min-height: 200px">
+
+        </div>
+        <el-button @click="$router.back()" type="danger" style="margin-top: 20px;" >返回</el-button>
     </div>
 </template>
 
 <script>
-    import imgUpload from '../imgUpload.vue'
-    import Tinymce from '@/components/Tinymce'
+//    import imgUpload from '~views/goodsManage/imgUpload.vue'
+//    import Tinymce from '@/components/Tinymce'
 
     export default {
-        components: {Tinymce, imgUpload},
+//        components: {Tinymce, imgUpload},
         name: 'goodsManage',
         data() {
             let msg = '该信息为必填信息'
@@ -221,9 +190,7 @@
             this.$axios.get('getCategory',{},res => { //获取分类列表
                 this.selectionData = res.data;
             })
-            if(this.$route.name === 'edit' && this.$route.query.id){
-                this.getEditData()
-            }
+            this.getEditData()
         },
         methods: {
             //添加规格

@@ -13,10 +13,14 @@ export default{
 
 // 商品相关
     getCategory: '/admin/category/index' ,     //获取商品分类表
-    addGood: '/admin/goods/add',      //获取商品分类表
+    addGood: '/admin/goods/add',      //增加商品
+    updateGood: '/admin/goods/update',      //更新商品
     getGoodList: '/admin/goods/index', //获取商品列表
     delGood: '/admin/goods/delete', //获取商品列表
-
+    addFodder: '/admin/material/add', //素材添加
+    getFodder: '/admin/material/index', //素材获取
+    delFodder: '/admin/material/delete', //素材删除
+    updateFodder: '/admin/material/update', //素材修改
 
     updateGoodList: '/admin/goods/update', //更新商品状态  {state: 2, id: ''}
     getTypeList: '/admin/category/tree', //获取所有的类型
@@ -36,4 +40,7 @@ export default{
     enterManageList: '/admin/admin/index/', //审核入驻商家查询    0.未审核，1，审核完成，2已入住
     enterJudge: '/admin/admin/state',   //审核入驻操作   1同意 2.拒绝
 
+
+    // 审核商品操作
+    goodsManage: '/admin/goods/update', //审核商品入驻操作
 }
