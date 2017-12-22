@@ -5,11 +5,9 @@ export default{
     },
     baseURL: 'http://yly3.ylyedu.com',
 
-
     // qiniu
     qiniu: "/api/tools/getToken",
     upload: "/api/tools/upload",
-
 
 // 商品相关
     getCategory: '/admin/category/index' ,     //获取商品分类表
@@ -35,12 +33,28 @@ export default{
 //用户登录
     login: '/admin/admin/login', //用户登录
 
-    //审核入驻
+//审核入驻
 
     enterManageList: '/admin/admin/index/', //审核入驻商家查询    0.未审核，1，审核完成，2已入住
     enterJudge: '/admin/admin/state',   //审核入驻操作   1同意 2.拒绝
 
-
-    // 审核商品操作
+// 审核商品操作
     goodsManage: '/admin/goods/update', //审核商品入驻操作
+
+//品牌管理
+    brandManage: '/admin/brand/index',
+    addBrand: '/admin/brand/add',
+    updateBrand: '/admin/brand/update',
+    delBrand: '/admin/brand/delete',
+
+
+//文章管理
+    article: '/admin/article/index',
+    delArticle: '/admin/article/delete',
+    editArticle: '/admin/article/update',
+
+//文章类型管理
+    articleType: '/admin/article_category/index',
+    delArticleType: '/admin/article_category/delete',
+    editArticleType: '/admin/article_category/update',
 }

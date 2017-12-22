@@ -36,7 +36,7 @@
         methods: {
             getData() {
                 this.$axios.get('getTypeList', {}, res => {
-                    this.tableData = res;
+                    this.tableData = res.data;
                 })
             },
             removeOne(id) {
@@ -48,7 +48,8 @@
                     this.$axios.post('deleteType', {id}, res => {
                         if(res.ret == true){
                             this.$message.success('删除成功！正在刷新数据...')
-                            setTimeout(() => {this.$router.go(0)} , 1500)
+                            this.getData()
+//                            setTimeout(() => {this.getData()} , 1500)
                         }
                     })
                 }).catch(() => {

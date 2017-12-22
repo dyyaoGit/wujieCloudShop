@@ -3,7 +3,16 @@
         <el-form :model="formData" label-width="100px" label-position="right" style="width: 800px;">
             <el-form-item label="所属父级分类" >
                 <el-select v-model="formData.parent_id">
-                    <el-option v-for="item in typeList" :value="item.id" :label="item.name" :key="item.id"></el-option>
+                    <el-option-group label="顶级分类">
+                        <el-option v-for="item in typeList" :value="item.id" :label="item.name" :key="item.id" v-if="item.rank == 0"></el-option>
+                    </el-option-group>
+                    <el-option-group label="一级分类">
+                        <el-option v-for="item in typeList" :value="item.id" :label="item.name" :key="item.id" v-if="item.rank == 1"></el-option>
+                    </el-option-group>
+                    <el-option-group label="二级分类">
+                        <el-option v-for="item in typeList" :value="item.id" :label="item.name" :key="item.id" v-if="item.rank == 2"></el-option>
+                    </el-option-group>
+                    <!--<el-option v-for="item in typeList" :value="item.id" :label="item.name" :key="item.id"></el-option>-->
                 </el-select>
             </el-form-item>
             <el-form-item label="分类名">
@@ -45,13 +54,13 @@
             },
             getData() {
                 this.$axios.get('getTypeList', {}, res => {
-                    this.typeList = res;
+                    this.typeList = res.data;
                     this.typeList.splice(0, 0, {name: '添加为一级分类', id: 0, rank: 0})
-                    this.typeList.forEach(val => {
-                        for(let i = 0; i<val.rank; i++){
-                            val.name = '#' + val.name;
-                        }
-                    })
+//                    this.typeList.forEach(val => {
+//                        for(let i = 0; i<val.rank; i++){
+//                            val.name = `|        ` + val.name;
+//                        }
+//                    })
                 })
             }
         },

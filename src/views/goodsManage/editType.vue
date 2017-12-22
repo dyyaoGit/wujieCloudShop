@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-form>
-            <el-form-item label="标签名">
+            <el-form-item label="分类名">
                 <el-input v-model="formData.name"></el-input>
             </el-form-item>
             <el-form-item>

@@ -5,7 +5,11 @@
              :style="'background-image: url(' + item + '); width:' + width + 'px; height: '+ height + 'px; line-height: ' + height + 'px;'"
              @click="remove(index)"
              >
-
+        </div>
+        <div class="bg-img" v-if="currentImg.trim()!== ''"
+             :style="'background-image: url(' + currentImg + '); width:' + width + 'px; height: '+ height + 'px; line-height: ' + height + 'px;'"
+             @click="removeSelf"
+        >
         </div>
     </div>
 </template>
@@ -23,20 +27,31 @@
             },
             imgList: {
                 type: Array
+            },
+            imgStr: {
+                type: String
             }
         },
         data() {
             return {
-
+                currentImg: this.imgStr
             }
         },
         methods: {
             remove(index) {
                 this.imgList.splice(index, 1);
+            },
+            removeSelf() {
+                this.currentImg = ''
             }
         },
         mounted() {
             console.log(this.imgList)
+        },
+        watch: {
+            imgStr(val) {
+                this.currentImg = val;
+            }
         }
     }
 

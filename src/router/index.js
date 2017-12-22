@@ -105,6 +105,24 @@ export const constantRouterMap = [
                 component: _import('goodsManage/editType'),
                 meta: {title: '分类编辑'},
                 hidden: true
+            },
+            {
+                path: 'labelManage',
+                component: _import('goodsManage/labelManage/labelManage'),
+                meta: {title: '标签管理'}
+            },
+            {
+                path: 'addLabel',
+                component: _import('goodsManage/labelManage/addLabel'),
+                meta: {title: '添加标签'},
+                hidden: true
+            },
+            {
+                path: 'editLabel',
+                component: _import('goodsManage/labelManage/addLabel'),
+                meta: {title: '编辑标签'},
+                hidden: true,
+                name: 'editLabel'
             }
         ]
     },
@@ -176,7 +194,57 @@ export const constantRouterMap = [
                 path: 'brandList',
                 component: _import('brandManage/brandList'),
                 meta: {title: '品牌列表'}
+            },
+            {
+                path: 'addBrand',
+                component: _import('brandManage/addBrand'),
+                meta: {title: '添加品牌'},
+                hidden: true
+            },
+            {
+                path: 'editBrand',
+                component: _import('brandManage/addBrand'),
+                meta: {title: '编辑品牌'},
+                hidden: true,
+                name: 'editBrand'
             }
+        ]
+    },
+    {
+        path: '/operation',
+        component: Layout,
+        redirect: '/operation/article',
+        meta: {title: '运营'},
+        children: [
+            {
+                path: 'articleType',
+                component: _import('operation/Article/ArticleType'),
+                meta: {title: '文章分类管理'}
+            },
+            {
+                path: 'addType',
+                component: _import('operation/Article/addType'),
+                meta: {title: '添加文章分类'},
+                hidden: true
+            },
+            {
+                path: 'editType',
+                component: _import('operation/Article/addType'),
+                meta: {title: '修改文章分类'},
+                hidden: true,
+                name: 'editType'
+            },
+            {
+                path: 'article',
+                component: _import('operation/Article/article'),
+                meta: {title: '文章列表'}
+            },
+            {
+                path: 'addArticle',
+                component: _import('operation/Article/addArticle'),
+                meta: {title: '添加文章'},
+                hidden: true
+            },
         ]
     },
 
