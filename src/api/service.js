@@ -55,6 +55,7 @@ export default{
 
 //文章类型管理
     articleType: '/admin/article_category/index',
+    addArticleType: '/admin/article_category/add',
     delArticleType: '/admin/article_category/delete',
     editArticleType: '/admin/article_category/update',
 }

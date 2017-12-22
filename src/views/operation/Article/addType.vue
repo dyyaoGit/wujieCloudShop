@@ -28,7 +28,7 @@
         },
         methods: {
             save() {
-                this.$axios.post('addBrand', this.formData, res => {
+                this.$axios.post('addArticleType', this.formData, res => {
                     if(res.ret == true){
                         this.$message.success('分类添加成功，正在为您跳转分类列表...')
                         setTimeout(() => {this.$router.back()}, 1500)
