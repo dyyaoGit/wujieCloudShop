@@ -57,7 +57,7 @@
             window.tinymce.init({
                 selector: `#${this.tinymceId}`,
                 height: this.height,
-                body_class: 'panel-body ',
+                body_class: 'panel-body',
                 object_resizing: false,
                 toolbar: this.toolbar,
                 menubar: this.menubar,
@@ -73,6 +73,10 @@
                 imagetools_toolbar: 'watermark',
                 default_link_target: '_blank',
                 link_title: false,
+                content_css: "./static/tinymce/style.css",
+                style_formats: [
+                    {title: "content-p", inline: 'p', styles: {"line-height": "2"}}
+                ],
                 init_instance_callback: editor => {
                     if (_this.value) {
                         editor.setContent(_this.value)
@@ -170,7 +174,7 @@
                 const _this = this
                 console.log(arr)
                 arr.forEach(v => {
-                    window.tinymce.get(_this.tinymceId).insertContent(`<img class="wscnph" style="width:100%;" src="${v}" >`)
+                    window.tinymce.get(_this.tinymceId).insertContent(`<img class="wscnph"  src="${v}" >`)
                 })
             }
         },
@@ -180,7 +184,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .tinymce-container {
         position: relative
     }
@@ -195,6 +199,9 @@
         display: block;
     }
 
+    .panel-body p {
+        line-height: 1;
+    }
     .editor-custom-btn-container {
         position: absolute;
         right: 15px;

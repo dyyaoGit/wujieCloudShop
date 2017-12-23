@@ -4,7 +4,7 @@
         <div class="img-button" @click="getToken" v-if="iconClass.trim() === ''"></div>
         <el-dialog :visible.sync="dialogVisible" >
             <div class="clearfix">
-                <div class="img-item" @click="removeImg(index)" v-for="(item, index) in imgList" :style="'background-image: url(' + item + ')'"></div>
+                <dive :key="index" class="img-item" @click="removeImg(index)" v-for="(item, index) in imgList" :style="'background-image: url(' + item + ')'"></dive>
             </div>
             <label id="container" class="input-container">
                 <input type="file" class="upload-input" id="btnupload" name="img" />
