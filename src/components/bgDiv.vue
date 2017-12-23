@@ -30,19 +30,27 @@
             },
             imgStr: {
                 type: String
+            },
+            isCanEdit: {
+                type: Boolean,
+                default: true
             }
         },
         data() {
             return {
-                currentImg: this.imgStr
+                currentImg: this.imgStr || ''
             }
         },
         methods: {
             remove(index) {
-                this.imgList.splice(index, 1);
+                if(this.isCanEdit){
+                    this.imgList.splice(index, 1);
+                }
             },
             removeSelf() {
-                this.currentImg = ''
+                if(this.isCanEdit){
+                    this.currentImg = ''
+                }
             }
         },
         mounted() {

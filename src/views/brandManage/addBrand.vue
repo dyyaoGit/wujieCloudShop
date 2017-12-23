@@ -8,7 +8,7 @@
                 <el-input v-model="formData.title"></el-input>
             </el-form-item>
             <el-form-item label="品牌图片">
-                <bgDiv :imgList="imgList"></bgDiv>
+                <bgDiv :imgStr="formData.logo"></bgDiv>
                 <imgUpload @uploadSuccess="upload" :max="1"></imgUpload>
             </el-form-item>
             <el-form-item label="品牌描述">
@@ -39,7 +39,6 @@
         },
         methods: {
             upload(imgList) {
-                this.imgList = imgList;
                 this.formData.logo = imgList[0]
             },
             save() {

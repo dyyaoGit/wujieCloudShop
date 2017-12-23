@@ -74,6 +74,7 @@
         watch: {
             imgList(val) {  //限制图片存放
                 if(val.length>this.max){
+                    this.$message.warning(`图片最多添加${this.max}张`)
                     val.pop();
                 }
             }

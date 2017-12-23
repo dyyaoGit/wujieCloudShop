@@ -243,9 +243,71 @@ export const constantRouterMap = [
                 path: 'addArticle',
                 component: _import('operation/Article/addArticle'),
                 meta: {title: '添加文章'},
+                hidden: true,
+                name: 'addArticle'
+            },
+            {
+                path: 'editArticle',
+                component: _import('operation/Article/addArticle'),
+                meta: {title: '编辑文章'},
+                hidden: true,
+                name: 'editArticle'
+            },
+            {
+                path: 'articleDetails',
+                component: _import('operation/Article/addArticle'),
+                meta: {title: '查看文章详细'},
+                hidden: true,
+                name: 'articleDetails'
+            },
+
+        ]
+    },
+    {
+        path: '/AppManage',
+        component: Layout,
+        redirect: '/AppManage/slideList',
+        meta: {title: 'App管理'},
+        children: [
+            {
+                path: 'slideList',
+                component: _import('AppManage/slideList'),
+                meta: {title: '轮播图管理'}
+            },
+            {
+                path: 'addSlide',
+                component: _import('AppManage/addSlide'),
+                meta: {title: '轮播图添加'},
                 hidden: true
             },
+            {
+                path: 'updateSlide',
+                component: _import('AppManage/addSlide'),
+                meta: {title: '轮播图修改'},
+                name: 'updateSlide',
+                hidden: true
+            },
+            {
+                path: 'activitiesList',
+                component: _import('AppManage/activitiesList'),
+                meta: {title: '秒杀活动管理'}
+            },
+            {
+                path: 'addActivities',
+                component: _import('AppManage/addActivities'),
+                meta: {title: '添加活动'},
+                hidden: true,
+                name: 'addActivities'
+            },
+            {
+                path: 'updateActivities',
+                component: _import('AppManage/addActivities'),
+                meta: {title: '修改活动'},
+                hidden: true,
+                name: 'updateActivities'
+            }
         ]
+
     },
 
     {

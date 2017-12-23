@@ -1,14 +1,15 @@
 <template>
     <div>
         <div class="clearfix">
-            <el-button style="float: right;margin-bottom: 20px;" type="danger" size="small" @click="add">添加文章</el-button>
+            <el-button style="float: right;margin-bottom: 20px;" type="danger" size="small" @click="add">添加轮播图</el-button>
         </div>
         <el-table border :data="tableData" size="small">
-            <el-table-column label="作者" prop="author" width="80"></el-table-column>
-            <el-table-column label="文章名" prop="name" ></el-table-column>
-            <el-table-column label="文章描述" prop="title" width="120"></el-table-column>
-            <el-table-column label="类型" prop="type" width="100"></el-table-column>
-            <el-table-column label="排序" prop="sort" width="100"></el-table-column>
+            <el-table-column label="轮播图名" prop="name" width="200"></el-table-column>
+            <el-table-column label="轮播图预览图" prop="	value">
+                <template slot-scope="scope">
+                    <img :src="item" v-for="(item,index) in scope.row.value" class="img-item-small" v-if="index<3">
+                </template>
+            </el-table-column>
             <el-table-column label="操作" width="240" fixed="right">
                 <template slot-scope="scope">
                     <el-button @click="edit(scope.row.id)" size="mini" type="danger">编辑</el-button>
@@ -27,8 +28,8 @@
             return {
                 tableData: [
 //                    {
-//                        name: '星云的彼端111',
-//                        title: '', //文章标题
+//                        name: '星云的彼端',
+//                        title: '', //轮播图标题
 //                        content: '次时代修真',
 //                        type: '小说',
 //                        rank: 1
@@ -38,34 +39,36 @@
         },
         methods: {
             add() {
-                this.$router.push({path: 'addArticle'})
+                this.$router.push({path: 'addSlide'})
             },
             edit(id) {
-                this.$router.push({path: 'editArticle', query: {id}})
+                this.$router.push({path: 'updateSlide', query: {id}})
             },
             remove(id) {
-                this.$confirm('此操作将删除该文章, 是否继续?', '提示', {
+                this.$confirm('此操作将永久删除该轮播图, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.$axios.post('delArticle', {id}, res => {
+                    this.$axios.post('delSlide', {id}, res => {
                         if(res.ret == true){
                             this.$message({type: 'success', message: '删除成功!'});
                             this.getData();
                         }
                     })
-                }).catch(() => {this.$message({type: 'info', message: '已取消删除'});});
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                })
             },
             getData() {
-                this.$axios.get('article', {}, res => {
+                this.$axios.get('getSlideList', {}, res => {
                     if(res.ret == true){
                         this.tableData = res.data;
                     }
                 })
-            },
-            showDetails(id) {
-                this.$router.push({path: 'articleDetails', query: {id}})
             }
         },
         created() {

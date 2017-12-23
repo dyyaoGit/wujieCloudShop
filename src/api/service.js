@@ -19,7 +19,6 @@ export default{
     getFodder: '/admin/material/index', //素材获取
     delFodder: '/admin/material/delete', //素材删除
     updateFodder: '/admin/material/update', //素材修改
-
     updateGoodList: '/admin/goods/update', //更新商品状态  {state: 2, id: ''}
     getTypeList: '/admin/category/tree', //获取所有的类型
     addType: '/admin/category/add', //增加类型
@@ -34,7 +33,6 @@ export default{
     login: '/admin/admin/login', //用户登录
 
 //审核入驻
-
     enterManageList: '/admin/admin/index/', //审核入驻商家查询    0.未审核，1，审核完成，2已入住
     enterJudge: '/admin/admin/state',   //审核入驻操作   1同意 2.拒绝
 
@@ -51,11 +49,24 @@ export default{
 //文章管理
     article: '/admin/article/index',
     delArticle: '/admin/article/delete',
-    editArticle: '/admin/article/update',
+    updateArticle: '/admin/article/update',
+    addArticle: '/admin/article/add',
 
 //文章类型管理
     articleType: '/admin/article_category/index',
     addArticleType: '/admin/article_category/add',
     delArticleType: '/admin/article_category/delete',
-    editArticleType: '/admin/article_category/update',
+    updateArticleType: '/admin/article_category/update',
+
+//轮播图管理
+    getSlideList: '/admin/banner/index',
+    addSlide: '/admin/banner/add',
+    delSlide: '/admin/banner/delete',
+    updateSlide: '/admin/banner/update',
+
+//活动管理
+    getActivitiesList: '/admin/second_kill/index',
+    addActivities: '/admin/second_kill/add',
+    updateActivities: '/admin/second_kill/update',
+    delActivities: '/admin/second_kill/delete',
 }

@@ -2,14 +2,10 @@
     <div>
         <el-form :model="formData" label-width="60px" label-position="right">
             <el-form-item label="分类名">
-                <el-input v-model="formData.name"></el-input>
+                <el-input v-model="formData.name" @keyup.enter.native.prevent="save"></el-input>
             </el-form-item>
-            <!--<el-form-item label="分类描述">-->
-                <!--<el-input type="textarea" v-model="formData.content" :rows="4"></el-input>-->
-            <!--</el-form-item>-->
             <el-form-item>
-                <el-button type="danger" class="bottom-btn" @click="saveEdit" v-if="$route.name == 'editType'">保存更改</el-button>
-                <el-button type="danger" class="bottom-btn" @click="save" v-else>保存</el-button>
+                <el-button type="danger" class="bottom-btn" @click="save">{{$route.name == 'editType' ? '保存更改' : '保存'}}</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -28,31 +24,35 @@
         },
         methods: {
             save() {
-                this.$axios.post('addArticleType', this.formData, res => {
-                    if(res.ret == true){
-                        this.$message.success('分类添加成功，正在为您跳转分类列表...')
-                        setTimeout(() => {this.$router.back()}, 1500)
-                    }
-                })
+                if(this.$route.name !== 'editType'){
+                    this.$axios.post('addArticleType', this.formData, res => {
+                        if(res.ret == true){
+                            this.$message.success('分类添加成功，正在为您跳转分类列表...')
+                            setTimeout(() => {this.$router.push('articleType')}, 1500)
+                        }
+                    })
+                }
+                else{
+                    this.saveEdit()
+                }
             },
             saveEdit() {
-                this.$axios.post('updateBrand', this.formData, res => {
+                this.$axios.post('updateArticleType', this.formData, res => {
                     if(res.ret == true){
                         this.$message.success('分类修改成功，正在为您跳转分类列表...')
-                        setTimeout(() => {this.$router.back()}, 1500)
+                        setTimeout(() => {this.$router.push('articleType')}, 1500)
                     }
                 })
             },
             getEditData() {
-                this.$axios.get('brandManage', {id: this.$route.query.id}, res => {
-                    this.formData = res.data[0];
-                    this.imgList.push(res.data[0].logo)  //此处必须用push，否则vue无法检测到数组的变动
+                this.$axios.get('articleType', {id: this.$route.query.id}, res => {
+                    this.formData = res.data.find(val => val.id === this.$route.query.id);   //从现有接口获取所有数据，并根据ID存入编辑框中
                 })
             }
         },
         mounted() {
             if(this.$route.name === 'editType'){
-//                this.getEditData();
+                this.getEditData();
             }
         }
     }

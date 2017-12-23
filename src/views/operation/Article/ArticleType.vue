@@ -5,7 +5,7 @@
         </div>
         <el-table border :data="tableData" size="small">
             <el-table-column label="分类名" prop="name"></el-table-column>
-            <el-table-column label="分类描述" prop="content"></el-table-column>
+            <!--<el-table-column label="id" prop="id"></el-table-column>-->
             <el-table-column label="操作" width="200" fixed="right">
                 <template slot-scope="scope">
                     <el-button @click="edit(scope.row.id)" size="mini" type="danger">编辑</el-button>
@@ -22,10 +22,7 @@
         data() {
             return {
                 tableData: [
-                    {
-                        name: '情感',
-                        content: ''
-                    }
+
                 ]
             }
         },
@@ -33,16 +30,16 @@
             add() {
                 this.$router.push({path: 'addType'})
             },
-            edit() {
-                this.$router.push({path: 'editType', query: {id: ''}})
+            edit(id) {
+                this.$router.push({path: 'editType', query: {id}})
             },
-            remove() {
+            remove(id) {
                 this.$confirm('此操作将删除该分类, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.$axios.post('delLabel', {id}, res => {
+                    this.$axios.post('delArticleType', {id}, res => {
                         if(res.ret == true){
                             this.$message({type: 'success', message: '删除成功!'});
                             this.getData();
