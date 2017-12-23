@@ -115,14 +115,15 @@ export const constantRouterMap = [
                 path: 'addLabel',
                 component: _import('goodsManage/labelManage/addLabel'),
                 meta: {title: '添加标签'},
-                hidden: true
+                hidden: true,
+                name: 'addLabel'
             },
             {
-                path: 'editLabel',
+                path: 'updateLabel',
                 component: _import('goodsManage/labelManage/addLabel'),
                 meta: {title: '编辑标签'},
                 hidden: true,
-                name: 'editLabel'
+                name: 'updateLabel'
             }
         ]
     },

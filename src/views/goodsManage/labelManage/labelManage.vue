@@ -21,20 +21,20 @@
         data() {
             return {
                 tableData: [
-                    {
-                        name: '标签名'
-                    }
+//                    {
+//                        name: '标签名'
+//                    }
                 ]
             }
         },
         methods: {
             getData() {
-                this.$axios.get('LabelManage', {}, res => {
+                this.$axios.get('getTag', {}, res => {
                     this.tableData = res.data;
                 })
             },
             edit(id) {
-                this.$router.push({path: 'editLabel', query: {id}})
+                this.$router.push({path: 'updateLabel', query: {id}})
             },
             remove(id) {
                 this.$confirm('此操作将删除该标签, 是否继续?', '提示', {
@@ -42,7 +42,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    this.$axios.post('delLabel', {id}, res => {
+                    this.$axios.post('delTag', {id}, res => {
                         if(res.ret == true){
                             this.$message({type: 'success', message: '删除成功!'});
                             this.getData();
@@ -55,7 +55,7 @@
             }
         },
         created() {
-
+            this.getData();
         }
     }
 </script>

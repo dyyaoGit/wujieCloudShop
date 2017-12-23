@@ -45,6 +45,12 @@ export default{
     updateBrand: '/admin/brand/update',
     delBrand: '/admin/brand/delete',
 
+//标签管理
+    getTag: '/admin/tag/index',
+    addTag: '/admin/tag/add',
+    updateTag: '/admin/tag/update',
+    delTag: '/admin/tag/delete',
+
 
 //文章管理
     article: '/admin/article/index',

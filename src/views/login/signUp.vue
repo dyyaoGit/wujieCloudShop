@@ -99,7 +99,7 @@
                 this.$refs.signUpForm.validate(valid => {
                     if (valid) {
                         this.loading = true //如果验证信息通过 ，此处开始发送ajax登录
-                        this.$axios.post('register',{phone: this.signUpForm.phone, code: 1234, password: 'yjr1923521', confirm: 'yjr1923521'}, res => {
+                        this.$axios.post('register', this.signUpForm, res => {
                             this.$message.success('恭喜您注册成功！正在为您进行跳转......')
                             setTimeout(() => {this.$router.push('/login'); this.loading = false}, 1500)
 

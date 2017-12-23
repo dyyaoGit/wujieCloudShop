@@ -82,7 +82,8 @@
             },
             getEditData() {
                 this.$axios.get('article', {id: this.$route.query.id}, res => {
-                    console.log(res)
+                    console.log(2)
+
                     this.formData = res.data[0]
                 })
             },
@@ -90,19 +91,25 @@
                 this.formData.logo = imgList[0]
             },
             getSelect() {
-                this.$axios.get('articleType', {}, res => {
-                    this.contentType = res.data;
+                console.log(1)
+                return new Promise(resolve => {
+                    this.$axios.get('articleType', {}, res => {
+                        this.contentType = res.data;
+                        resolve()
+                    })
                 })
             }
         },
         created() {
-            this.getSelect();
-            if(this.$route.name !== 'addArticle'){
-                this.getEditData();
-            }
-            if(this.$route.name === 'articleDetails'){
-                this.isCanEdit = false
-            }
+            this.getSelect().then(() => {
+                if(this.$route.name !== 'addArticle'){
+                    this.getEditData();
+                }
+                if(this.$route.name === 'articleDetails'){
+                    this.isCanEdit = false
+                }
+            })
+
         }
     }
 </script>
