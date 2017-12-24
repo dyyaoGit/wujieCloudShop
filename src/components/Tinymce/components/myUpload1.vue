@@ -1,18 +1,8 @@
 <template>
-    <div class="upload-container">
-        <el-button class='el-icon-upload'  @click="getToken" type="danger">上传图片
-        </el-button>
-        <el-dialog :visible.sync="dialogVisible" >
-            <div class="clearfix">
-                <div class="img-item" :key="index" @click="removeImg(index)" v-for="(item, index) in imgList" :style="'background-image: url(' + item + ')'"></div>
-            </div>
-            <label id="container1" class="input-container">
-                <input type="file" class="upload-input" id="btnupload1" name="img" />
-            </label>
-            <el-button @click="dialogVisible = false">取 消</el-button>
-            <el-button type="primary" @click="handleSubmit">确 定</el-button>
-        </el-dialog>
-    </div>
+    <label id="container1" class="input-wrap">
+        点击上传图片
+        <input type="file" class="upload-input" id="btnupload1" name="img" style="display: none;"/>
+    </label>
 </template>
 
 <script>
@@ -31,7 +21,6 @@
             handleSubmit() {
                 this.$emit('successCBK', this.imgList)
                 this.imgList = []   //修改
-                this.dialogVisible = false
             },
             getToken(){
                 this.dialogVisible = true;
@@ -45,6 +34,7 @@
                                     token: res.data.uptoken,
                                 }, (info, file) => {
                                     this.imgList.push(info.data.url);
+                                    this.handleSubmit();
                                 })
                             }
                         })
@@ -57,6 +47,10 @@
             }
         },
         mounted() {
+            this.getToken();
+        },
+        watch: {
+
         }
     }
 </script>
@@ -65,42 +59,23 @@
 
 </style>
 <style>
-    .input-container {
-        z-index: 100000;
-        position: relative;
-        display: block;
-        height: 150px;
-        width: 100%;
-        text-align: center;
-        border: 1px dashed #999;
-        margin-bottom: 20px;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-    .input-container::after {
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        content: '点击上传图片';
-        background: #39f;
+    .input-wrap {
+        padding: 0 10px;        /* display: none; */
+        line-height: 40px;
+        height: 40px;
         color: #fff;
-        font-size: 12px!important;
+        font-size: 14px;
+        background: #409EFF;
+        border: 1px solid #aaa;
         text-align: center;
-        line-height: 36px;
-        padding: 0 15px;
-        border-radius: 5px;
-    }
-    .childButton {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        z-index: 0;
-
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 5px
     }
     .upload-input {
+        display: none;
+    }
+    /* .upload-input {
         display: none;
     }
     .img-item {
@@ -136,5 +111,5 @@
         height: 100%;
         background: rgba(0,0,0,.5);
         cursor: pointer;
-    }
+    } */
 </style>

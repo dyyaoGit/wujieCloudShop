@@ -9,7 +9,9 @@
 
 <script>
 //    import editorImage from './components/editorImage'
-    import myUpload from './components/myUpload.vue'
+    // import myUpload from './components/myUpload.vue'
+    import myUpload from './components/myUpload1.vue'
+    
 
     export default {
         name: 'tinymce',

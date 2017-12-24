@@ -36,3 +36,8 @@ export function isvalidphone(str) {
     return reg.test(str)
 }
 
+export function isNumber(str) {
+    const reg = /\d*/
+    return reg.test(str)
+}
+

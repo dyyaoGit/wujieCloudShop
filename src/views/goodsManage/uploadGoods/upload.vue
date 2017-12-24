@@ -3,7 +3,6 @@
         <el-form :model="formData" size="small" style="width: 830px;" label-position="right" label-width="85px"
                  ref="form" :rules="rules">
             <el-form-item label="商品类型" class="item-wid" prop="type">
-
                 <el-cascader
                     :options="selectionData"
                     v-model="formData.type"
@@ -18,8 +17,8 @@
             <el-form-item label="商品简介">
                 <el-input v-model="formData.title"></el-input>
             </el-form-item>
-            <el-form-item label="商品库存">
-                <el-input v-model="formData.stock"></el-input>
+            <el-form-item label="商品库存" prop="stock">
+                <el-input v-model.number="formData.stock"></el-input>
             </el-form-item>
         </el-form>
 
@@ -42,30 +41,7 @@
                         <h2 style="color: #000;">{{scope.row.name}}</h2>
                     </template>
                 </el-table-column>
-                <!--<el-table-column-->
-                    <!--prop="name"-->
-                    <!--label="规格标签"-->
-                    <!--width="300">-->
-                    <!--<template slot-scope="scope">-->
-                        <!--<el-tag v-for="(val,idx) in scope.row.tag" :key="val" closable type="danger"-->
-                                <!--@close="removeTag(scope.$index, idx)" style="margin-right: 5px;margin-bottom: 5px;">-->
-                            <!--{{val}}-->
-                        <!--</el-tag>-->
-                    <!--</template>-->
-                <!--</el-table-column>-->
-                <!--<el-table-column label="标签名">-->
-                    <!--<template slot-scope="scope">-->
-                        <!--<el-row :gutter="20">-->
-                            <!--<el-col :span="16">-->
-                                <!--<el-input v-model="scope.row.empty" size="small"></el-input>-->
-                            <!--</el-col>-->
-                            <!--<el-col :span="8">-->
-                                <!--<el-button @click="addTag(scope.$index)" type="danger" size="small">添加标签</el-button>-->
-                            <!--</el-col>-->
-                        <!--</el-row>-->
-
-                    <!--</template>-->
-                <!--</el-table-column>-->
+ 
                 <el-table-column label="添加标签">
                     <template slot-scope="scope">
                         <el-select
@@ -122,13 +98,13 @@
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item label="邮费(元)">
+            <el-form-item label="邮费(元)" prop="ems_price">
                 <el-input v-model="formData.ems_price"></el-input>
             </el-form-item>
         </el-form>
         <h4>商品轮播图</h4>
         <div class="img-list">
-            <div  :style="'backgroundImage: url(' + item + ')'" v-for="(item, index) in formData.img" class="div-img-item" @click="removeImg(index)"></div>
+            <div  :key="index" :style="'backgroundImage: url(' + item + ')'" v-for="(item, index) in formData.img" class="div-img-item" @click="removeImg(index)"></div>
             <imgUpload class="clearfix" @uploadSuccess="upImgList"></imgUpload>
         </div>
 
@@ -147,7 +123,8 @@
         components: {Tinymce, imgUpload},
         name: 'goodsManage',
         data() {
-            let msg = '该信息为必填信息'
+            let msg = '该信息为必填信息';
+            let needNum = '此处必须填入数字'
             return {
                 inputData: '',
                 testData: '',
@@ -214,6 +191,9 @@
                     first: [{required: true, message: msg, trigger: 'blur'}],
                     second: [{required: true, message: msg, trigger: 'blur'}],
                     third: [{required: true, message: msg, trigger: 'blur'}],
+                    stock: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
+                    ems_price: [{required: true, message: needNum, trigger: 'blur'}],
+                    title: [{required: true, message: msg, trigger: 'blur'}]
                 }
             }
         },

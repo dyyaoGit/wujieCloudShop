@@ -1,18 +1,7 @@
 <template>
-    <div class="upload-container">
-        <el-button :class='iconClass'  @click="getToken" type="danger" v-if="iconClass.trim()!== ''">上传图片</el-button>
-        <div class="img-button" @click="getToken" v-if="iconClass.trim() === ''"></div>
-        <el-dialog :visible.sync="dialogVisible" >
-            <div class="clearfix">
-                <dive :key="index" class="img-item" @click="removeImg(index)" v-for="(item, index) in imgList" :style="'background-image: url(' + item + ')'"></dive>
-            </div>
-            <label id="container" class="input-container">
-                <input type="file" class="upload-input" id="btnupload" name="img" />
-            </label>
-            <el-button @click="cancelUp">取 消</el-button>
-            <el-button type="primary" @click="handleSubmit">确 定</el-button>
-        </el-dialog>
-    </div>
+    <label id="container" class="img-button">
+        <input type="file" class="upload-input" id="btnupload" name="img" />
+    </label>
 </template>
 
 <script>
@@ -53,6 +42,7 @@
                                     token: res.data.uptoken,
                                 }, (info, file) => {
                                     this.imgList.push(info.data.url);
+                                    this.handleSubmit();
                                 })
                             }
                             this.qiniuInit = true;
@@ -69,7 +59,7 @@
             }
         },
         mounted() {
-
+            this.getToken();
         },
         watch: {
             imgList(val) {  //限制图片存放
