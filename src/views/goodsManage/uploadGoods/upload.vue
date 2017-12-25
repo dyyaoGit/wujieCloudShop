@@ -41,7 +41,7 @@
                         <h2 style="color: #000;">{{scope.row.name}}</h2>
                     </template>
                 </el-table-column>
- 
+
                 <el-table-column label="添加标签">
                     <template slot-scope="scope">
                         <el-select
@@ -76,29 +76,36 @@
             <h3>价格 <span style="font-size: 14px;">(元)</span></h3>
             <el-row>
                 <el-col :span="12">
-                    <el-form-item label="会员等级1" label-width="90px" prop="common">
+                    <el-form-item label="普通会员" label-width="90px" prop="common">
                         <el-input v-model="formData.price.common"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item label="会员等级2" label-width="90px" prop="first">
+                    <el-form-item label="会员等级1" label-width="90px" prop="first">
                         <el-input v-model="formData.price.first"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
             <el-row>
                 <el-col :span="12">
-                    <el-form-item label="会员等级3" label-width="90px" prop="second">
+                    <el-form-item label="会员等级2" label-width="90px" prop="second">
                         <el-input v-model="formData.price.second"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item label="会员等级4" label-width="90px" prop="third">
+                    <el-form-item label="会员等级3" label-width="90px" prop="third">
                         <el-input v-model="formData.price.third"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item label="邮费(元)" prop="ems_price">
+            <el-row>
+                <el-col>
+                    <el-form-item label="会员等级4" label-width="90px" prop="fourth">
+                        <el-input v-model="formData.price.fourth"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+            <el-form-item label="邮费(元)" prop="ems_price" >
                 <el-input v-model="formData.ems_price"></el-input>
             </el-form-item>
         </el-form>
@@ -151,7 +158,8 @@
                         common: '',
                         first: '',
                         second: '',
-                        third: ''
+                        third: '',
+                        fourth: ''
                     },
                     ems_price: '',     //邮费
                     img: [],    //商品轮播图
@@ -191,6 +199,7 @@
                     first: [{required: true, message: msg, trigger: 'blur'}],
                     second: [{required: true, message: msg, trigger: 'blur'}],
                     third: [{required: true, message: msg, trigger: 'blur'}],
+                    fourth: [{required: true, message: msg, trigger: 'blur'}],
                     stock: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     ems_price: [{required: true, message: needNum, trigger: 'blur'}],
                     title: [{required: true, message: msg, trigger: 'blur'}]

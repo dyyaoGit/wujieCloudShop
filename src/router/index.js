@@ -318,15 +318,27 @@ export const constantRouterMap = [
         meta: {title: '店铺管理'},
         name: '店铺管理',
         children: [
+            // {
+            //     path: 'index',
+            //     component: _import('storeManage/index'),
+            //     meta: {title: '轮播图管理'}
+            // },
             {
-                path: 'index',
-                component: _import('storeManage/index'),
-                meta: {title: '轮播图管理'}
-            },
-            {
-                path: 'success',
+                path: 'apply',
                 component: _import('storeManage/applyForActive'),
                 meta: {title: '平台活动申请'}
+            },
+            {
+                path: 'goodsList',
+                component: _import('storeManage/GoodsList'),
+                meta: {title: '已申请商品列表'},
+                hidden: true
+            },
+            {
+                path: 'applyGoods',
+                component: _import('storeManage/addGoods'),
+                meta: {title: '添加商品到活动'},
+                hidden: true
             }
         ]
     },

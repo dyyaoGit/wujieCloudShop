@@ -1,8 +1,12 @@
 <template>
     <div>
-        <el-form :model="formData" label-width="80px" label-position="right">
+        <el-form :model="formData" label-width="100px" label-position="left">
             <el-form-item label="标签名">
                 <el-input v-model="formData.name" @keyup.enter.native.prevent="save"></el-input>
+            </el-form-item>
+            <el-form-item label="标签LOGO" label-width="100px">
+                <bgDiv :imgStr="formData.logo"></bgDiv>
+                <imgUpload @uploadSuccess="Upload"></imgUpload>
             </el-form-item>
             <el-form-item>
                 <el-button type="danger" class="bottom-btn" @click="save">保存</el-button>
@@ -12,12 +16,15 @@
 </template>
 
 <script>
-
+    import imgUpload from '@/components/imgUpload'
+    import bgDiv from '@/components/bgDiv'
     export default {
+        components: {imgUpload,bgDiv},
         data() {
             return {
                 formData: {
                     name: "",
+                    logo: ''
                 }
             }
         },
@@ -35,6 +42,10 @@
                 this.$axios.get('getTag', {id: this.$route.query.id}, res => {
                     this.formData = res.data[0];
                 })
+            },
+            Upload(val) {
+                console.log(val)
+                this.formData.logo = val[0]
             }
         },
         mounted() {

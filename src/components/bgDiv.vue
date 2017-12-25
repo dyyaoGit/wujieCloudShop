@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div class="bg-img"
+        <div :class="isCanEdit ? 'bg-img' : 'bg-img-no-edit'"
              v-for="(item,index) in imgList"
              :style="'background-image: url(' + item + '); width:' + width + 'px; height: '+ height + 'px; line-height: ' + height + 'px;'"
              @click="remove(index)"
              >
         </div>
-        <div class="bg-img" v-if="currentImg.trim()!== ''"
+        <div :class="isCanEdit ? 'bg-img' : 'bg-img-no-edit'" v-if="currentImg.trim()!== ''"
              :style="'background-image: url(' + currentImg + '); width:' + width + 'px; height: '+ height + 'px; line-height: ' + height + 'px;'"
              @click="removeSelf"
         >
@@ -66,7 +66,9 @@
 </script>
 
 <style scoped>
-    .bg-img {
+    .bg-img,
+    .bg-img-no-edit
+    {
         position: relative;
         display: block;
         float: left;
@@ -100,4 +102,5 @@
         height: 100%;
         cursor: pointer;
     }
+
 </style>

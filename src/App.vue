@@ -16,6 +16,9 @@
             time() {
                 return new Date().getDate();
             }
+        },
+        mounted() {
+
         }
     }
 </script>

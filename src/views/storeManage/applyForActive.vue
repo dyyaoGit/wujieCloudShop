@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>秒杀申请</h2>
+        <h3>秒杀活动申请</h3>
         <el-table border :data="tableData" size="small">
             <el-table-column label="活动名" prop="name"></el-table-column>
             <el-table-column label="活动开始时间" prop="start_time"></el-table-column>
@@ -10,10 +10,9 @@
                     <img :src="scope.row.logo" class="img-item-small">
                 </template>
             </el-table-column>
-            <el-table-column label="操作" width="240" fixed="right">
+            <el-table-column>
                 <template slot-scope="scope">
-                    <el-button @click="edit(scope.row.id)" size="mini" type="danger">申请参加该活动</el-button>
-                    <el-button @click="remove(scope.row.id)" size="mini" type="warning">删除</el-button>
+                    <el-button size="mini" type="danger" @click.native="applyList(scope.row.id)">申请参加该活动</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -21,6 +20,7 @@
 </template>
 
 <script>
+    import moment from 'moment'
     export default {
         name: '',
         data() {
@@ -30,8 +30,22 @@
         },
         methods: {
             getData() {
-
+                this.$axios.get('getActivitiesList', {}, res => {
+                    if(res.ret == true){
+                        res.data.forEach(val => {
+                            val.start_time = moment((val.start_time*1000)).format("YYYY-MM-DD HH:mm:ss")
+                            val.end_time = moment((val.end_time*1000)).format("YYYY-MM-DD HH:mm:ss")
+                        })
+                        this.tableData = res.data;
+                    }
+                })
+            },
+            applyList(id) {
+                this.$router.push({path:'goodsList', query: {id}})
             }
+        },
+        mounted() {
+            this.getData();
         }
     }
 </script>

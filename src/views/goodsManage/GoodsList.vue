@@ -64,27 +64,32 @@
                 label="快递价格"
             >
             </el-table-column>
-
             <el-table-column
                 prop="price[common]"
                 width="150"
-                label="一级会员价格"
+                label="普通会员价格"
             >
             </el-table-column>
             <el-table-column
                 prop="price[first]"
                 width="150"
-                label="二级会员价格"
+                label="一级会员价格"
             >
             </el-table-column>
             <el-table-column
                 prop="price[second]"
                 width="150"
-                label="三级会员价格"
+                label="二级会员价格"
             >
             </el-table-column>
             <el-table-column
                 prop="price[third]"
+                width="150"
+                label="三级会员价格"
+            >
+            </el-table-column>
+            <el-table-column
+                prop="price[fourth]"
                 width="150"
                 label="四级会员价格"
             >
@@ -148,7 +153,7 @@
                 selection: [],  //选中的部分
                 currentPage: 1,
                 total: 1,
-                loading: false  
+                loading: false
             }
         },
         methods: {
@@ -218,7 +223,7 @@
                 });
             },
             pageChange(val) {
-               this.getList() 
+               this.getList()
             }
         },
         mounted() {

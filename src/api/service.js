@@ -75,4 +75,8 @@ export default{
     addActivities: '/admin/second_kill/add',
     updateActivities: '/admin/second_kill/update',
     delActivities: '/admin/second_kill/delete',
+
+//商户活动
+    getAct: '/admin/kill_goods/get',  //获取
+    applyAct: '/admin/kill_goods/add' //申请
 }

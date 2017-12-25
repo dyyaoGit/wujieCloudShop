@@ -12,10 +12,11 @@
                     <img :src="scope.row.logo" class="img-item-small">
                 </template>
             </el-table-column>
-            <el-table-column label="操作" width="240" fixed="right">
+            <el-table-column label="操作" width="270" fixed="right">
                 <template slot-scope="scope">
                     <el-button @click="edit(scope.row.id)" size="mini" type="danger">编辑</el-button>
                     <el-button @click="remove(scope.row.id)" size="mini" type="warning">删除</el-button>
+                    <el-button size="mini" type="primary">查看报名详情</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -56,8 +57,9 @@
                 this.$axios.get('getActivitiesList', {}, res => {
                     if(res.ret == true){
                         res.data.forEach(val => {
-                            val.start_time = moment((val.start_time*1000)).format("YYYY-MM-DD HH:MM:SS")
-                            val.end_time = moment((val.end_time*1000)).format("YYYY-MM-DD HH:MM:SS")
+//                            val.start_time = moment((val.start_time*1000)).format("YYYY-MM-DD HH:MM:SS")
+                            val.start_time = moment.unix(val.start_time).format("YYYY-MM-DD HH:mm:ss")
+                            val.end_time = moment((val.end_time*1000)).format("YYYY-MM-DD HH:mm:ss")
                         })
                         this.tableData = res.data;
                     }
