@@ -16,7 +16,7 @@
                 <template slot-scope="scope">
                     <el-button @click="edit(scope.row.id)" size="mini" type="danger">编辑</el-button>
                     <el-button @click="remove(scope.row.id)" size="mini" type="warning">删除</el-button>
-                    <el-button size="mini" type="primary">查看报名详情</el-button>
+                    <el-button size="mini" type="primary" @click="showDetails(scope.row.id)">查看报名详情</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -64,6 +64,9 @@
                         this.tableData = res.data;
                     }
                 })
+            },
+            showDetails(id) {
+                this.$router.push({path: 'applyList', query: {id}})
             }
         },
         created() {

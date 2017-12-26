@@ -306,6 +306,13 @@ export const constantRouterMap = [
                 meta: {title: '修改活动'},
                 hidden: true,
                 name: 'updateActivities'
+            },
+            {
+                path: 'applyList',
+                component: _import('AppManage/applyList'),
+                meta: {title: '活动报名详情'},
+                name: 'applyList',
+                hidden: true
             }
         ]
 
@@ -318,13 +325,8 @@ export const constantRouterMap = [
         meta: {title: '店铺管理'},
         name: '店铺管理',
         children: [
-            // {
-            //     path: 'index',
-            //     component: _import('storeManage/index'),
-            //     meta: {title: '轮播图管理'}
-            // },
             {
-                path: 'apply',
+                path: 'index',
                 component: _import('storeManage/applyForActive'),
                 meta: {title: '平台活动申请'}
             },
@@ -357,12 +359,15 @@ export const constantRouterMap = [
             {
                 path: 'new',
                 component: _import('couponManage/editCoupon'),
-                meta: {title: '新建优惠券'}
+                meta: {title: '新建优惠券'},
+                hidden: true
             },
             {
                 path: 'edit',
                 component: _import('couponManage/editCoupon'),
-                meta: {title: '优惠券编辑'}
+                meta: {title: '优惠券编辑'},
+                name: 'editCoupon',
+                hidden: true
             }
         ]
     },

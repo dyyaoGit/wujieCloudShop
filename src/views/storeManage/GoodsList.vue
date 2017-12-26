@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="clearfix" style="margin-bottom: 20px;">
+            <h3 style="float: left;">已申请参与活动列表</h3>
             <el-button type="danger" style="float:right;" @click="add($route.query.id)">添加商品到该活动</el-button>
         </div>
         <el-table :data="tableData" border style="width: 100%" >
@@ -10,14 +11,16 @@
                     <img :src="scope.row.img[0]" class="img-item-small">
                 </template>
             </el-table-column>
-            <el-table-column prop="logo" label="状态">
+            <el-table-column prop="state" label="状态">
                 <template slot-scope="scope">
-                    <img :src="scope.row.img[0]" class="img-item-small">
+                    <span v-if="scope.row.state == 0">审核中</span>
+                    <span v-if="scope.row.state == 1">审核通过</span>
+                    <span v-if="scope.row.state == 2">审核不通过</span>
                 </template>
             </el-table-column>
             <el-table-column prop="title" label="操作" width="220" fixed="right">
                 <template slot-scope="scope">
-                    <el-button type="danger" size="mini" @click="apply(scope.row.id)">申请参加</el-button>
+                    <!--<el-button type="danger" size="mini" @click="add(scope.row.id)">申请参加</el-button>-->
                 </template>
             </el-table-column>
         </el-table>
@@ -37,9 +40,9 @@
         methods: {
             getData() {
                 this.$axios.get('getAct', {kill_id: this.$route.query.id, user_id: ''}, res => {
-                    this.tableData = res.data.rows;
-
-
+                    if(res.ret){
+                        this.tableData = res.data;
+                    }
                 })
             },
             add(id) {  //跳转到申请活动页面添加商品

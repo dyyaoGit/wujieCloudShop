@@ -73,10 +73,20 @@ export default{
 //活动管理
     getActivitiesList: '/admin/second_kill/index',
     addActivities: '/admin/second_kill/add',
+    getApplyList: '/admin/kill_goods/index',  //查看活动报名列表
     updateActivities: '/admin/second_kill/update',
     delActivities: '/admin/second_kill/delete',
 
+
 //商户活动
     getAct: '/admin/kill_goods/get',  //获取
-    applyAct: '/admin/kill_goods/add' //申请
+    applyAct: '/admin/kill_goods/add', //申请
+
+
+
+//优惠券管理
+    addCoupons: '/admin/coupons/add',
+    getCoupons: '/admin/coupons/index',
+    updateCoupons: '/admin/coupons/update',
+    delCoupons: '/admin/coupons/delete',
 }
