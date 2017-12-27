@@ -122,6 +122,26 @@ export const constantRouterMap = [
                 meta: {title: '编辑标签'},
                 hidden: true,
                 name: 'updateLabel'
+            },
+            {
+                path: 'recLabel',
+                component: _import('goodsManage/labelManage/recLabel'),
+                meta: {title: '推荐标签管理'},
+                name: 'recLabel'
+            },
+            {
+                path: 'addRec',
+                component: _import('goodsManage/labelManage/addRec'),
+                meta: {title: '添加推荐标签'},
+                name: 'addRec',
+                hidden: true
+            },
+            {
+                path: 'updateRec',
+                component: _import('goodsManage/labelManage/addRec'),
+                meta: {title: '编辑推荐标签'},
+                name: 'updateRec',
+                hidden: true
             }
         ]
     },

@@ -1,6 +1,6 @@
 <template>
-    <label id="container" class="img-button">
-        <input type="file" class="upload-input" id="btnupload" name="img" />
+    <label id="container1" class="img-label" :style="`background: url(${bg}) no-repeat;`">
+        <input type="file" class="upload-input" id="btnupload1" name="img" />
     </label>
 </template>
 
@@ -17,6 +17,10 @@
             max: {
                 type: Number,
                 default: 5
+            },
+            bg: {
+                type: String,
+                default: ''
             }
         },
         data() {
@@ -41,6 +45,8 @@
                                 this.qiniuInit = true;
                                 qiniu({
                                     token: res.data.uptoken,
+                                    container: 'container1',
+                                    button: 'btnupload1'
                                 }, (info, file) => {
                                     this.imgList.push(info.data.url);
                                     this.handleSubmit();
@@ -112,46 +118,11 @@
         display: none;
     }
     .img-item {
-             position: relative;
-             display: block;
-             float: left;
-             width: 100px;
-             height: 100px;
-             border-radius: 8px;
-             border: 1px dashed #999;
-             margin: 0 10px 10px 0;
-             -webkit-background-size: 100% 100%;
-             background-size: 100% 100%;
-             overflow: hidden;
-             box-sizing: border-box;
-         }
-    .img-item:hover::after{
-        font-family:"iconfont" !important;
-        font-size:16px;font-style:normal;
-        -webkit-font-smoothing: antialiased;
-        -webkit-text-stroke-width: 0.2px;
-        -moz-osx-font-smoothing: grayscale;
-        position: absolute;
-        content: '\e617';
-        text-align: center;
-        line-height: 100px;
-        color: #fff;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,.5);
-        cursor: pointer;
-    }
-    .img-button {
         position: relative;
         display: block;
-        cursor: pointer;
         float: left;
-        width: 200px;
-        height: 200px;
+        width: 100px;
+        height: 100px;
         border-radius: 8px;
         border: 1px dashed #999;
         margin: 0 10px 10px 0;
@@ -160,24 +131,20 @@
         overflow: hidden;
         box-sizing: border-box;
     }
-    .img-button::after {
-        font-family:"iconfont" !important;
-        font-size:40px;font-style:normal;
-        -webkit-font-smoothing: antialiased;
-        -webkit-text-stroke-width: 0.2px;
-        -moz-osx-font-smoothing: grayscale;
-        position: absolute;
-        content: '\e600';
-        text-align: center;
-        line-height: 200px;
-        color: rgba(0,0,0,.2);
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #fff;
+
+    .img-label {
+        display: inline-block;
+        position: relative;
         cursor: pointer;
+        width: 200px;
+        height: 200px;
+        border-radius: 8px;
+        border: 1px dashed #999;
+        margin: 0 10px 10px 0;
+        -webkit-background-size: 100% 100%!important;
+        background-size: 100% 100%!important;
+        overflow: hidden;
+        box-sizing: border-box;
     }
+
 </style>

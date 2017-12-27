@@ -50,6 +50,7 @@
             removeSelf() {
                 if(this.isCanEdit){
                     this.currentImg = ''
+                    this.$emit('removeOne')
                 }
             }
         },

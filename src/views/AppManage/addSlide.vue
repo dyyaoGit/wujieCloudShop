@@ -1,12 +1,15 @@
 <template>
     <div>
-        <el-form :model="formData" label-width="100px" label-position="right">
+        <el-form :model="formData" label-width="100px" label-position="right" style="width: 800px;">
             <el-form-item label="轮播图名">
                 <el-input v-model="formData.name"></el-input>
             </el-form-item>
-            <el-form-item label="轮播图图片">
-                <bgDiv :imgList="formData.value"></bgDiv>
-                <imgUpload @uploadSuccess="upload" ></imgUpload>
+            <el-form-item :label="`图片${index + 1}URL`" v-for="(item, index) in formData.value" :key="index">
+                <el-input v-model="item.url"></el-input>
+                <bgDiv :imgStr="item.img" style="margin-top: 20px;" @removeOne="removeOne"></bgDiv>
+            </el-form-item>
+            <el-form-item label="图片上传">
+                <imgUpload @uploadSuccess="upload"></imgUpload>
             </el-form-item>
         </el-form>
         <el-button type="danger" class="bottom-btn" @click="save">保存</el-button>
@@ -24,7 +27,7 @@
                 formData: {
                     name: "",
                     value: [],
-                    text: 'App轮播图'
+                    tag_id: ''
                 },
                 imgList: []
             };
@@ -33,7 +36,11 @@
             upload(imgList) {
                 if(imgList.length>0){
                     imgList.forEach(val => {
-                        this.formData.value.push(val)
+                        let json = {
+                            url: '',
+                            img: val
+                        }
+                        this.formData.value.push(json)
                     })
                 }
             },
@@ -62,6 +69,9 @@
                 this.$axios.get('getSlideList', {id: this.$route.query.id}, res => {
                     this.formData = res.data[0];
                 })
+            },
+            removeOne(index) {
+                this.formData.value.splice(index, 1)
             }
         },
         mounted() {

@@ -89,4 +89,10 @@ export default{
     getCoupons: '/admin/coupons/index',
     updateCoupons: '/admin/coupons/update',
     delCoupons: '/admin/coupons/delete',
+
+//推荐icon管理
+    getIcon: '/admin/icon/index',
+    addIcon: '/admin/icon/add',
+    delIcon: '/admin/icon/delete',
+    updateIcon: '/admin/icon/update',
 }
