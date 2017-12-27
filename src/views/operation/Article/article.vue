@@ -3,12 +3,24 @@
         <div class="clearfix">
             <el-button style="float: right;margin-bottom: 20px;" type="danger" size="small" @click="add">添加文章</el-button>
         </div>
-        <el-table border :data="tableData" size="small">
+        <el-table border :data="tableData" size="small" v-loading="loading">
             <el-table-column label="作者" prop="author" width="80"></el-table-column>
             <el-table-column label="文章名" prop="name" ></el-table-column>
             <el-table-column label="文章描述" prop="title" width="120"></el-table-column>
-            <el-table-column label="类型" prop="type" width="100"></el-table-column>
+            <el-table-column label="类型" prop="cat.name" width="100"></el-table-column>
             <el-table-column label="排序" prop="sort" width="100"></el-table-column>
+            <el-table-column label="是否精选" prop="sort" width="100">
+                <template slot-scope="scope">
+                    <el-switch
+                        v-model="scope.row.choice"
+                        active-color="#13ce66"
+                        active-value="1"
+                        inactive-value="0"
+                        @change="handleChange(scope.row)"
+                        inactive-color="#ff4949">
+                    </el-switch>
+                </template>
+            </el-table-column>
             <el-table-column label="操作" width="240" fixed="right">
                 <template slot-scope="scope">
                     <el-button @click="edit(scope.row.id)" size="mini" type="danger">编辑</el-button>
@@ -33,7 +45,8 @@
 //                        type: '小说',
 //                        rank: 1
 //                    }
-                ]
+                ],
+                loading: false
             }
         },
         methods: {
@@ -58,14 +71,26 @@
                 }).catch(() => {this.$message({type: 'info', message: '已取消删除'});});
             },
             getData() {
+                this.loading = true;
                 this.$axios.get('article', {}, res => {
                     if(res.ret == true){
                         this.tableData = res.data;
                     }
+                    this.loading = false;
                 })
             },
             showDetails(id) {
                 this.$router.push({path: 'articleDetails', query: {id}})
+            },
+            handleChange(val) {
+                this.loading = true;
+                this.$axios.post('updateArticle', val, res => {
+                    if(res.ret == true){
+                        this.$message.success('精选状态切换成功,正在刷新列表')
+                        this.getData();
+                    }
+                    this.loading = false;
+                })
             }
         },
         created() {

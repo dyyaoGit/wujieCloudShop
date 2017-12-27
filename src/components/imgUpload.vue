@@ -148,6 +148,7 @@
     .img-button {
         position: relative;
         display: block;
+        cursor: pointer;
         float: left;
         width: 200px;
         height: 200px;

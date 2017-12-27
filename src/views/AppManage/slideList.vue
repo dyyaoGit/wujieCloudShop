@@ -3,7 +3,7 @@
         <div class="clearfix">
             <el-button style="float: right;margin-bottom: 20px;" type="danger" size="small" @click="add">添加轮播图</el-button>
         </div>
-        <el-table border :data="tableData" size="small">
+        <el-table border :data="tableData" size="small" v-loading="loading">
             <el-table-column label="轮播图名" prop="name" width="200"></el-table-column>
             <el-table-column label="轮播图预览图" prop="	value">
                 <template slot-scope="scope">
@@ -34,7 +34,8 @@
 //                        type: '小说',
 //                        rank: 1
 //                    }
-                ]
+                ],
+                loading: false
             }
         },
         methods: {
@@ -64,10 +65,12 @@
                 })
             },
             getData() {
+                this.loading = true;
                 this.$axios.get('getSlideList', {}, res => {
                     if(res.ret == true){
                         this.tableData = res.data;
                     }
+                    this.loading = false;
                 })
             }
         },

@@ -28,7 +28,7 @@
         methods: {
             getItem() {
                 this.$axios.get('getTypeList', {}, res => {
-                    this.formData = res.find(val => val.id == this.$route.query.id)
+                    this.formData = res.data.find(val => val.id == this.$route.query.id)
                     //获取所有分类，并将id为该分类的值复制给formData
                 })
             },

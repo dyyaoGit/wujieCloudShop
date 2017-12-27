@@ -13,10 +13,8 @@ import Layout from '../views/layout/Layout'
 /**
  * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
  * redirect: noredirect           if `redirect:noredirect` will no redirct in the breadcrumb
- * name:'router-name'             the name is used by <keep-alive> (must set!!!)
  * meta : {
-    title: 'title'               the name show in submenu and breadcrumb (recommend set)
-    icon: 'svg-name'             the icon show in the sidebar,
+    title: 'title'               the title show in submenu and breadcrumb (recommend set)
   }
  **/
 export const constantRouterMap = [

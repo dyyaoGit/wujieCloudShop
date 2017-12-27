@@ -102,10 +102,10 @@
             </el-form-item>
         </el-form>
         <h4>商品轮播图</h4>
-        <div class="img-list">
+        <div class="img-list clearfix">
             <div :key="index" :style="'backgroundImage: url(' + item + ')'" v-for="(item, index) in formData.img"
                  class="div-img-item" @click="removeImg(index)"></div>
-            <imgUpload class="clearfix" @uploadSuccess="upImgList"></imgUpload>
+            <imgUpload  @uploadSuccess="upImgList"></imgUpload>
         </div>
 
         <span>商品详情</span>
@@ -117,7 +117,7 @@
 </template>
 
 <script>
-    import imgUpload from '../imgUpload.vue'
+    import imgUpload from '@/components/imgUpload.vue'
     import Tinymce from '@/components/Tinymce'
 
     export default {

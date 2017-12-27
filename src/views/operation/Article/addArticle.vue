@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-form :model="formData" label-width="80px" label-position="right" size="small">
+        <el-form :model="formData" label-width="100px" label-position="right" size="small">
             <el-form-item label="文章名称">
                 <el-input v-model="formData.name" :disabled="!isCanEdit"></el-input>
             </el-form-item>
@@ -16,6 +16,16 @@
                         :value="item.id">
                     </el-option>
                 </el-select>
+            </el-form-item>
+            <el-form-item label="是否精选文章">
+                <el-switch
+                    :disabled="!isCanEdit"
+                    v-model="formData.choice"
+                    active-color="#13ce66"
+                    inactive-color="#ff4949"
+                    active-value="1"
+                    inactive-value="0">
+                </el-switch>
             </el-form-item>
             <el-form-item label="排序">
                 <el-input-number v-model="formData.sort" controls-position="right" :min="1" :max="10" :disabled="!isCanEdit"></el-input-number>
@@ -57,7 +67,8 @@
                     logo: '', //文章头图
                     content: '', //文章内容
                     sort: 1, //排序
-                    cat_id: ''
+                    cat_id: '',
+                    choice: 0 //  是否精选
                 },
                 contentType: [],  //选择框数组
                 isCanEdit: true   //是否可以编辑
