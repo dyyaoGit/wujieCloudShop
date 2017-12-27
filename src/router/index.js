@@ -315,60 +315,6 @@ export const constantRouterMap = [
         ]
 
     },
-
-    {
-        path: '/storeManage',
-        component: Layout,
-        redirect: '/storeManage/index',
-        meta: {title: '店铺管理'},
-        name: '店铺管理',
-        children: [
-            {
-                path: 'index',
-                component: _import('storeManage/applyForActive'),
-                meta: {title: '平台活动申请'}
-            },
-            {
-                path: 'goodsList',
-                component: _import('storeManage/GoodsList'),
-                meta: {title: '已申请商品列表'},
-                hidden: true
-            },
-            {
-                path: 'applyGoods',
-                component: _import('storeManage/addGoods'),
-                meta: {title: '添加商品到活动'},
-                hidden: true
-            }
-        ]
-    },
-    {
-        path: '/couponManage',
-        component: Layout,
-        redirect: '/couponManage/index',
-        meta: {title: '商家优惠券'},
-        name: '商家优惠券',
-        children: [
-            {
-                path: 'index',
-                component: _import('couponManage/couponManage'),
-                meta: {title: '优惠券管理'}
-            },
-            {
-                path: 'new',
-                component: _import('couponManage/editCoupon'),
-                meta: {title: '新建优惠券'},
-                hidden: true
-            },
-            {
-                path: 'edit',
-                component: _import('couponManage/editCoupon'),
-                meta: {title: '优惠券编辑'},
-                name: 'editCoupon',
-                hidden: true
-            }
-        ]
-    },
     {
         path: '/test',
         component: Layout,

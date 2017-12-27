@@ -1,42 +1,36 @@
-# vueAdmin-template
+# 无界云店平台管理系统
 
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
 
-**Live demo:** http://panjiachen.github.io/vueAdmin-template
+## How to use?
 
-[中文文档](https://github.com/PanJiaChen/vueAdmin-template/blob/master/README-zh.md)
+### clone
 
-## Build Setup
+```git
 
-``` bash
+git clone https://github.com/dyyaoGit/wujieCloudShop.git
 
-# Clone project
-git clone https://github.com/PanJiaChen/vueAdmin-template.git
-
-# Install dependencies
-npm install
-
-# serve with hot reload at localhost:9528
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-## Demo
-![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
+### yarn
+使用yarn包管理工具安装可参照下方代码
+```yarn
+yarn install
 
-## Extra
-If you want router permission && generate menu by user role , you can use this branch [permission-control](https://github.com/PanJiaChen/vueAdmin-template/tree/permission-control)
+yarn run dev
+```
 
-## Related Project
- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+### npm
+使用npm包管理工具安装可参照下方代码
+```npm
+npm install
 
- [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
+npm run dev
+```
 
+### 运行
+```
+npm run dev
 
-## License
-[MIT](https://github.com/PanJiaChen/vueAdmin-template/blob/master/LICENSE) license.
+```
+
+该系统是无界云店的商户版本。

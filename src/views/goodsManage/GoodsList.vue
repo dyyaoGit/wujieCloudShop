@@ -26,6 +26,7 @@
             <el-table-column
                 prop="name"
                 label="商品名称"
+                width="150"
             >
             </el-table-column>
             <el-table-column
@@ -108,7 +109,7 @@
             <el-pagination
                 @current-change="pageChange"
                 :current-page.sync="currentPage"
-                :page-size="1"
+                :page-size="10"
                 layout="prev, pager, next, jumper"
                 :total="total">
             </el-pagination>
