@@ -4,8 +4,11 @@
             <el-form-item label="标签名">
                 <el-input v-model="formData.name"></el-input>
             </el-form-item>
+            <el-form-item label="标签链接">
+                <el-input v-model="formData.value.url"></el-input>
+            </el-form-item>
             <el-form-item label="标签ICON">
-                <bgDiv :imgStr="formData.value"></bgDiv>
+                <bgDiv :imgStr="formData.value.img"></bgDiv>
                 <imgUpload @uploadSuccess="upload"></imgUpload>
             </el-form-item>
             <el-form-item>
@@ -27,14 +30,17 @@
             return {
                 formData: {
                     name: '',
-                    value: ''
+                    value: {
+                        img: '',
+                        url: ''
+                    }
                 }
             }
         },
         methods: {
             upload(imgList) {
                 console.log(imgList[0])
-                this.formData.value = imgList[0]
+                this.formData.value.img = imgList[0]
             },
             save() {
                 let address = this.$route.name === "updateRec" ? "updateIcon" : "addIcon"
@@ -49,7 +55,7 @@
                 this.$axios.get('getIcon', {id: this.$route.query.id}, res => {
                     if(res.ret){
                         this.formData = res.data[0];
-                        this.formData.value = res.data[0].logo;
+//                        this.formData.value = res.data[0].logo;
                     }
                 })
             }

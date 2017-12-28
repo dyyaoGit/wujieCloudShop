@@ -27,7 +27,7 @@
         <div>
             <el-form size="small" :inline="true">
                 <el-form-item label="规格名称" label-width="85px" label-position="left">
-                    <el-input v-model="addData.name" @keyup.enter.prevent="add"></el-input>
+                    <el-input v-model="addData.name" @keyup.enter.prevent.native="add"></el-input>
                 </el-form-item>
                 <el-form-item required>
                     <el-button @click="add" type="primary" required>添加规格</el-button>

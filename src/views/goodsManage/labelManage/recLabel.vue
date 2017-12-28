@@ -5,12 +5,12 @@
         </div>
         <el-table :data="tableData" border style="width: 100%" >
             <el-table-column prop="name" label="标签名" width="100"></el-table-column>
-            <el-table-column prop="logo" label="标签ICON" width="200">
+            <el-table-column prop="value" label="标签ICON" width="200">
                 <template slot-scope="scope">
-                    <img :src="scope.row.logo" class="img-item-small">
+                    <img :src="scope.row.value.img" class="img-item-small">
                 </template>
             </el-table-column>
-            <el-table-column label="标签链接" prop="url"></el-table-column>
+            <el-table-column label="标签链接" prop="value.url"></el-table-column>
             <el-table-column prop="title" label="操作" width="220" fixed="right">
                 <template slot-scope="scope">
                     <el-button type="danger" size="mini" @click="edit(scope.row.id)">编辑该标签</el-button>

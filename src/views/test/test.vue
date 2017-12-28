@@ -45,6 +45,8 @@
 
 
 <style scoped>
+.test {
 
+}
 
 </style>

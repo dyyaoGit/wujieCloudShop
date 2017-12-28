@@ -78,7 +78,7 @@
                         <!--待审核操作按钮-->
                         <el-button size="text" type="primary" @click="handleGoods(scope.row)">审核通过</el-button>
                         <el-button size="text" type="danger" @click="handleGoods(scope.row,3)">拒绝上架</el-button>
-                        <el-button size="text"  @click="showDetails(scope.row.id)">查看素材</el-button>
+                        <el-button size="text"  @click="showFodder(scope.row.id)">查看素材</el-button>
                     </div>
                     <el-button size="text" type="primary" @click="showDetails(scope.row.id)">查看详细</el-button>
                 </template>
@@ -148,6 +148,9 @@
             },
             pageChange(val) {
                 this.getData()
+            },
+            showFodder(id) {
+                this.$router.push({path: 'fodderList', query: {id}})
             }
         },
         mounted() {

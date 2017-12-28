@@ -200,6 +200,18 @@ export const constantRouterMap = [
                 component: _import('enterManage/details'),
                 meta: {title: '商户商品详情'},
                 hidden: true
+            },
+            {
+                path: 'fodderList',
+                component: _import('enterManage/fodderList'),
+                meta: {title: '商户素材列表'},
+                hidden: true
+            },
+            {
+                path: 'fodderDetails',
+                component: _import('enterManage/fodderDetails'),
+                meta: {title: '商户素材详细'},
+                hidden: true
             }
         ]
     },
