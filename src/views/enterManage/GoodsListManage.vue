@@ -31,6 +31,22 @@
                 </template>
             </el-table-column>
             <el-table-column
+                prop="choice"
+                label="是否精选"
+                width="100">
+                <template slot-scope="scope">
+                    <el-switch
+                        v-if="scope.row.state == 1 "
+                        v-model="scope.row.choice"
+                        active-color="#13ce66"
+                        inactive-color="#ff4949"
+                        active-value="1"
+                        @change="switchChange(scope.$index)"
+                        inactive-value="0">
+                    </el-switch>
+                </template>
+            </el-table-column>
+            <el-table-column
                 prop="state"
                 label="商品状态"
                 width="100"
@@ -151,6 +167,15 @@
             },
             showFodder(id) {
                 this.$router.push({path: 'fodderList', query: {id}})
+            },
+            switchChange(index) {
+                this.$axios.post('updateGood', this.tableData[index], res => {
+                    if(res.ret){
+                        this.$message.success('操作成功，正在刷新数据')
+                        this.getList();
+                    }
+                })
+
             }
         },
         mounted() {

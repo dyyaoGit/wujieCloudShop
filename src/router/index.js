@@ -24,12 +24,13 @@ export const constantRouterMap = [
     {path: '/404', component: _import('404'), hidden: true},
 
     {
-        path: '/index',
+        path: '/dashboard',
         component: Layout,
+        redirect: '/dashboard/index',
         hidden: true,
         children: [
             {
-                path: '',
+                path: 'index',
                 component: _import('dashboard/index'),
                 meta: {title: '首页'}
             }
@@ -216,6 +217,20 @@ export const constantRouterMap = [
         ]
     },
     {
+        path: '/userManage',
+        component: Layout,
+        redirect: '/userManage/userList',
+        meta: {title: '用户管理'},
+        children: [
+            {
+                path: 'userList',
+                component: _import('userManage/userList'),
+                name: 'userList',
+                meta: {title: '用户列表'}
+            }
+        ]
+    },
+    {
         path: '/brandManage',
         component: Layout,
         redirect: '/brandManage/brandList',
@@ -343,9 +358,62 @@ export const constantRouterMap = [
                 meta: {title: '活动报名详情'},
                 name: 'applyList',
                 hidden: true
+            },
+            {
+                path: 'goodsDetails',
+                component: _import('AppManage/details'),
+                meta: {title: '活动商品详情'},
+                hidden: true
+            },
+            {
+                path: 'tabBarManage',
+                component: _import('AppManage/tabBarManage'),
+                meta: {title: 'tabBar管理'},
+                name: 'tabBarManage'
+            },
+            {
+                path: 'addTabBar',
+                component: _import('AppManage/addTabBar'),
+                meta: {title: '添加tabBar'},
+                name: 'addTabBar',
+                hidden: true
+            },
+            {
+                path: 'editTabBar',
+                component: _import('AppManage/addTabBar'),
+                meta: {title: '添加tabBar'},
+                name: 'editTabBar',
+                hidden: true
             }
         ]
 
+    },
+    {
+        path: '/couponManage',
+        component: Layout,
+        redirect: '/couponManage/index',
+        meta: {title: '优惠券'},
+        name: '优惠券',
+        children: [
+            {
+                path: 'index',
+                component: _import('couponManage/couponManage'),
+                meta: {title: '优惠券管理'}
+            },
+            {
+                path: 'new',
+                component: _import('couponManage/editCoupon'),
+                meta: {title: '新建优惠券'},
+                hidden: true
+            },
+            {
+                path: 'edit',
+                component: _import('couponManage/editCoupon'),
+                meta: {title: '优惠券编辑'},
+                name: 'editCoupon',
+                hidden: true
+            }
+        ]
     },
     {
         path: '/test',
@@ -368,6 +436,7 @@ export const constantRouterMap = [
     },
     {path: '*', redirect: '/404', hidden: true}
 ]
+
 
 export default new Router({
     // mode: 'history', //后端支持可开

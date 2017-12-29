@@ -12,6 +12,21 @@
                 </template>
             </el-table-column>
             <el-table-column prop="content" label="品牌描述"></el-table-column>
+            <el-table-column
+                prop="choice"
+                label="是否精选"
+                width="100">
+                <template slot-scope="scope">
+                    <el-switch
+                        v-model="scope.row.choice"
+                        active-color="#13ce66"
+                        inactive-color="#ff4949"
+                        active-value="1"
+                        @change="switchChange(scope.$index)"
+                        inactive-value="0">
+                    </el-switch>
+                </template>
+            </el-table-column>
             <el-table-column prop="title" label="操作" width="220" fixed="right">
                 <template slot-scope="scope">
                     <el-button type="danger" size="mini" @click="edit(scope.row.id)">编辑该品牌</el-button>
@@ -33,13 +48,16 @@ export default {
 //                    logo: '',
 //                    content: '我是品牌描述'
 //                }
-            ]
+            ],
+            loading: false
         }
     },
     methods: {
         getData() {
+            this.loading = true;
             this.$axios.get('brandManage', {}, res => {
                 this.tableData = res.data;
+                this.loading = false
             })
         },
         edit(id) {
@@ -58,6 +76,15 @@ export default {
                     }
                 })
             }).catch(() => {this.$message({type: 'info', message: '已取消删除'});});
+        },
+        switchChange(index) {
+            this.$axios.post('updateBrand', this.tableData[index], res => {
+                if(res.ret){
+                    this.$message.success('操作成功，正在刷新数据')
+                    this.getData();
+                }
+            })
+
         }
     },
     created() {

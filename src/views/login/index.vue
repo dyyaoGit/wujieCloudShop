@@ -83,7 +83,7 @@
                         this.$axios.post('login', this.loginForm, res => {
                             if(res.ret == true){
                                 this.$message.success('登录成功，正在为您跳转首页...')
-                                setTimeout(() => {this.$router.push('/index'); this.loading = false}, 1500)
+                                setTimeout(() => {this.$router.push('/dashboard/index'); this.loading = false}, 1500)
                             }
                         })
                         this.loading = false;

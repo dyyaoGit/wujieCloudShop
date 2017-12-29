@@ -5,7 +5,7 @@
         </div>
         <el-table border :data="tableData" size="small">
             <el-table-column label="分类名" prop="name"></el-table-column>
-            <el-table-column label="父级编号" prop="parent_id"></el-table-column>
+            <el-table-column label="父级分类" prop="parent_name"></el-table-column>
             <el-table-column label="分类等级" prop="rank">
                 <template slot-scope="scope">
                     <h3 v-if="scope.row.rank === 1">一级分类</h3>

@@ -3,7 +3,7 @@
         <div class="clearfix">
             <el-button style="float: right;margin-bottom: 20px;" type="danger" size="small" @click="add">添加活动</el-button>
         </div>
-        <el-table border :data="tableData" size="small">
+        <el-table border :data="tableData" size="small" v-loading="loading">
             <el-table-column label="活动名" prop="name"></el-table-column>
             <el-table-column label="活动开始时间" prop="start_time"></el-table-column>
             <el-table-column label="结束时间" prop="end_time"></el-table-column>
@@ -29,7 +29,8 @@
         name: '',
         data() {
             return {
-                tableData: []
+                tableData: [],
+                loading: false
             }
         },
         methods: {
@@ -54,6 +55,14 @@
                 }).catch(() => {this.$message({type: 'info', message: '已取消删除'});});
             },
             getData() {
+                this.loading = true;
+                setTimeout(() => {
+                    if(this.loading){
+                        this.loading = false;
+                        this.$message.warning("请求超时，请检查网络！")
+                    }
+                }, 10000)
+
                 this.$axios.get('getActivitiesList', {}, res => {
                     if(res.ret == true){
                         res.data.forEach(val => {
@@ -63,6 +72,7 @@
                         })
                         this.tableData = res.data;
                     }
+                    this.loading = false;
                 })
             },
             showDetails(id) {

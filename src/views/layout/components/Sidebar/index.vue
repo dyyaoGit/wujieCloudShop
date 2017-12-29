@@ -24,11 +24,7 @@ export default {
       return !this.sidebar.opened
     },
     created() {
-      console.log(this.routes)
-      console.log(this.routes)
-      console.log(this.routes)
-      console.log(this.routes)
-      console.log(this.routes)
+
 
     },
     mounted() {

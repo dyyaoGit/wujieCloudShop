@@ -7,13 +7,12 @@
             <el-table-column label="轮播图名" prop="name" width="200"></el-table-column>
             <el-table-column label="轮播图预览图" prop="	value">
                 <template slot-scope="scope">
-                    <img :src="item" v-for="(item,index) in scope.row.value" class="img-item-small" v-if="index<3">
+                    <img :src="item.img" v-for="(item,index) in scope.row.value" class="img-item-small" v-if="index<3">
                 </template>
             </el-table-column>
             <el-table-column label="操作" width="240" fixed="right">
                 <template slot-scope="scope">
                     <el-button @click="edit(scope.row.id)" size="mini" type="danger">编辑</el-button>
-                    <el-button @click="showDetails(scope.row.id)" size="mini" type="primary">查看详细</el-button>
                     <el-button @click="remove(scope.row.id)" size="mini" type="warning">删除</el-button>
                 </template>
             </el-table-column>

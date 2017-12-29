@@ -70,10 +70,11 @@ export default{
     delSlide: '/admin/banner/delete',
     updateSlide: '/admin/banner/update',
 
-//活动管理
+//秒杀活动管理
     getActivitiesList: '/admin/second_kill/index',
     addActivities: '/admin/second_kill/add',
     getApplyList: '/admin/kill_goods/index',  //查看活动报名列表
+    updateApply: '/admin/kill_goods/update',  //修改活动
     updateActivities: '/admin/second_kill/update',
     delActivities: '/admin/second_kill/delete',
 
@@ -95,4 +96,10 @@ export default{
     addIcon: '/admin/icon/add',
     delIcon: '/admin/icon/delete',
     updateIcon: '/admin/icon/update',
+
+//tab-bar管理：
+    getTab: '/admin/tab_Bar/index',
+    addTab: '/admin/tab_Bar/add',
+    updateTab: '/admin/tab_Bar/update',
+    deleteTab: '/admin/tab_Bar/delete',
 }
