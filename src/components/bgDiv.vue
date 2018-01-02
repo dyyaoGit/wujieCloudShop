@@ -6,7 +6,7 @@
              @click="remove(index)"
              >
         </div>
-        <div :class="isCanEdit ? 'bg-img' : 'bg-img-no-edit'" v-if="currentImg.trim()!== ''"
+        <div :class="isCanEdit ? 'bg-img' : 'bg-img-no-edit'" v-if="isNullStr"
              :style="'background-image: url(' + currentImg + '); width:' + width + 'px; height: '+ height + 'px; line-height: ' + height + 'px;'"
              @click="removeSelf"
         >
@@ -55,11 +55,21 @@
             }
         },
         mounted() {
-            console.log(this.imgList)
         },
         watch: {
             imgStr(val) {
                 this.currentImg = val;
+            }
+        },
+        computed: {
+            isNullStr() {
+                if(this.currentImg == undefined){
+                    this.currentImg = '';
+                }
+                console.log(this.currentImg)
+                console.log(this.currentImg)
+                console.log(this.currentImg)
+                return this.currentImg.trim()!==''
             }
         }
     }

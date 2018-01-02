@@ -9,7 +9,11 @@
                     :props="{value: 'id',label: 'name'}"
                     @change="handleChange">
                 </el-cascader>
-
+            </el-form-item>
+            <el-form-item label="标签" prop="tag_id">
+                <el-select v-model="formData.tag_id" multiple :multiple-limit="3" placeholder="可多选，最多三个">
+                    <el-option v-for="(item, index) in tags" :key="index" :value="item.id" :label="item.name"></el-option>
+                </el-select>
             </el-form-item>
             <el-form-item label="商品名称" class="item-wid" prop="name">
                 <el-input v-model="formData.name"></el-input>
@@ -128,7 +132,7 @@
             let needNum = '此处必须填入数字'
             return {
                 inputData: '',
-                testData: '',
+                tags: [], //存放所有的标签
                 addData: {
                     name: '',
                     tag: ''
@@ -138,6 +142,7 @@
                     f_cid: 0,   //一级分类表ID
                     s_cid: 0,   //二级分类ID
                     type: [],   //商品分类
+                    tag_id: [],//标签分类
                     name: '',  //商品名称
                     title: '',  //商品简介
                     products: [     //商品规格
@@ -147,21 +152,8 @@
 //                            empty: ''               //临时存放
 //                        }
 
-
                     ],
-//                    common: '',
-//                    first: '',
-//                    second: '',
-//                    third: '',
-//                    fourth: '',
                     content: '',
-//                    price: {   //各级会员价格
-//                        common: '',
-//                        first: '',
-//                        second: '',
-//                        third: '',
-//                        fourth: ''
-//                    },   由于表单验证需要，将其挪出，提交数据时合并即可
                     ems_price: '',     //邮费
                     img: [],    //商品轮播图
                     stock: '',   //商品库存
@@ -211,7 +203,8 @@
                     fourth: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     stock: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     ems_price: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
-                    title: [{required: true, message: msg, trigger: 'blur'}]
+                    title: [{required: true, message: msg, trigger: 'blur'}],
+                    tag_id: [{required: true, message: msg, trigger: 'blur'}]
                 }
             }
         },
@@ -222,6 +215,7 @@
             if (this.$route.name === 'edit' && this.$route.query.id) {
                 this.getEditData()
             }
+            this.getTags();
         },
         methods: {
             //添加规格
@@ -312,8 +306,9 @@
                         })  //去除所有empty变量提交
                         this.formData = {...this.formData, price: {...this.price}}
                         let address = this.$route.name === 'edit' ? 'updateGood' : 'addGood'
+                        console.log(this.formData)
                         this.$axios.post(address, this.formData, res => {
-                            this.$message.success('添加商品成功，正在跳转商品列表...')
+                            this.$message.success('操作成功，正在跳转商品列表...')
                             setTimeout(() => {
                                 this.$router.push('GoodsList')
                             }, 1500)
@@ -345,6 +340,15 @@
                     else {
                         this.formData.type = [res.data[0].f_category.id]
                     }
+                    this.formData.tag_id = res.data[0].tags.map(val => {
+                        val = val.id;
+                        return val;
+                    })
+                })
+            },
+            getTags() {
+                this.$axios.get('getTag', {}, res => {
+                    this.tags = res.data;
                 })
             }
         }

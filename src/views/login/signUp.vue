@@ -130,6 +130,9 @@
                         })
                     }
                 }
+                else {
+                    this.$message.warning('请输入正确的手机号码')
+                }
 
             },
             showPwd(type=false) {

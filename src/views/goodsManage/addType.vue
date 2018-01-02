@@ -18,6 +18,10 @@
             <el-form-item label="分类名">
                 <el-input v-model="formData.name"></el-input>
             </el-form-item>
+            <el-form-item>
+                <bgDiv :imgStr="formData.img"></bgDiv>
+                <imgUpload @uploadSuccess="upload"></imgUpload>
+            </el-form-item>
             <el-button type="danger" @click="save">
                 添加该分类
             </el-button>
@@ -29,27 +33,34 @@
 </template>
 
 <script>
+    import imgUpload from '@/components/imgUpload.vue'
+    import bgDiv from '@/components/bgDiv.vue'
     export default {
         name: '',
+        components: {imgUpload, bgDiv},
         data() {
             return {
                 typeList: [],
                 formData: {
                     name: '',
-                    parent_id: ''
+                    parent_id: '',
+                    img: ''
                 }
             }
         },
         methods: {
             save() {
                 console.log(this.formData);
-                if(this.formData.name.trim()!== '' && this.formData.parent_id!== ''){  //此处id防止js 0自动转换为false
+                if(this.formData.name.trim()!== '' && this.formData.parent_id!== '' && this.formData.img){  //此处id防止js 0自动转换为false
                     this.$axios.post('addType', this.formData, res => {
                         if(res.ret == true){
                             this.$message.success('添加成功!正在刷新数据...');
                             setTimeout(() => {this.$router.back();} , 1500)
                         }
                     })
+                }
+                else{
+                    this.$message.warning('请确认填写完整信息')
                 }
             },
             getData() {
@@ -62,6 +73,10 @@
 //                        }
 //                    })
                 })
+            },
+            upload(val) {
+                console.log(val)
+                this.formData.img = val[0];
             }
         },
         mounted() {

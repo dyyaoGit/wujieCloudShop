@@ -29,6 +29,15 @@
                 </template>
             </el-table-column>
         </el-table>
+        <div style="text-align: right;">
+            <el-pagination
+                @current-change="handleCurrentChange"
+                :current-page.sync="currentPage"
+                :page-size="10"
+                layout="prev, pager, next, jumper"
+                :total="total">
+            </el-pagination>
+        </div>
     </div>
 </template>
 
@@ -46,7 +55,9 @@
 //                        rank: 1
 //                    }
                 ],
-                loading: false
+                loading: false,
+                currentPage: 1,
+                total: 0
             }
         },
         methods: {
@@ -72,7 +83,10 @@
             },
             getData() {
                 this.loading = true;
-                this.$axios.get('article', {}, res => {
+                this.$axios.get('article', {page: this.currentPage}, res => {
+                    if(this.currentPage === 1){
+                        this.total = res.msg;
+                    }
                     if(res.ret == true){
                         this.tableData = res.data;
                     }
@@ -91,6 +105,11 @@
                     }
                     this.loading = false;
                 })
+            },
+            handleCurrentChange(val) {
+                console.log(val)
+                this.currentPage = val;
+                this.getData();
             }
         },
         created() {

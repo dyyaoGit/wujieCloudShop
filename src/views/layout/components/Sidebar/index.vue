@@ -1,6 +1,6 @@
 <template>
   <scroll-bar>
-    <el-menu mode="vertical" unique-opened :default-active="$route.path"  background-color="#304156" text-color="#fff" active-text-color="#409EFF">
+    <el-menu mode="vertical" unique-opened :default-active="$route.path"  background-color="#ffffff" text-color="#4d4d4d" active-text-color="#fff">
       <sidebar-item :routes="routes"></sidebar-item>
     </el-menu>
   </scroll-bar>
@@ -28,12 +28,6 @@ export default {
 
     },
     mounted() {
-      console.log(this.routes)
-      console.log(this.routes)
-      console.log(this.routes)
-      console.log(this.routes)
-      console.log(this.routes)
-      console.log(this.routes)
 
     }
   }

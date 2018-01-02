@@ -5,6 +5,10 @@
                 <el-input v-model="formData.name"></el-input>
             </el-form-item>
             <el-form-item>
+                <bgDiv :imgStr="img"></bgDiv>
+                <imgUpload @uploadSuccess="upload"></imgUpload>
+            </el-form-item>
+            <el-form-item>
                 <el-button type="danger" @click="save">保存修改</el-button>
                 <el-button type="primary" @click="$router.back()">
                     返回
@@ -15,25 +19,29 @@
 </template>
 
 <script>
+    import imgUpload from '@/components/imgUpload.vue'
+    import bgDiv from '@/components/bgDiv.vue'
     export default {
         name: '',
+        components: {imgUpload, bgDiv},
         data() {
             return {
                 formData: {
                     name: '',
-                    id: ''
-                }
+                    id: '',
+                    img: ''
+                },
+                img: ''
             }
         },
         methods: {
             getItem() {
-                this.$axios.get('getTypeList', {}, res => {
-                    this.formData = res.data.find(val => val.id == this.$route.query.id)
-                    //获取所有分类，并将id为该分类的值复制给formData
+                this.$axios.get('getCategory', {id: this.$route.query.id}, res => {
+                    this.formData = res.data[0];
                 })
             },
             save() {
-                if(this.formData.name.trim() && this.formData.id){
+                if(this.formData.name.trim() && this.formData.id && this.formData.img){
                     this.$axios.post('updateType', {name: this.formData.name, id: this.formData.id}, res => {
                         if(res.ret == true){
                             this.$message.success('修改分类成功，正在为您跳转...')
@@ -41,6 +49,9 @@
                         }
                     })
                 }
+            },
+            upload(val) {
+                this.formData.img = val[0]
             }
         },
         mounted() {

@@ -26,6 +26,7 @@ export default {
 
 <style scoped>
 .hamburger {
+    color: #fff;
     display: inline-block;
     width: 20px;
     height: 20px;

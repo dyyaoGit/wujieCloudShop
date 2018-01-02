@@ -1,6 +1,7 @@
 <template>
     <el-menu class="navbar" mode="horizontal">
-        <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
+        <!--<hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>-->
+        <i class="iconfont icon-menu1" style="line-height: 67px;display: block; float: left;margin-left: 20px;font-weight: 100;color:#333;"></i>
         <breadcrumb></breadcrumb>
         <div class="nav-title">无界云店平台管理后台</div>
         <el-dropdown class="avatar-container" trigger="click">
@@ -52,13 +53,15 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
     .navbar {
+        background-color: #fff;
         position: relative;
-        height: 50px;
-        line-height: 50px;
+        color: #333;
+        height: 67px;
+        line-height: 67px;
         border-radius: 0px !important;
         .hamburger-container {
             line-height: 58px;
-            height: 50px;
+            height: 67px;
             float: left;
             padding: 0 10px;
         }
@@ -69,7 +72,7 @@
             color: red;
         }
         .avatar-container {
-            height: 50px;
+            height: 67px;
             display: inline-block;
             position: absolute;
             right: 35px;
@@ -78,9 +81,13 @@
                 margin-top: 5px;
                 position: relative;
                 .user-avatar {
+                    display: block;
+                    line-height: 67px;
+                    color: #333;
                     font-size: 34px;
                 }
                 .el-icon-caret-bottom {
+                    color: #333;
                     position: absolute;
                     right: -20px;
                     top: 25px;
@@ -91,11 +98,13 @@
     }
 
     .nav-title {
+        font-family: "Helvetica Neue",Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+        font-size: 23px;
         position: absolute;
         left: 45%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        font-weight: bold;
+        top: 67%;
+        transform: translate(-67%, -67%);
+        /*font-weight: bold;*/
     }
 </style>
 
