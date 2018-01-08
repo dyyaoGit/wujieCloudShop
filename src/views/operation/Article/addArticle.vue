@@ -30,8 +30,26 @@
             <el-form-item label="排序">
                 <el-input-number v-model="formData.sort" controls-position="right" :min="1" :max="10" :disabled="!isCanEdit"></el-input-number>
             </el-form-item>
+
+            <el-form-item label="上传头图视频">
+                <el-switch
+                    :disabled="!isCanEdit"
+                    v-model="formData.isVideo"
+                    active-color="#13ce66"
+                    inactive-color="#ff4949"
+                    @change="isVideoChange"
+                >
+                </el-switch>
+            </el-form-item>
+            <el-form-item label="上传视频" v-if="formData.isVideo">
+                <imgUpload @uploadSuccess="uploaderVideo" :max="1" v-if="isCanEdit" btnId="upVideo" containerId="upVideoBox"></imgUpload>
+            </el-form-item>
+            <el-form-item label="头图视频" v-if="formData.video">
+                <videoPlayer :options="playerOptions" class="video-box" ref="videoPlayer" ></videoPlayer>
+            </el-form-item>
+
             <el-form-item label="文章头图">
-                <bgDiv :imgStr="formData.logo" :isCanEdit="isCanEdit"></bgDiv>
+                <bgDiv :imgStr="formData.logo" :isCanEdit="isCanEdit" v-if="!formData.isVideo"></bgDiv>
                 <imgUpload @uploadSuccess="uploader" :max="1" v-if="isCanEdit"></imgUpload>
             </el-form-item>
             <el-form-item label="文章内容">
@@ -49,6 +67,7 @@
 </template>
 
 <script>
+    import { videoPlayer } from 'vue-video-player'
     import imgUpload from '@/components/imgUpload'
     import bgDiv from '@/components/bgDiv'
     import TinyEdit from '@/components/Tinymce'
@@ -56,7 +75,8 @@
         components: {
             imgUpload,  //七牛上传组件
             bgDiv,    //图片显示组件
-            TinyEdit  //富文本
+            TinyEdit,  //富文本
+            videoPlayer
         },
         name: '',
         data() {
@@ -68,10 +88,22 @@
                     content: '', //文章内容
                     sort: 1, //排序
                     cat_id: '',
-                    choice: 0 //  是否精选
+                    choice: 0, //  是否精选
+                    isVideo: false,
+                    video: '' //视频播放链接
                 },
                 contentType: [],  //选择框数组
-                isCanEdit: true   //是否可以编辑
+                isCanEdit: true,   //是否可以编辑
+                playerOptions: { //视频播放控件设置
+                    muted: true,    //是否静音
+                    language: 'zh',
+                    playbackRates: [0.5, 1.0, 1.5, 2.0],
+                    sources: [{
+                        type: "video/mp4",
+                        src: ""   //视频播放地址
+                    }],
+                    poster: "",     //视频背景图
+                }
             }
         },
         methods: {
@@ -100,6 +132,12 @@
             },
             uploader(imgList) {
                 this.formData.logo = imgList[0]
+                if(this.formData.isVideo){
+                    this.playerOptions.poster = imgList[0]
+                }
+                else {
+                    this.playerOptions.poster = ''
+                }
             },
             getSelect() {
                 console.log(1)
@@ -109,6 +147,29 @@
                         resolve()
                     })
                 })
+            },
+            isVideoChange(val) {
+                this.$confirm('此操作将清空已经上传的图片或视频数据, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.formData.logo = ''
+                    this.formData.video = ''
+                    this.playerOptions.sources[0].src = ''
+
+                }).catch(() => {
+                    this.formData.isVideo = !this.formData.isVideo
+                    this.$message({
+                        type: 'info',
+                        message: '已取消操作'
+                    });
+                });
+            },
+            uploaderVideo(val) {
+                console.log(val)
+                this.playerOptions.sources[0].src = val[0]
+                this.formData.video = val[0]
             }
         },
         created() {
@@ -133,4 +194,18 @@
         min-height: 200px
     }
 
+</style>
+<style>
+    .video-box .vjs-tech,.video-box,.video-js{
+        position: relative;
+        display: block;
+        width: 342px;
+        height: 132px;
+    }
+    .vjs-big-play-button {
+        position: absolute;
+        left: 50%!important;
+        top: 50%!important;
+        transform: translate(-50%, -50%);
+    }
 </style>

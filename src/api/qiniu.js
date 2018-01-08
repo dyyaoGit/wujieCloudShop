@@ -60,6 +60,7 @@ export default function(option, cb, progress){
             'FileUploaded': function(up, file, info) {
                 // var info = JSON.parse(info);
                 // console.log(info)
+                console.log(file)
                 let infoBack = JSON.parse(info.response)
                 cb && cb(infoBack);
                 // self.form.img = info.data.url;

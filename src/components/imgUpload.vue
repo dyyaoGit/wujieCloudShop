@@ -1,6 +1,6 @@
 <template>
-    <label id="container" class="img-button">
-        <input type="file" class="upload-input" id="btnupload" name="img" />
+    <label :id="containerId" class="img-button">
+        <input type="file" class="upload-input" :id="btnId" name="img" />
     </label>
 </template>
 
@@ -17,6 +17,14 @@
             max: {
                 type: Number,
                 default: 5
+            },
+            btnId: {
+                type: String,
+                default: "btnupload"
+            },
+            containerId: {
+                type: String,
+                default: "container"
             }
         },
         data() {
@@ -33,6 +41,7 @@
                 this.dialogVisible = false
             },
             getToken(){
+                let self = this;
                 this.dialogVisible = true; //遮罩显示
                 this.$nextTick(() => {
                     if(!this.qiniuInit){
@@ -41,6 +50,8 @@
                                 this.qiniuInit = true;
                                 qiniu({
                                     token: res.data.uptoken,
+                                    button: self.btnId,
+                                    container: self.containerId
                                 }, (info, file) => {
                                     this.imgList.push(info.data.url);
                                     this.handleSubmit();

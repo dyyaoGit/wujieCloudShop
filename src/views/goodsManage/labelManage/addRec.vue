@@ -5,10 +5,10 @@
                 <el-input v-model="formData.name"></el-input>
             </el-form-item>
             <el-form-item label="标签链接">
-                <el-input v-model="formData.value.url"></el-input>
+                <el-input v-model="formData.url"></el-input>
             </el-form-item>
             <el-form-item label="标签ICON">
-                <bgDiv :imgStr="formData.value.img"></bgDiv>
+                <bgDiv :imgStr="formData.img"></bgDiv>
                 <imgUpload @uploadSuccess="upload"></imgUpload>
             </el-form-item>
             <el-form-item>
@@ -30,17 +30,15 @@
             return {
                 formData: {
                     name: '',
-                    value: {
-                        img: '',
-                        url: ''
-                    }
+                    img: '',
+                    url: ''
                 }
             }
         },
         methods: {
             upload(imgList) {
                 console.log(imgList[0])
-                this.formData.value.img = imgList[0]
+                this.formData.img = imgList[0]
             },
             save() {
                 let address = this.$route.name === "updateRec" ? "updateIcon" : "addIcon"
