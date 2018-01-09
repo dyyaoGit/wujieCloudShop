@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/components/imgUpload.vue" line="77" />
+    <bookmark url="file://$PROJECT_DIR$/src/components/imgUpload.vue" line="83" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="355bfc31-9614-4cf2-a397-3bc623a20fb5" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/videoPlayer.vue" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/api/qiniu.js" afterPath="$PROJECT_DIR$/src/api/qiniu.js" />
       <change beforePath="$PROJECT_DIR$/src/components/imgUpload.vue" afterPath="$PROJECT_DIR$/src/components/imgUpload.vue" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
-      <change beforePath="$PROJECT_DIR$/src/views/goodsManage/labelManage/addRec.vue" afterPath="$PROJECT_DIR$/src/views/goodsManage/labelManage/addRec.vue" />
-      <change beforePath="$PROJECT_DIR$/src/views/goodsManage/labelManage/recLabel.vue" afterPath="$PROJECT_DIR$/src/views/goodsManage/labelManage/recLabel.vue" />
       <change beforePath="$PROJECT_DIR$/src/views/operation/Article/addArticle.vue" afterPath="$PROJECT_DIR$/src/views/operation/Article/addArticle.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -78,10 +71,10 @@
       <file leaf-file-name="addArticle.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/operation/Article/addArticle.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="158" column="58" lean-forward="true" selection-start-line="158" selection-start-column="58" selection-end-line="158" selection-end-column="58" />
+            <state relative-caret-position="1151">
+              <caret line="131" column="64" lean-forward="true" selection-start-line="131" selection-start-column="64" selection-end-line="131" selection-end-column="64" />
               <folding>
-                <element signature="e#3267#3313#0" expanded="true" />
+                <element signature="e#3283#3318#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,8 +83,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+            <state relative-caret-position="240">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="48" />
               <folding>
                 <element signature="e#36#57#0" expanded="true" />
                 <element signature="e#246#287#0" expanded="true" />
@@ -103,8 +96,8 @@
       <file leaf-file-name="imgUpload.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/imgUpload.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="888">
-              <caret line="58" column="29" lean-forward="true" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+            <state relative-caret-position="96">
+              <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -155,7 +148,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>boundary</find>
       <find>end_time</find>
       <find>type</find>
       <find>getEditData</find>
@@ -185,6 +177,7 @@
       <find>50</find>
       <find>user-avatar</find>
       <find>recLabel</find>
+      <find>isVideo</find>
     </findStrings>
     <replaceStrings>
       <replace>4</replace>
@@ -215,6 +208,7 @@
       <replace>img-label</replace>
       <replace>upload-input</replace>
       <replace>67</replace>
+      <replace>is_video</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -297,10 +291,10 @@
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="572" />
-    <option name="y" value="452" />
-    <option name="width" value="1280" />
-    <option name="height" value="773" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="2578" />
+    <option name="height" value="1420" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -386,7 +380,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cloudShopCt" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
@@ -395,18 +389,18 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views\goodsManage\labelManage" />
-      <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views" />
-      <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views\operation" />
-      <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views\commoditiesManage\uploadGoods" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views\goodsManage\uploadGoods" />
       <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views\AppManage" />
       <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views\enterManage" />
       <recent name="C:\Users\64661_000\Desktop\外包\cloudShop" />
       <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views\storeManage" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views\goodsManage\labelManage" />
+      <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views" />
+      <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views\operation" />
+      <recent name="C:\Users\64661_000\Desktop\外包\cloudShop\src\views\commoditiesManage\uploadGoods" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -469,7 +463,7 @@
       <workItem from="1515378384357" duration="340000" />
       <workItem from="1515400243831" duration="3428000" />
       <workItem from="1515403738211" duration="202000" />
-      <workItem from="1515406088149" duration="6909000" />
+      <workItem from="1515406088149" duration="12220000" />
     </task>
     <task id="LOCAL-00001" summary="chajian">
       <created>1512999491088</created>
@@ -660,11 +654,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514892099124</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="add videoPlayer in Opration/addArticle">
+      <created>1515414669723</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1515414669723</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="435228000" />
+    <option name="totallyTimeSpent" value="440539000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="2578" height="1420" extended-state="6" />
@@ -736,7 +737,8 @@
     <MESSAGE value="修改标签管理列表，增加标签录入轮播图的数据。增加一个推荐标签的增删改查路由。存在问题：推荐标签增加数据字段和获取的数据字段不统一。修改的数据字段也不统一。导致无法完成修改" />
     <MESSAGE value="增加平台查看商户素材的路由" />
     <MESSAGE value="新配色" />
-    <option name="LAST_COMMIT_MESSAGE" value="新配色" />
+    <MESSAGE value="add videoPlayer in Opration/addArticle" />
+    <option name="LAST_COMMIT_MESSAGE" value="add videoPlayer in Opration/addArticle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1066,14 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/dashboard/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/videoPlayer.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -1092,8 +1086,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        <state relative-caret-position="240">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="48" />
           <folding>
             <element signature="e#36#57#0" expanded="true" />
             <element signature="e#246#287#0" expanded="true" />
@@ -1101,20 +1095,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/dashboard/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/imgUpload.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="888">
-          <caret line="58" column="29" lean-forward="true" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+        <state relative-caret-position="96">
+          <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/operation/Article/addArticle.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="158" column="58" lean-forward="true" selection-start-line="158" selection-start-column="58" selection-end-line="158" selection-end-column="58" />
+        <state relative-caret-position="1151">
+          <caret line="131" column="64" lean-forward="true" selection-start-line="131" selection-start-column="64" selection-end-line="131" selection-end-column="64" />
           <folding>
-            <element signature="e#3267#3313#0" expanded="true" />
+            <element signature="e#3283#3318#0" expanded="true" />
           </folding>
         </state>
       </provider>

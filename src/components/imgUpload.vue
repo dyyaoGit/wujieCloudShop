@@ -1,6 +1,8 @@
 <template>
-    <label :id="containerId" class="img-button">
-        <input type="file" class="upload-input" :id="btnId" name="img" />
+    <!--<label :id="containerId" class="img-button video-button">-->
+    <label :id="containerId" :class="[{'el-button': isButton}, {'el-button--danger': isButton}, {'el-button--small': isButton}, {'img-button': !isButton}]">
+        <input type="file" class="upload-input" :id="btnId"  name="img" />
+        <span>上传视频</span>
     </label>
 </template>
 
@@ -25,6 +27,10 @@
             containerId: {
                 type: String,
                 default: "container"
+            },
+            isButton: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
@@ -191,4 +197,8 @@
         background-color: #fff;
         cursor: pointer;
     }
+
+    /*上传视频按钮样式*/
+
+
 </style>

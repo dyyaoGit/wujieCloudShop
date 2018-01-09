@@ -34,22 +34,22 @@
             <el-form-item label="上传头图视频">
                 <el-switch
                     :disabled="!isCanEdit"
-                    v-model="formData.isVideo"
+                    v-model="formData.is_video"
                     active-color="#13ce66"
                     inactive-color="#ff4949"
-                    @change="isVideoChange"
+                    @change="is_videoChange"
                 >
                 </el-switch>
             </el-form-item>
-            <el-form-item label="上传视频" v-if="formData.isVideo">
-                <imgUpload @uploadSuccess="uploaderVideo" :max="1" v-if="isCanEdit" btnId="upVideo" containerId="upVideoBox"></imgUpload>
+            <el-form-item label="上传视频" v-if="formData.is_video">
+                <imgUpload @uploadSuccess="uploaderVideo" :max="1" v-if="isCanEdit" btnId="upVideo" containerId="upVideoBox" :isButton="true"></imgUpload>
             </el-form-item>
             <el-form-item label="头图视频" v-if="formData.video">
                 <videoPlayer :options="playerOptions" class="video-box" ref="videoPlayer" ></videoPlayer>
             </el-form-item>
 
             <el-form-item label="文章头图">
-                <bgDiv :imgStr="formData.logo" :isCanEdit="isCanEdit" v-if="!formData.isVideo"></bgDiv>
+                <bgDiv :imgStr="formData.logo" :isCanEdit="isCanEdit" v-if="formData.logo"></bgDiv>
                 <imgUpload @uploadSuccess="uploader" :max="1" v-if="isCanEdit"></imgUpload>
             </el-form-item>
             <el-form-item label="文章内容">
@@ -67,6 +67,8 @@
 </template>
 
 <script>
+    import 'video.js/dist/video-js.css'
+    import 'vue-video-player/src/custom-theme.css'
     import { videoPlayer } from 'vue-video-player'
     import imgUpload from '@/components/imgUpload'
     import bgDiv from '@/components/bgDiv'
@@ -89,7 +91,7 @@
                     sort: 1, //排序
                     cat_id: '',
                     choice: 0, //  是否精选
-                    isVideo: false,
+                    is_video: false,
                     video: '' //视频播放链接
                 },
                 contentType: [],  //选择框数组
@@ -125,14 +127,14 @@
             },
             getEditData() {
                 this.$axios.get('article', {id: this.$route.query.id}, res => {
-                    console.log(2)
-
                     this.formData = res.data[0]
+                    this.playerOptions.sources[0].src = res.data[0].video
+                    this.playerOptions.poster = res.data[0].logo
                 })
             },
             uploader(imgList) {
                 this.formData.logo = imgList[0]
-                if(this.formData.isVideo){
+                if(this.formData.is_video){
                     this.playerOptions.poster = imgList[0]
                 }
                 else {
@@ -140,7 +142,6 @@
                 }
             },
             getSelect() {
-                console.log(1)
                 return new Promise(resolve => {
                     this.$axios.get('articleType', {}, res => {
                         this.contentType = res.data;
@@ -148,7 +149,7 @@
                     })
                 })
             },
-            isVideoChange(val) {
+            is_videoChange(val) {
                 this.$confirm('此操作将清空已经上传的图片或视频数据, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
@@ -159,7 +160,7 @@
                     this.playerOptions.sources[0].src = ''
 
                 }).catch(() => {
-                    this.formData.isVideo = !this.formData.isVideo
+                    this.formData.is_video = !this.formData.is_video
                     this.$message({
                         type: 'info',
                         message: '已取消操作'
@@ -167,9 +168,10 @@
                 });
             },
             uploaderVideo(val) {
-                console.log(val)
                 this.playerOptions.sources[0].src = val[0]
                 this.formData.video = val[0]
+                this.formData.logo = `${val[0]}?vframe/jpg/offset/0`
+                this.playerOptions.poster = `${val[0]}?vframe/jpg/offset/0`
             }
         },
         created() {
@@ -196,11 +198,15 @@
 
 </style>
 <style>
-    .video-box .vjs-tech,.video-box,.video-js{
+    .video-box,.video-box,.video-js{
         position: relative;
         display: block;
         width: 342px;
         height: 132px;
+    }
+    .vjs-tech {
+        width: 100%;
+        height: 100%;
     }
     .vjs-big-play-button {
         position: absolute;
