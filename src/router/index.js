@@ -398,12 +398,12 @@ export const constantRouterMap = [
             {
                 path: 'index',
                 component: _import('storeManage/applyForActive'),
-                meta: {title: '平台活动申请'}
+                meta: {title: '秒杀活动添加'}
             },
             {
                 path: 'goodsList',
                 component: _import('storeManage/GoodsList'),
-                meta: {title: '已申请商品列表'},
+                meta: {title: '已添加商品列表'},
                 hidden: true
             },
             {
@@ -415,7 +415,7 @@ export const constantRouterMap = [
             {
                 path: 'showDetails',
                 component: _import('storeManage/addGoods'),
-                meta: {title: '查看报名详情'},
+                meta: {title: '查看详情'},
                 hidden: true,
                 name: 'showDetails'
             }

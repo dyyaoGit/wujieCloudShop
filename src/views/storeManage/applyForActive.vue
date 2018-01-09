@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>秒杀活动申请</h3>
+        <h3>秒杀活动</h3>
         <el-table border :data="tableData" size="small">
             <el-table-column label="活动名" prop="name"></el-table-column>
             <el-table-column label="活动开始时间" prop="start_time"></el-table-column>
@@ -12,7 +12,7 @@
             </el-table-column>
             <el-table-column>
                 <template slot-scope="scope">
-                    <el-button size="mini" type="danger" @click.native="applyList(scope.row.id)">申请参加该活动</el-button>
+                    <el-button size="mini" type="danger" @click.native="applyList(scope.row.id)">添加商品到该活动</el-button>
                 </template>
             </el-table-column>
         </el-table>

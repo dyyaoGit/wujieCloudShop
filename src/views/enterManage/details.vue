@@ -15,6 +15,12 @@
             <el-form-item label="商品名称" class="item-wid" prop="name">
                 <el-input v-model="formData.name" :disabled="true"></el-input>
             </el-form-item>
+            <el-form-item label="商品标签">
+                <el-tag v-for="(item, index) in formData.tags" :key="index">{{item.name}}</el-tag>
+            </el-form-item>
+            <el-form-item label="商品品牌">
+                <el-tag type="danger">{{formData.brand.name}}</el-tag>
+            </el-form-item>
             <el-form-item label="商品简介">
                 <el-input v-model="formData.title" :disabled="true"></el-input>
             </el-form-item>
@@ -128,6 +134,8 @@
                 formData: {
                     f_cid: 0,   //一级分类表ID
                     s_cid: 0,   //二级分类ID
+                    tag_id: [],//标签分类
+                    brand_id: '', //商品品牌
                     type: [],   //商品分类
                     name: '',  //商品名称
                     title: '',  //商品简介

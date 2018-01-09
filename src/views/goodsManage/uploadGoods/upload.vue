@@ -15,6 +15,11 @@
                     <el-option v-for="(item, index) in tags" :key="index" :value="item.id" :label="item.name"></el-option>
                 </el-select>
             </el-form-item>
+            <el-form-item label="品牌" prop="brand">
+                <el-select v-model="formData.brand_id">
+                    <el-option v-for="(item, index) in brands" :key="index" :value="item.id" :label="item.name"></el-option>
+                </el-select>
+            </el-form-item>
             <el-form-item label="商品名称" class="item-wid" prop="name">
                 <el-input v-model="formData.name"></el-input>
             </el-form-item>
@@ -133,6 +138,7 @@
             return {
                 inputData: '',
                 tags: [], //存放所有的标签
+                brands: [], //存放获取到的品牌列表
                 addData: {
                     name: '',
                     tag: ''
@@ -143,6 +149,7 @@
                     s_cid: 0,   //二级分类ID
                     type: [],   //商品分类
                     tag_id: [],//标签分类
+                    brand_id: '', //商品品牌
                     name: '',  //商品名称
                     title: '',  //商品简介
                     products: [     //商品规格
@@ -204,7 +211,8 @@
                     stock: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     ems_price: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     title: [{required: true, message: msg, trigger: 'blur'}],
-                    tag_id: [{required: true, message: msg, trigger: 'blur'}]
+                    tag_id: [{required: true, message: msg, trigger: 'blur'}],
+                    brand: [{required: true, message: msg, trigger: 'blur'}]
                 }
             }
         },
@@ -216,6 +224,7 @@
                 this.getEditData()
             }
             this.getTags();
+            this.getBrands();
         },
         methods: {
             //添加规格
@@ -306,7 +315,7 @@
                         })  //去除所有empty变量提交
                         this.formData = {...this.formData, price: {...this.price}}
                         let address = this.$route.name === 'edit' ? 'updateGood' : 'addGood'
-                        console.log(this.formData)
+
                         this.$axios.post(address, this.formData, res => {
                             this.$message.success('操作成功，正在跳转商品列表...')
                             setTimeout(() => {
@@ -332,8 +341,8 @@
             getEditData() {
                 this.$axios.get('getGoodList', {id: this.$route.query.id}, res => {
                     this.formData = {...this.formData, ...res.data[0]}
+                    this.formData.brand_id = res.data[0].brand.id
                     this.price = {...res.data[0].price}  //此处因为数据不是在formData中，所以，将数据回填到price。
-                    console.log(res.data[0].price)
                     if (res.data[0].s_category) {
                         this.formData.type = [res.data[0].f_category.id, res.data[0].s_category.id]
                     }
@@ -349,6 +358,11 @@
             getTags() {
                 this.$axios.get('getTag', {}, res => {
                     this.tags = res.data;
+                })
+            },
+            getBrands() {
+                this.$axios.get('getBrands', {}, res => {
+                    this.brands = res.data;
                 })
             }
         }
