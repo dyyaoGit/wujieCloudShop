@@ -389,6 +389,39 @@ export const constantRouterMap = [
 
     },
     {
+        path: '/storeManage',
+        component: Layout,
+        redirect: '/storeManage/index',
+        meta: {title: '店铺管理'},
+        name: '店铺管理',
+        children: [
+            {
+                path: 'index',
+                component: _import('storeManage/applyForActive'),
+                meta: {title: '平台活动申请'}
+            },
+            {
+                path: 'goodsList',
+                component: _import('storeManage/GoodsList'),
+                meta: {title: '已申请商品列表'},
+                hidden: true
+            },
+            {
+                path: 'applyGoods',
+                component: _import('storeManage/addGoods'),
+                meta: {title: '添加商品到活动'},
+                hidden: true
+            },
+            {
+                path: 'showDetails',
+                component: _import('storeManage/addGoods'),
+                meta: {title: '查看报名详情'},
+                hidden: true,
+                name: 'showDetails'
+            }
+        ]
+    },
+    {
         path: '/couponManage',
         component: Layout,
         redirect: '/couponManage/index',

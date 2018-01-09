@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="355bfc31-9614-4cf2-a397-3bc623a20fb5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/components/imgUpload.vue" afterPath="$PROJECT_DIR$/src/components/imgUpload.vue" />
-      <change beforePath="$PROJECT_DIR$/src/views/operation/Article/addArticle.vue" afterPath="$PROJECT_DIR$/src/views/operation/Article/addArticle.vue" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" afterPath="$PROJECT_DIR$/src/router/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/router/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3048">
-              <caret line="128" column="59" lean-forward="false" selection-start-line="128" selection-start-column="48" selection-end-line="128" selection-end-column="59" />
+            <state relative-caret-position="213">
+              <caret line="392" column="26" lean-forward="true" selection-start-line="392" selection-start-column="26" selection-end-line="392" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -68,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addArticle.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="addArticle.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/operation/Article/addArticle.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1151">
@@ -243,7 +242,6 @@
         <option value="$PROJECT_DIR$/src/api/service.js" />
         <option value="$PROJECT_DIR$/src/views/AppManage/addTabBar.vue" />
         <option value="$PROJECT_DIR$/src/views/AppManage/tabBarManage.vue" />
-        <option value="$PROJECT_DIR$/src/router/index.js" />
         <option value="$PROJECT_DIR$/src/views/login/index.vue" />
         <option value="$PROJECT_DIR$/src/views/AppManage/slideList.vue" />
         <option value="$PROJECT_DIR$/src/views/login/signUp.vue" />
@@ -268,6 +266,7 @@
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/components/imgUpload.vue" />
         <option value="$PROJECT_DIR$/src/views/operation/Article/addArticle.vue" />
+        <option value="$PROJECT_DIR$/src/router/index.js" />
       </list>
     </option>
   </component>
@@ -335,6 +334,12 @@
               <item name="cloudShop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloudShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloudShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cloudShop" type="b2602c69:ProjectViewProjectNode" />
@@ -463,7 +468,7 @@
       <workItem from="1515378384357" duration="340000" />
       <workItem from="1515400243831" duration="3428000" />
       <workItem from="1515403738211" duration="202000" />
-      <workItem from="1515406088149" duration="12220000" />
+      <workItem from="1515406088149" duration="12540000" />
     </task>
     <task id="LOCAL-00001" summary="chajian">
       <created>1512999491088</created>
@@ -661,11 +666,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515414669723</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="完成文章视频添加。增删改查。">
+      <created>1515470693813</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1515470693813</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="440539000" />
+    <option name="totallyTimeSpent" value="440859000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="2578" height="1420" extended-state="6" />
@@ -738,7 +750,8 @@
     <MESSAGE value="增加平台查看商户素材的路由" />
     <MESSAGE value="新配色" />
     <MESSAGE value="add videoPlayer in Opration/addArticle" />
-    <option name="LAST_COMMIT_MESSAGE" value="add videoPlayer in Opration/addArticle" />
+    <MESSAGE value="完成文章视频添加。增删改查。" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成文章视频添加。增删改查。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1032,14 +1045,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3048">
-          <caret line="128" column="59" lean-forward="false" selection-start-line="128" selection-start-column="48" selection-end-line="128" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/goodsManage/labelManage/addRec.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1248">
@@ -1118,6 +1123,14 @@
           <folding>
             <element signature="e#3283#3318#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="392" column="26" lean-forward="true" selection-start-line="392" selection-start-column="26" selection-end-line="392" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
