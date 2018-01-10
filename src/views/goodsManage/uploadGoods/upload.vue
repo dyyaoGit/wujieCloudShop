@@ -10,7 +10,7 @@
                     @change="handleChange">
                 </el-cascader>
             </el-form-item>
-            <el-form-item label="标签" prop="tag_id">
+            <el-form-item label="标签">
                 <el-select v-model="formData.tag_id" multiple :multiple-limit="3" placeholder="可多选，最多三个">
                     <el-option v-for="(item, index) in tags" :key="index" :value="item.id" :label="item.name"></el-option>
                 </el-select>
@@ -211,7 +211,6 @@
                     stock: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     ems_price: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     title: [{required: true, message: msg, trigger: 'blur'}],
-                    tag_id: [{required: true, message: msg, trigger: 'blur'}],
                     brand: [{required: true, message: msg, trigger: 'blur'}]
                 }
             }

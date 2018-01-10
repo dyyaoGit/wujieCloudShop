@@ -2,20 +2,21 @@
     <div>
         <el-form :model="formData" sizi="small" label-position="left" :rules="rules" ref="form">
             <el-form-item label="优惠券名称" prop="name" label-width="100px" style="width: 800px;">
-                <el-input v-model="formData.name"></el-input>
+                <el-input v-model="formData.name" :disabled="!isCanEdit"></el-input>
             </el-form-item>
             <el-form-item label="优惠券类型" prop="identity">
-                <el-select v-model="formData.identity">
+                <el-select v-model="formData.identity" :disabled="!isCanEdit">
                     <el-option :value="1" label="满减优惠券"></el-option>
                     <el-option :value="2" label="现金券"></el-option>
                     <el-option :value="3" label="包邮券"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item label="优惠券状态">
-                <el-switch v-model="formData.status" active-color="#13ce66" inactive-color="#ff4949" :active-value="1"  :inactive-value="0"></el-switch>
+                <el-switch v-model="formData.status" active-color="#13ce66" inactive-color="#ff4949" :active-value="1"  :inactive-value="0" :disabled="!isCanEdit"></el-switch>
             </el-form-item>
             <el-form-item label="优惠券有效时间" prop="time">
                 <el-date-picker
+                    :disabled="!isCanEdit"
                     v-model="formData.time"
                     type="datetimerange"
                     range-separator="至"
@@ -25,24 +26,24 @@
                 </el-date-picker>
             </el-form-item>
             <el-form-item label="满(元)" v-if="formData.identity == 1" label-width="80px" style="width: 800px;" label-position="left" prop="full">
-                <el-input v-model.number="formData.full"></el-input>
+                <el-input v-model.number="formData.full" :disabled="!isCanEdit"></el-input>
             </el-form-item>
             <el-form-item label="减（元）" v-if="formData.identity == 1" label-width="80px" style="width: 800px;" label-position="left" prop="cut">
-                <el-input v-model.number="formData.cut"></el-input>
+                <el-input v-model.number="formData.cut" :disabled="!isCanEdit"></el-input>
             </el-form-item>
             <el-form-item label="现金券金额" v-if="formData.identity == 2" label-width="100px" style="width: 800px;" label-position="left">
-                <el-input v-model.number="formData.money"></el-input>
+                <el-input v-model.number="formData.money" :disabled="!isCanEdit"></el-input>
             </el-form-item>
             <el-form-item label="发行数量"  label-width="80px" style="width: 800px;" label-position="left" prop="num">
-                <el-input-number v-model="formData.num" @change="handleChange" :min="1"  label="发行数量"></el-input-number>
+                <el-input-number v-model="formData.num" @change="handleChange" :min="1"  label="发行数量" :disabled="!isCanEdit"></el-input-number>
             </el-form-item>
         </el-form>
 
-        <el-button type="primary" @click="submit">
+        <el-button type="primary" @click="submit" v-if="!$route.name === 'editCoupon'">
             保存
         </el-button>
-        <el-button type="danger">
-            取消
+        <el-button type="danger" @click="$router.back()">
+            {{backText}}
         </el-button>
     </div>
 </template>
@@ -86,12 +87,14 @@
                     cut: [{ validator: isMaxGtMin,  trigger: 'blur', type: 'number', required: true}],
                     money: [{ required: true, message: '请输入金额大小', trigger: 'blur', type: 'number'}],
                     name: [{ required: true, message: '请输入优惠券名称', trigger: 'blur'}]
-                }
+                },
+                isCanEdit: true
             }
         },
         created() {
             if(this.$route.name == 'editCoupon'){
                 this.getEditData();
+                this.isCanEdit = false;
             }
         },
         methods: {
@@ -124,6 +127,11 @@
                         this.formData = res.data[0]
                     }
                 })
+            }
+        },
+        computed: {
+            backText() {
+                return this.$route.name === 'editCoupon'? '返回' : '取消'
             }
         }
     }

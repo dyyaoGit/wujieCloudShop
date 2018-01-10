@@ -32,7 +32,7 @@
             <el-table-column label="发行数量" prop="num"></el-table-column>
             <el-table-column label="操作" width="200" fixed="right">
                 <template slot-scope="scope">
-                    <el-button @click="edit(scope.row.id)" type="primary" size="mini">编辑</el-button>
+                    <el-button @click="edit(scope.row.id)" type="primary" size="mini">查看详细</el-button>
                     <el-button @click="del(scope.row.id)" type="danger" size="mini">删除</el-button>
                 </template>
             </el-table-column>

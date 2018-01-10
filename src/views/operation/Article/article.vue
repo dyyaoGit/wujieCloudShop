@@ -5,8 +5,7 @@
         </div>
         <el-table border :data="tableData" size="small" v-loading="loading">
             <el-table-column label="作者" prop="author" width="80"></el-table-column>
-            <el-table-column label="文章名" prop="name" ></el-table-column>
-            <el-table-column label="文章描述" prop="title" width="120"></el-table-column>
+            <el-table-column label="文章名" prop="title" ></el-table-column>
             <el-table-column label="类型" prop="cat.name" width="100"></el-table-column>
             <el-table-column label="排序" prop="sort" width="100"></el-table-column>
             <el-table-column label="是否精选" prop="sort" width="100">

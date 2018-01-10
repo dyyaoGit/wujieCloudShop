@@ -1,9 +1,6 @@
 <template>
     <div>
         <el-form :model="formData" label-width="100px" label-position="right" size="small">
-            <el-form-item label="文章名称">
-                <el-input v-model="formData.name" :disabled="!isCanEdit"></el-input>
-            </el-form-item>
             <el-form-item label="文章标题">
                 <el-input v-model="formData.title" :disabled="!isCanEdit"></el-input>
             </el-form-item>
@@ -84,7 +81,6 @@
         data() {
             return {
                 formData: {
-                    name: '', //文章名称
                     title: '', //文章标题
                     logo: '', //文章头图
                     content: '', //文章内容
