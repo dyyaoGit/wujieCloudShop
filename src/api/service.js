@@ -34,8 +34,8 @@ export default{
     login: '/admin/admin/login', //用户登录
 
 //审核入驻
-    enterManageList: '/admin/admin/index/', //审核入驻商家查询    0.未审核，1，审核完成，2已入住
-    enterJudge: '/admin/admin/state',   //审核入驻操作   1同意 2.拒绝
+    enterManageList: '/admin/admin/get', //审核入驻商家查询    0.未审核，1，审核完成，2已入住
+    enterJudge: '/admin/admin/status',   //审核入驻操作   1同意 2.拒绝
 
 // 审核商品操作
     goodsManage: '/admin/goods/update', //审核商品入驻操作

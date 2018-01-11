@@ -5,7 +5,7 @@
                 添加商品
             </el-button>
         </div>
-        <el-table :data="tableData" border size="small"
+        <el-table :data="tableData"  size="small"
                   @selection-change="selectionChange"
                   tooltip-effect="dark"
                   v-loading="loading"
@@ -20,7 +20,7 @@
                 label="商品头图"
             >
                 <template slot-scope="scope">
-                    <img :src="scope.row.img[0]" style="max-width: 100px;max-height:100px">
+                    <img :src="scope.row.img[0]" class="img-item-small">
                 </template>
             </el-table-column>
             <el-table-column
@@ -113,11 +113,13 @@
             </el-table-column>
             <el-table-column label="操作" width="310" fixed="right">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="danger" v-if="scope.row.state == 0" @click="putAway(scope.row)">上架</el-button>
-                    <el-button size="mini" type="danger" v-if="scope.row.state == 1" @click="putAway(scope.row, 0)">下架</el-button>
-                    <el-button size="mini" type="primary" @click="edit(scope.row.id)">编辑</el-button>
-                    <el-button size="mini" type="warning" @click="editPhotos(scope.row.id)">素材编辑</el-button>
-                    <el-button size="mini" type="default" @click="delGood(scope.row.id)">删除</el-button>
+                    <div class="handle-btn-wrap">
+                        <el-button size="mini" type="" v-if="scope.row.state == 0" @click="putAway(scope.row)">上架</el-button>
+                        <el-button size="mini" type="" v-if="scope.row.state == 1" @click="putAway(scope.row, 0)">下架</el-button>
+                        <el-button size="mini" type="" @click="edit(scope.row.id)">编辑</el-button>
+                        <el-button size="mini" type="" @click="editPhotos(scope.row.id)">素材编辑</el-button>
+                        <el-button size="mini" type="" @click="delGood(scope.row.id)">删除</el-button>
+                    </div>
                 </template>
             </el-table-column>
         </el-table>
@@ -132,6 +134,12 @@
         </div>
     </div>
 </template>
+
+<style>
+    .handle-btn-wrap .el-button {
+
+    }
+</style>
 
 <script>
     export default {

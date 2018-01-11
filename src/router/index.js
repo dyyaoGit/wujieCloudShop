@@ -213,6 +213,11 @@ export const constantRouterMap = [
                 component: _import('enterManage/fodderDetails'),
                 meta: {title: '商户素材详细'},
                 hidden: true
+            },
+            {
+                path: 'CTmanage',
+                component: _import('enterManage/CTmanage'),
+                meta: {title: '商户管理'}
             }
         ]
     },
@@ -227,7 +232,20 @@ export const constantRouterMap = [
                 component: _import('userManage/userList'),
                 name: 'userList',
                 meta: {title: '用户列表'}
-            }
+            },
+            {
+                path: 'levelNameManage',
+                component: _import('userManage/levelNameManage'),
+                name: 'levelNameManage',
+                meta: {title: '等级名称管理'}
+            },
+            {
+                path: 'editLevelName',
+                component: _import('userManage/editLevelName'),
+                name: 'editLevelName',
+                meta: {title: '编辑会员名称'},
+            hidden: true
+            },
         ]
     },
     {
@@ -306,6 +324,18 @@ export const constantRouterMap = [
                 hidden: true,
                 name: 'articleDetails'
             },
+            {
+                path: 'authorManage',
+                component: _import('operation/Article/authorManage'),
+                meta: {title: '作者管理'},
+                name: 'authorManage'
+            },
+            {
+                path: 'addAuthor',
+                component: _import('operation/Article/addAuthor'),
+                meta: {title: '添加作者'},
+                name: 'addAuthor'
+            }
 
         ]
     },
