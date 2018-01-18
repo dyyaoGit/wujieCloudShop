@@ -1,15 +1,27 @@
 <template>
     <div>
-        <el-form :model="formData" sizi="small" label-position="left" :rules="rules" ref="form">
-            <el-form-item label="优惠券名称" prop="name" label-width="100px" style="width: 800px;">
+        <el-form :model="formData" sizi="small" label-position="right" :rules="rules" ref="form" size="mini" label-width="130px" class="form-width">
+            <el-form-item label="优惠券类型" prop="type">
+                <el-select v-model="formData.type" :disabled="!isCanEdit">
+                    <el-option :value="0" label="新付费用户"></el-option>
+                    <el-option :value="1" label="全场"></el-option>
+                    <el-option :value="2" label="会员"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="优惠券名称" prop="name" >
                 <el-input v-model="formData.name" :disabled="!isCanEdit"></el-input>
             </el-form-item>
-            <el-form-item label="优惠券类型" prop="identity">
-                <el-select v-model="formData.identity" :disabled="!isCanEdit">
-                    <el-option :value="1" label="满减优惠券"></el-option>
-                    <el-option :value="2" label="现金券"></el-option>
-                    <el-option :value="3" label="包邮券"></el-option>
-                </el-select>
+            <el-form-item label="优惠券标题">
+                <el-input v-model="formData.title" :disabled="!isCanEdit"></el-input>
+            </el-form-item>
+            <el-form-item label="发行数量"  prop="num">
+                <el-input-number v-model="formData.num" @change="handleChange" :min="1"  label="发行数量" :disabled="!isCanEdit"></el-input-number>
+            </el-form-item>
+            <el-form-item label="优惠券面值" prop="worth">
+                <el-input v-model="formData.worth" placeholder="请输入优惠券面值 单位：元"></el-input>
+            </el-form-item>
+            <el-form-item label="使用门槛" prop="full">
+                购物满：<el-input v-model.number="formData.full" style="width: 100px"></el-input>无门槛请设为0
             </el-form-item>
             <el-form-item label="优惠券状态">
                 <el-switch v-model="formData.status" active-color="#13ce66" inactive-color="#ff4949" :active-value="1"  :inactive-value="0" :disabled="!isCanEdit"></el-switch>
@@ -25,26 +37,25 @@
                     end-placeholder="结束日期">
                 </el-date-picker>
             </el-form-item>
-            <el-form-item label="满(元)" v-if="formData.identity == 1" label-width="80px" style="width: 800px;" label-position="left" prop="full">
+            <el-form-item label="满(元)" v-if="formData.type == 1"  style="width: 800px;" label-position="left" prop="full">
                 <el-input v-model.number="formData.full" :disabled="!isCanEdit"></el-input>
             </el-form-item>
-            <el-form-item label="减（元）" v-if="formData.identity == 1" label-width="80px" style="width: 800px;" label-position="left" prop="cut">
+            <el-form-item label="减（元）" v-if="formData.type == 1"  style="width: 800px;" label-position="left" prop="cut">
                 <el-input v-model.number="formData.cut" :disabled="!isCanEdit"></el-input>
             </el-form-item>
-            <el-form-item label="现金券金额" v-if="formData.identity == 2" label-width="100px" style="width: 800px;" label-position="left">
+            <el-form-item label="现金券金额" v-if="formData.type == 2"  style="width: 800px;" label-position="left">
                 <el-input v-model.number="formData.money" :disabled="!isCanEdit"></el-input>
             </el-form-item>
-            <el-form-item label="发行数量"  label-width="80px" style="width: 800px;" label-position="left" prop="num">
-                <el-input-number v-model="formData.num" @change="handleChange" :min="1"  label="发行数量" :disabled="!isCanEdit"></el-input-number>
+
+            <el-form-item>
+                <el-button type="primary" @click="submit" v-if="!$route.name === 'editCoupon'">
+                    保存
+                </el-button>
+                <el-button type="danger" @click="$router.back()">
+                    {{backText}}
+                </el-button>
             </el-form-item>
         </el-form>
-
-        <el-button type="primary" @click="submit" v-if="!$route.name === 'editCoupon'">
-            保存
-        </el-button>
-        <el-button type="danger" @click="$router.back()">
-            {{backText}}
-        </el-button>
     </div>
 </template>
 
@@ -66,21 +77,23 @@
             }
             return {
                 formData: {
-                    identity: '',   //优惠券类型
+                    name: '', //优惠券名称
+                    title: '', //优惠券标题
+                    type: '',   //优惠券类型
+                    worth: '', //优惠券价值
+                    full: '',   //优惠券门槛
+                    num: '',    //发行数量
                     status: '',  //状态   0.不可用1.可用
                     start_time: '', //优惠券开始时间
                     end_time: '',    //优惠券结束时间
-                    full: '',   //满减界限
                     cut: '',      //减少多少金额
                     id: '',     //优惠券ID
                     money: '',   //现金券金额
-                    num: '',    //发行数量
                     time: [],
-                    name: ''
                 },
                 time: [],
                 rules: {
-                    identity: [{ required: true, message: '请选择优惠券类型', trigger: 'change', type: 'number' }],
+                    type: [{ required: true, message: '请选择优惠券类型', trigger: 'change', type: 'number' }],
                     num: [{ required: true, message: '请输入发行数量', trigger: 'blur', type: 'number' }],
                     time: [{ required: true, message: '请输入优惠券有效时间', trigger: 'change', type: 'array'}],
                     full: [{ validator: isMaxGtMin, trigger: 'blur', required: true, type: 'number',}],

@@ -10,6 +10,7 @@ export default{
     upload: "/api/tools/upload",
 
 // 商品相关
+    getCountry: '/admin/goods/country', //获取国家列表
     getBrands: '/admin/brand/get', //获取商品可选品牌
     getCategory: '/admin/category/index' ,     //获取商品分类表
     addGood: '/admin/goods/add',      //增加商品

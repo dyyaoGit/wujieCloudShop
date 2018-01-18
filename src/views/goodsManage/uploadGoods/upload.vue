@@ -1,6 +1,7 @@
 <template>
     <div class="wrap" :key="$route.name === 'edit' ? 'edit' : 'upload'">
-        <el-form :model="formData" size="small" style="width: 830px;" label-position="right" label-width="85px"
+        <h3>商品基本信息</h3>
+        <el-form :model="formData" size="mini" style="width: 800px;" label-position="right" label-width="120px"
                  ref="form" :rules="rules">
             <el-form-item label="商品类型" class="item-wid" prop="type">
                 <el-cascader
@@ -26,24 +27,19 @@
             <el-form-item label="商品简介">
                 <el-input v-model="formData.title"></el-input>
             </el-form-item>
-
-            <el-form-item label="商品库存" prop="stock">
-                <el-input v-model.number="formData.stock"></el-input>
-            </el-form-item>
-
         </el-form>
 
         <div>
-            <el-form size="small" :inline="true">
-                <el-form-item label="规格名称" label-width="85px" label-position="left">
-                    <el-input v-model="addData.name" @keyup.enter.prevent.native="add"></el-input>
+            <el-form size="mini" :inline="true" label-width="120px">
+                <el-form-item label="规格名称"  label-position="left" @submit.prevent>
+                    <el-input v-model="addData.name" @keyup.enter.native.prevent="add"></el-input>
                 </el-form-item>
                 <el-form-item required>
                     <el-button @click="add" type="primary" required>添加规格</el-button>
                 </el-form-item>
             </el-form>
 
-            <el-table :data="formData.products" border size="small" v-if="formData.products.length>0">
+            <el-table :data="formData.products" border size="mini" v-if="formData.products.length>0">
                 <el-table-column
                     prop="name"
                     label="规格名称"
@@ -53,64 +49,72 @@
                     </template>
                 </el-table-column>
 
-                <el-table-column label="添加标签">
+                <el-table-column label="库存">
                     <template slot-scope="scope">
-                        <el-select
-                            style="width: 300px"
-                            size="middle"
-                            v-model="formData.products[scope.$index].tag"
-                            multiple
-                            filterable
-                            allow-create
-                            :filterable="true"
-                            :default-first-option="true"
-                            placeholder="请填写标签名,并回车添加">
-                            <el-option
-                                v-for="item in formData.products[scope.$index].tag"
-                                :key="item"
-                                v-model="inputData"
-                                :label="item"
-                                :value="item">
-                            </el-option>
-                        </el-select>
+                        <el-input v-model="formData.products[scope.$index].stock"
+                            @keyup.enter.native
+                            size="mini"
+                            placeholder="请输入该规格的库存"
+                        ></el-input>
                     </template>
                 </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
-                        <el-button @click="remove(scope.$index)" size="small" type="warning">移除该规格</el-button>
+                        <el-button @click="remove(scope.$index)" size="mini" type="warning">移除该规格</el-button>
                     </template>
                 </el-table-column>
             </el-table>
         </div>
 
         <h3>价格 <span style="font-size: 14px;">(元)</span></h3>
-        <el-form :model="price" size="small" style="width: 830px;" :rules="rules">
-            <el-form-item label="普通会员" prop="common" label-width="90px">
-                <el-input v-model.number="price.common"></el-input>
+        <el-form :model="formData" size="mini" class="form-width" :rules="rules" label-width="120px">
+            <el-form-item label="普通会员" prop="common" >
+                <el-input v-model.number="formData.common"></el-input>
             </el-form-item>
 
-            <el-form-item label="会员等级1" label-width="90px" prop="first">
-                <el-input v-model.number="price.first"></el-input>
+            <el-form-item label="会员等级1"  prop="first">
+                <el-input v-model.number="formData.first"></el-input>
             </el-form-item>
 
-            <el-form-item label="会员等级2" label-width="90px" prop="second">
-                <el-input v-model.number="price.second"></el-input>
+            <el-form-item label="会员等级2"  prop="second">
+                <el-input v-model.number="formData.second"></el-input>
             </el-form-item>
 
-            <el-form-item label="会员等级3" label-width="90px" prop="third">
-                <el-input v-model.number="price.third"></el-input>
+            <el-form-item label="会员等级3"  prop="third">
+                <el-input v-model.number="formData.third"></el-input>
             </el-form-item>
 
-            <el-form-item label="会员等级4" label-width="90px" prop="fourth">
-                <el-input v-model.number="price.fourth"></el-input>
+            <el-form-item label="会员等级4"  prop="fourth">
+                <el-input v-model.number="formData.fourth"></el-input>
             </el-form-item>
         </el-form>
-        <el-form :model="formData" :rules="rules" size="small">
-            <el-form-item label="邮费(元)" prop="ems_price" label-width="90px">
+        <h3>发货信息</h3>
+        <el-form :model="formData" :rules="rules" size="mini" class="form-width" label-width="120px">
+            <el-form-item label="邮费(元)" prop="ems_price">
                 <el-input v-model.number="formData.ems_price"></el-input>
             </el-form-item>
+            <el-form-item label="发货地" prop="s_address" >
+                <el-input v-model="formData.s_address"></el-input>
+            </el-form-item>
+            <el-form-item label="采购地" prop="p_address" >
+                <el-select v-model="formData.p_address">
+                    <el-option v-for="item in countryData" :value="item.value" :key="item.id" :label="item.label"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="采购地所在国家" prop="country" v-if="isShowSelect">
+                    <el-select v-model="formData.country">
+                        <el-option v-for="item in countryList" :label='`${item.en} ${item.ch}` ' :value="item.id" :key="item.id"></el-option>
+                    </el-select>
+            </el-form-item>
+            <el-form-item label="库存类型" prop="stock_type"  v-if="isShowSelect">
+                <el-select v-model="formData.stock_type">
+                    <el-option label="现货" :value="1"></el-option>
+                    <el-option label="保税仓" :value="2"></el-option>
+                    <el-option label="海外直邮" :value="3"></el-option>
+                </el-select>
+            </el-form-item>
         </el-form>
-        <h4>商品轮播图</h4>
+        <h3>商品轮播图</h3>
         <div class="img-list clearfix">
             <div :key="index" :style="'backgroundImage: url(' + item + ')'" v-for="(item, index) in formData.img"
                  class="div-img-item" @click="removeImg(index)"></div>
@@ -145,9 +149,11 @@
                 },
                 selectionData: [],
                 formData: {
-                    f_cid: 0,   //一级分类表ID
-                    s_cid: 0,   //二级分类ID
+                    gbl_id: 0,  //平台添加商品默认添加字段。默认为0
                     type: [],   //商品分类
+                    p_address: '', //采购地   国内或者国外的
+                    country: '',    //采购地国家
+                    cat_id: '', //传输给后端使用的分类id。仅传最后一个选择的id。从type中取出
                     tag_id: [],//标签分类
                     brand_id: '', //商品品牌
                     name: '',  //商品名称
@@ -162,37 +168,21 @@
                     ],
                     content: '',
                     ems_price: '',     //邮费
+                    s_address: '',    //发货地
                     img: [],    //商品轮播图
-                    stock: '',   //商品库存
+                    stock_type: '', //库存类型
                     state: 0,     //上下架状态
                     browse_num: "5", //浏览量
                     share_num: 2, //分享量
                     agent_num: 0, //商品代理数
+                    common: '',   //普通会员价格
+                    first: '',    //1级会员价格
+                    second: '',     //2级会员价格
+                    third: '',      //3级会员价格
+                    fourth: ''      //4级会员价格
                 },
-                price: {
-                    common: '',
-                    first: '',
-                    second: '',
-                    third: '',
-                    fourth: ''
-                },
-                initData: {
-                    type: [
-                        {
-                            name: '数码',
-                            id: 1
-                        },
-                        {
-                            name: '互联网',
-                            id: 2
-                        },
-                        {
-                            name: '金融',
-                            id: 3
-                        }
-                    ],
-                    tag: [{label: '商用', id: 111}, {label: '民用', id: 222}]
-                }, //初始化数据
+                countryList: [],
+                countryData: [{label: '大陆', value: 0}, {label: '国外以及港澳台', value: 1}],
                 editor: null,
                 config: {   //富文本设置
                     toolbar: [
@@ -208,7 +198,6 @@
                     second: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     third: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     fourth: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
-                    stock: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     ems_price: [{required: true, message: needNum, trigger: 'blur', type: 'number'}],
                     title: [{required: true, message: msg, trigger: 'blur'}],
                     brand: [{required: true, message: msg, trigger: 'blur'}]
@@ -224,6 +213,7 @@
             }
             this.getTags();
             this.getBrands();
+            this.getCountry();
         },
         methods: {
             //添加规格
@@ -245,8 +235,7 @@
                     else {
                         let obj = {
                             name: this.addData.name,
-                            tag: [],
-                            empty: ''
+                            stock: ''
                         }
                         this.formData.products.push(obj);
                         this.addData.name = '';
@@ -285,7 +274,7 @@
             },
             submitForm(address) {
                 console.log(this.formData)
-                let notEmptyTag = this.formData.products.some(val => val.tag.length === 0)  //判断是否有规格的标签未填写
+                let notEmptyTag = this.formData.products.some(val => val.stock.trim() == '')  //判断是否有规格的标签未填写
                 if (notEmptyTag) {
                     this.$message({
                         message: '存在未添加标签的规格，请检查规格列表是否为填写完整',
@@ -293,7 +282,7 @@
                     });
                 }
                 else {
-                    let canSubmit = !this.formData.type || !this.formData.name || !this.price.common || !this.price.first || !this.price.second || !this.price.third || !this.price.fourth;
+                    let canSubmit = !this.formData.type || !this.formData.name || !this.formData.common || !this.formData.first || !this.formData.second || !this.formData.third || !this.formData.fourth;
                     if (canSubmit) {
                         this.$message({
                             message: '请检查是否填写完整必填信息',
@@ -301,18 +290,10 @@
                         })
                     }
                     else { //提交操作
-                        if (this.formData.type.length > 1) {
-                            this.formData.f_cid = this.formData.type[0];
-                            this.formData.s_cid = this.formData.type[1];
-                        }
-                        else {
-                            this.formData.f_cid = this.formData.type[0]
-                        }
+                        //选择分类选择表的最后一个id提交给后端
+                        this.formData.cat_id = this.formData.type[this.formData.type.length-1];
 
-                        this.formData.products = this.formData.products.map(val => {
-                            return {"name": val.name, "tag": val.tag}
-                        })  //去除所有empty变量提交
-                        this.formData = {...this.formData, price: {...this.price}}
+                        //决定ajax提交的地址是新建还是修改
                         let address = this.$route.name === 'edit' ? 'updateGood' : 'addGood'
 
                         this.$axios.post(address, this.formData, res => {
@@ -321,6 +302,7 @@
                                 this.$router.push('GoodsList')
                             }, 1500)
                         })
+
                     }
                 }
             },
@@ -341,7 +323,6 @@
                 this.$axios.get('getGoodList', {id: this.$route.query.id}, res => {
                     this.formData = {...this.formData, ...res.data[0]}
                     this.formData.brand_id = res.data[0].brand.id
-                    this.price = {...res.data[0].price}  //此处因为数据不是在formData中，所以，将数据回填到price。
                     if (res.data[0].s_category) {
                         this.formData.type = [res.data[0].f_category.id, res.data[0].s_category.id]
                     }
@@ -363,6 +344,16 @@
                 this.$axios.get('getBrands', {}, res => {
                     this.brands = res.data;
                 })
+            },
+            getCountry() {
+                this.$axios.get('getCountry', {}, res => {
+                    this.countryList = res.data;
+                })
+            }
+        },
+        computed: {
+            isShowSelect () {
+                return this.formData.p_address == 1;
             }
         }
     }
@@ -377,5 +368,11 @@
 
     .item-wid .el-select {
         width: 750px;
+    }
+</style>
+
+<style scoped>
+    .wrap h3 {
+        font-weight: 200;
     }
 </style>

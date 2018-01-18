@@ -59,13 +59,10 @@
             </el-table-column>
 
             <el-table-column
-                prop="type"
+                prop="category.name"
                 width="150"
                 label="类型"
             >
-                <template slot-scope="scope">
-                   <span v-text="scope.row.f_category['name'] || ''" ></span>
-                </template>
             </el-table-column>
             <el-table-column label="商品库存" width="100" prop="stock"></el-table-column>
             <el-table-column label="商品简介" width="100">
@@ -82,31 +79,31 @@
             >
             </el-table-column>
             <el-table-column
-                prop="price[common]"
+                prop="common"
                 width="150"
                 label="普通会员价格"
             >
             </el-table-column>
             <el-table-column
-                prop="price[first]"
+                prop="first"
                 width="150"
                 label="一级会员价格"
             >
             </el-table-column>
             <el-table-column
-                prop="price[second]"
+                prop="second"
                 width="150"
                 label="二级会员价格"
             >
             </el-table-column>
             <el-table-column
-                prop="price[third]"
+                prop="third"
                 width="150"
                 label="三级会员价格"
             >
             </el-table-column>
             <el-table-column
-                prop="price[fourth]"
+                prop="fourth"
                 width="150"
                 label="四级会员价格"
             >
@@ -192,6 +189,12 @@
                     if(this.currentPage == 1 && typeof res.msg == 'number'){
                         this.total = res.msg;
                     }
+                    res.data.forEach(val => {
+                        val.stock = val.products.reduce((pre, next) => {
+                            return parseInt(pre.stock) + parseInt(next.stock) ;
+                        })
+                    })
+                    // 求库存总和
                     this.tableData = res.data;
                     this.loading = false;
                 })

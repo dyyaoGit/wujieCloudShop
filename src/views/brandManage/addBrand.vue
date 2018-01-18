@@ -32,7 +32,9 @@
                     name: "",
                     title: "",
                     logo: "",
-                    content: ""
+                    content: "",
+                    status: 1,    //后端约定，品牌添加，平台版本默认填1
+                    gbl_id: 0      //后端约定，平台版本默认传0
                 },
                 imgList: []
             };
