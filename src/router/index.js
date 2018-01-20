@@ -467,7 +467,8 @@ export const constantRouterMap = [
                 path: 'new',
                 component: _import('couponManage/editCoupon'),
                 meta: {title: '新建优惠券'},
-                hidden: true
+                hidden: true,
+                name: 'newCoupon'
             },
             {
                 path: 'edit',

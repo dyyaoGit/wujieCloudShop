@@ -3,13 +3,13 @@
         <div class="clearfix">
             <el-button type="danger" icon="el-icon-caret-bottom" style="float: right;margin-bottom: 15px;" size="small"  @click="newCoupon">新建优惠券</el-button>
         </div>
-        <el-table :data="tableData" border>
+        <el-table :data="tableData" border size="mini">
             <el-table-column label="优惠券名称" width="150" prop="name"></el-table-column>
-            <el-table-column label="类型" width="150">
+            <el-table-column label="可用类型" width="150">
                 <template slot-scope="scope">
-                    <el-tag v-if="scope.row.identity === 1" type="danger" size="medium">满减优惠券</el-tag>
-                    <el-tag v-if="scope.row.identity === 2" type="success" size="medium">现金券</el-tag>
-                    <el-tag v-if="scope.row.identity === 3" type="info" size="medium">包邮券</el-tag>
+                    <el-tag v-if="scope.row.type == 0" type="danger" size="medium">新付费可用</el-tag>
+                    <el-tag v-if="scope.row.type == 1" type="success" size="medium">全场可用</el-tag>
+                    <el-tag v-if="scope.row.type == 2" type="info" size="medium">会员可用</el-tag>
                 </template>
             </el-table-column>
             <el-table-column label="优惠券状态" width="100">
@@ -23,11 +23,8 @@
                     {{`${scope.row.start_time}至${scope.row.end_time}`}}
                 </template>
             </el-table-column>
-            <el-table-column label="优惠券描述">
-                <template slot-scope="scope">
-                    <span v-if="scope.row.identity === 1">{{`满${scope.row.full}减${scope.row.cut}`}}</span>
-                    <span v-if="scope.row.identity === 2">{{`立减现金${scope.row.money}`}}</span>
-                </template>
+            <el-table-column label="优惠券描述" width="200" prop="content">
+
             </el-table-column>
             <el-table-column label="发行数量" prop="num"></el-table-column>
             <el-table-column label="操作" width="200" fixed="right">

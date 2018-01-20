@@ -30,8 +30,8 @@
         </el-form>
 
         <div>
-            <el-form size="mini" :inline="true" label-width="120px">
-                <el-form-item label="规格名称"  label-position="left" @submit.prevent>
+            <el-form size="mini" :inline="true" label-width="120px" @submit.native.prevent>
+                <el-form-item label="规格名称"  label-position="left">
                     <el-input v-model="addData.name" @keyup.enter.native.prevent="add"></el-input>
                 </el-form-item>
                 <el-form-item required>

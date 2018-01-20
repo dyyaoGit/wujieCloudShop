@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="clearfix" style="margin-bottom: 20px;">
-            <h3 style="float: left;">已申请参与活动列表</h3>
+            <h3 style="float: left;">已参与活动列表</h3>
             <el-button type="danger" style="float:right;" @click="add($route.query.id)">添加商品到该活动</el-button>
         </div>
-        <el-table :data="tableData" border style="width: 100%" >
+        <el-table :data="tableData" border size="mini" >
             <el-table-column prop="name" label="商品名"></el-table-column>
             <el-table-column prop="logo" label="商品头图">
                 <template slot-scope="scope">
@@ -21,6 +21,7 @@
             <el-table-column prop="title" label="操作" width="220" fixed="right">
                 <template slot-scope="scope">
                     <!--<el-button type="danger" size="mini" @click="add(scope.row.id)">申请参加</el-button>-->
+                    <el-button size="mini" type="primary" @click="showDetails(scope.row.goods_id)">查看详细</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -39,7 +40,7 @@
         },
         methods: {
             getData() {
-                this.$axios.get('getAct', {kill_id: this.$route.query.id, user_id: ''}, res => {
+                this.$axios.get('getAct', {kill_id: this.$route.query.id}, res => {
                     if(res.ret){
                         this.tableData = res.data;
                     }
@@ -61,6 +62,9 @@
                         }
                     })
                 }).catch(() => {this.$message({type: 'info', message: '已取消删除'});});
+            },
+            showDetails(id) {
+                this.$router.push({path: 'showDetails', query: {actId: this.$route.query.id, goodsId: id}})
             }
         },
         mounted() {
